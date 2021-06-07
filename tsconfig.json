@@ -7,7 +7,6 @@
     "moduleResolution": "Node",
     "sourceMap": true,
     "lib": ["es2016"],
-    "noImplicitAny": false,
     "paths": {
       "@/*": ["/src/*"],
       "~/*": ["/src/*"]
@@ -17,7 +16,8 @@
     "emitDecoratorMetadata": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "typeRoots": ["./@types"]
   },
   "include": ["./src/**/*.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"],
