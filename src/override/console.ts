@@ -1,3 +1,4 @@
+export {};
 import dayjs from "dayjs";
 const consola = require("consola");
 var newConsole: Console = console;
