@@ -20,5 +20,7 @@ import "./index";
 // console.log((0.1).safeMultiply(0.2));
 // console.log(0.2 / 0.2);
 // console.log((0.1).safeDivision(0.2));
-console.log(Math.round10(110, 1));
-console.log(Math.round(110));
+console.log(Math.round10(112.5345, 3));
+console.log(Math.round(112.5));
+
+console.log(Math.randomRange(112.5, 200, 1));

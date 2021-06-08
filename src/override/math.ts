@@ -1,15 +1,35 @@
 export {};
 import deepCopy from "../utils/deepCopy";
 
-var newMath: any = Object.create(Math);
+declare global {
+  interface Math {
+    round10(x: number, point?: number): number;
+    floor10(x: number, point?: number): number;
+    ceil10(x: number, point?: number): number;
+    randomRange(a: number, b: number, point?: number): number;
+  }
+}
 
-newMath.round10 = decimalAdjust("round");
-newMath.floor10 = decimalAdjust("floor");
-newMath.ceil10 = decimalAdjust("ceil");
+if (!Math.round10) {
+  Math.round10 = decimalAdjust("round");
+}
+if (!Math.floor10) {
+  Math.floor10 = decimalAdjust("floor");
+}
+if (!Math.ceil10) {
+  Math.ceil10 = decimalAdjust("ceil");
+}
+
+if (!Math.randomRange) {
+  Math.randomRange = function (a: number, b: number, point: number = 0) {
+    return Math.floor10(Math.random() * (b - a + 1) + a, point);
+  };
+}
 
 function decimalAdjust(type: "round" | "floor" | "ceil") {
   const func = Math[type];
-  return (number: number, precision: number) => {
+  return (number: number, precision: number = 0) => {
+    console.log("hello:", number, precision);
     precision =
       precision == null ? 0 : precision >= 0 ? Math.min(precision, 292) : Math.max(precision, -292);
     if (precision) {
@@ -25,4 +45,4 @@ function decimalAdjust(type: "round" | "floor" | "ceil") {
   };
 }
 
-globalThis.Math = newMath;
+globalThis.Math = Math;
