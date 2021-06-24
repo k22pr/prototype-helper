@@ -1,4 +1,5 @@
-import "./index";
+// import "./index";
+import "../dist";
 
 // console.log("hello");
 // console.warn("warn log");
@@ -20,7 +21,12 @@ import "./index";
 // console.log((0.1).safeMultiply(0.2));
 // console.log(0.2 / 0.2);
 // console.log((0.1).safeDivision(0.2));
-console.log(Math.round10(112.5345, 3));
-console.log(Math.round(112.5));
+console.log(Math);
+console.warn(Math.round);
+// console.log(Math.round10(112.5345, 3));
+// console.log(Math.round(112.5));
+// console.log(Math.randomRange(112.5, 200, 1));
 
-console.log(Math.randomRange(112.5, 200, 1));
+const hello = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// hello.findIndex;

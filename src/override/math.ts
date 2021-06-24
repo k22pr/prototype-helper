@@ -29,7 +29,6 @@ if (!Math.randomRange) {
 function decimalAdjust(type: "round" | "floor" | "ceil") {
   const func = Math[type];
   return (number: number, precision: number = 0) => {
-    console.log("hello:", number, precision);
     precision =
       precision == null ? 0 : precision >= 0 ? Math.min(precision, 292) : Math.max(precision, -292);
     if (precision) {
