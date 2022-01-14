@@ -22,5 +22,10 @@
   "include": ["./src/**/*.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"],
   "typeRoots": ["./node_modules/@types"],
-  "types": ["@types/node"]
+  "types": ["@types/node"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k22pr/ts-proto"
+  },
+  "license": "MIT"
 }

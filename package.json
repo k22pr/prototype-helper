@@ -1,7 +1,7 @@
 {
-  "name": "ts-proto",
+  "name": "prototype-helper",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "consola": "^2.15.3",
     "dayjs": "^1.10.5"
@@ -21,7 +21,8 @@
   "scripts": {
     "build": "jest && tsc",
     "dev": "nodemon --exec ts-node ./src/test.ts",
-    "test": "jest --detectOpenHandles --forceExit"
+    "test": "jest --detectOpenHandles --forceExit",
+    "publish": "yarn build && npm publish"
   },
   "nodemonConfig": {
     "ignore": [
