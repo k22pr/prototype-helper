@@ -150,7 +150,7 @@ console.log("30222.50380000".fixPoint(8).fixNumber(8)); // 00030222.50380000
 
 ---
 
-# Override Helper
+# Extention Helper
 
 ## Math
 
