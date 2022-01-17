@@ -1,6 +1,22 @@
-# Typescript Prototype Helper
+<h1 align="center">Typescript Prototype Helper</h1>
 
+<p align="center">
+ <a href="https://github.com/prettier/prettier">
+    <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge">
+  </a>
+ <a href="https://www.npmjs.com/package/prototype-helper">
+    <img alt="code style: prettier" src="https://img.shields.io/npm/v/prototype-helper.svg?style=for-the-badge">
+  </a>
+ <a href="https://github.com/k22pr/prototype-helper/blob/master/LICENSE">
+    <img alt="code style: prettier" src="https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge">
+  </a>
+  <img alt="npm" src="https://img.shields.io/npm/dm/prototype-helper?style=for-the-badge">
+  <!-- <img alt="AppVeyor tests (compact)" src="https://img.shields.io/appveyor/tests/k22pr/prototype-helper?compact_message&style=for-the-badge"> -->
+  
+</p>
+<p align="center">
 Adds a convenient prototype function package.
+</p>
 
 # Prototype Helper
 
