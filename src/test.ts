@@ -49,7 +49,10 @@ console.log("123".toComma());
 // console.log((30222.12).fixNumber(8));
 // console.log((30222.12).fixNumber(8).toComma());
 
-console.log("30222.50380000".fixPoint(8).fixNumber(8));
+// console.log("30222.50380000".fixPoint(8).fixNumber(8));
+console.log("30222.50380000".fixPoint(5));
+console.log("30222.50380000".fixPoint(5).toComma());
+
 // console.log((30222).fixPoint(3));
 // console.log((30222.12).fixPoint(5).toComma());
 // console.log((30222.12).toComma().pointPad(5));

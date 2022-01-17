@@ -24,8 +24,8 @@ String.prototype.fixPoint = function (length: number = 0): string {
   if (point.length == 1) point[1] = "";
   else if (point.length >= 3) throw new Error("Invalid String");
 
-  let result = base[0].toNumber().toString();
-  if (point.length == 2 && length != 0) result += `.${point[1].padEnd(length, "0")}`;
+  let result = base[0];
+  if (point.length == 2 && length != 0) result += `.${point[1].padEnd(length, "0").slice(0, length)}`;
 
   return result;
 };
