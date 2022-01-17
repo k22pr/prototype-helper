@@ -1,4 +1,5 @@
-<h1 align="center">Typescript Prototype Helper</h1>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=343a40&height=210&section=header&text=Typescript Prototype Helper&fontSize=50&fontAlignY=35&fontColor=adb5bd" />
+<!-- <h1 align="center">Typescript Prototype Helper</h1> -->
 
 <p align="center">
  <a href="https://github.com/prettier/prettier">
