@@ -1,3 +1,4 @@
+import "../override/math";
 import "./string";
 import "./number";
 
@@ -8,8 +9,15 @@ test("number - toComma", () => {
 
 test("number - safe operations", () => {
   expect((35).ampersand(0.8)).toBe(0.6);
+
   expect((0.1).safeAdd(0.2)).toBe(0.3);
+  expect((0.3).safeAdd(-0.2)).toBe(0.1);
+
   expect((0.1).safeSubtract(0.2)).toBe(-0.1);
+  expect((0.1).safeSubtract(0.3)).toBe(-0.2);
+  expect((0.1).safeSubtract(-0.3)).toBe(0.4);
+
   expect((0.1).safeMultiply(0.2)).toBe(0.02);
+
   expect((0.1).safeDivision(0.2)).toBe(0.5);
 });

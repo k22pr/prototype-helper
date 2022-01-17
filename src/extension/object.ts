@@ -1,5 +1,5 @@
 interface Object {
-  deepCopy(): Object;
+  deepClone(): Object;
 }
 
 function deepClone(obj: any) {
@@ -16,4 +16,4 @@ function deepClone(obj: any) {
   return result;
 }
 
-Object.prototype.deepCopy = deepClone(this);
+Object.prototype.deepClone = deepClone(this);

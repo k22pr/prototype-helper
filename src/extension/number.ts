@@ -8,7 +8,7 @@ interface Number {
 }
 
 Number.prototype.toComma = function () {
-  if (`$[this}`.length == 0) return "0";
+  if (`${this}`.length == 0) return "0";
   return `${this}`.toComma();
 };
 
@@ -34,20 +34,17 @@ function hexfloatNotation(number: number, numberPoint = 8) {
 }
 
 Number.prototype.safeDivision = function (value: number) {
-  return (Number(this) / value).toFixed(16).toNumber();
+  return Math.round10(Math.floor10(Number(this) / value, 16), 15);
 };
 
 Number.prototype.safeMultiply = function (value: number) {
-  return (Number(this) * value).toFixed(16).toNumber();
+  return Math.round10(Math.floor10(Number(this) * value, 16), 15);
 };
 
 Number.prototype.safeAdd = function (value: number) {
-  return (Number(this) + value).toFixed(16).toNumber();
+  return Math.round10(Math.floor10(Number(this) + value, 16), 15);
 };
 
-Number.prototype.safeAdd = function (value: number) {
-  return (Number(this) + value).toFixed(16).toNumber();
-};
 Number.prototype.safeSubtract = function (value: number) {
-  return (Number(this) - value).toFixed(16).toNumber();
+  return Math.round10(Math.floor10(Number(this) - value, 16), 15);
 };

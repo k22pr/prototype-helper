@@ -17,7 +17,8 @@
     "emitDecoratorMetadata": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "declaration": true
   },
   "include": ["./src/**/*.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"],
