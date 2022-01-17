@@ -43,15 +43,15 @@ import "./index";
 ////////////////////////////////////////////////////////////////////////////
 
 console.log("123".toComma());
-// console.log((1).padZero(5));
-// console.log((3022).padZero(1));
+// console.log((1).fixNumber(5));
+// console.log((3022).fixNumber(1));
 
-// console.log((30222.12).padZero(8));
-// console.log((30222.12).padZero(8).toComma());
+// console.log((30222.12).fixNumber(8));
+// console.log((30222.12).fixNumber(8).toComma());
 
-console.log("30222.50380000".padPoint(5).toComma());
-// console.log((30222).padPoint(3));
-// console.log((30222.12).padPoint(5).toComma());
+console.log("30222.50380000".fixPoint(8).fixNumber(8));
+// console.log((30222).fixPoint(3));
+// console.log((30222.12).fixPoint(5).toComma());
 // console.log((30222.12).toComma().pointPad(5));
 // console.log("30222.12".pointPad(5));
 

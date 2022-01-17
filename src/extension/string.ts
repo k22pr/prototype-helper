@@ -1,14 +1,14 @@
 interface StringConstructor {
-  padPoint(s: string, length: number): string;
-  padZero(length: number): string;
+  fixPoint(s: string, length: number): string;
+  fixNumber(length: number): string;
   leadingChars(chars: string | number, length: number): string;
   toComma(): string;
   toNumber(): number;
 }
 
 interface String {
-  padPoint(length: number): string;
-  padZero(length: number): string;
+  fixPoint(length: number): string;
+  fixNumber(length: number): string;
   leadingChars(chars: string | number, length: number): string;
   toComma(): string;
   toNumber(): number;
@@ -18,22 +18,22 @@ String.prototype.leadingChars = function (chars: string | number, length: number
   return (chars.toString().repeat(length) + this).substr(-length);
 };
 
-String.prototype.padPoint = function (length: number = 0): string {
+String.prototype.fixPoint = function (length: number = 0): string {
   let base = this.split(".");
-  let point = this.toNumber().toString().split(".");
+  let point = this.split(".");
   if (point.length == 1) point[1] = "";
-  else if (point.length >= 3) throw new Error("Invalid");
+  else if (point.length >= 3) throw new Error("Invalid String");
 
-  let result = base[0];
+  let result = base[0].toNumber().toString();
   if (point.length == 2 && length != 0) result += `.${point[1].padEnd(length, "0")}`;
 
   return result;
 };
 
-String.prototype.padZero = function (length: number): string {
-  let point = this.toNumber().toString().split(".");
+String.prototype.fixNumber = function (length: number): string {
+  let point = this.split(".");
 
-  let result = point[0].padStart(length, "0");
+  let result = point[0].toNumber().toString().padStart(length, "0");
   if (point.length == 2) result += `.${point[1]}`;
 
   return result;

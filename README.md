@@ -88,24 +88,24 @@ console.log(0.1 * 0.2); // 0.020000000000000004
 console.log((0.1).safeMultiply(0.2)); // 0.02
 ```
 
-### padZero()
+### fixNumber()
 
 Fix the number of digits to be marked.
 
 ```ts
-console.log("30222.50380000".padPoint(5)); // 30222.50380
-console.log((30222).padPoint(3)); // 30222.000
-console.log((30222.12).padPoint(5).toComma()); // 30,222.12000
+console.log("30222.50380000".fixPoint(5)); // 30222.50380
+console.log((30222).fixPoint(3)); // 30222.000
+console.log((30222.12).fixPoint(5).toComma()); // 30,222.12000
 ```
 
-### padPoint()
+### fixPoint()
 
 Fix the decimal place to be marked.
 
 ```ts
-console.log("30222.50380000".padPoint(5)); // 30222.50380
-console.log((30222).padPoint(3)); // 30222.000
-console.log((30222.12).padPoint(5).toComma()); // 30,222.12000
+console.log("30222.50380000".fixPoint(5)); // 30222.50380
+console.log((30222).fixPoint(3)); // 30222.000
+console.log((30222.12).fixPoint(5).toComma()); // 30,222.12000
 ```
 
 ---
@@ -124,11 +124,29 @@ test.toComma(); // "123,456"
 //
 ```
 
+### fixNumber()
+
+Fix the number of digits to be marked.
+
+```ts
+console.log("30222".fixPoint(5)); // 30222
+console.log("30222".fixPoint(5)); // 30222
+```
+
+### fixPoint()
+
+Fix the decimal place to be marked.
+
+```ts
+console.log("30222.50380000".fixPoint(5)); // 30222.50380
+console.log((30222).fixPoint(3)); // 30222.000
+console.log((30222.12).fixPoint(5).toComma()); // 30,222.12000
+console.log("30222.50380000".fixPoint(8).fixNumber(8)); // 00030222.50380000
+```
+
 ## Object
 
 ## Array
-
-### toComma
 
 ---
 

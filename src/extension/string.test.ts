@@ -11,8 +11,8 @@ test("string - toComma()", () => {
 });
 
 test("string - pad extension", () => {
-  expect("300".padPoint(3)).toBe("300.000");
-  expect((30222.12).padPoint(5)).toBe("30222.12000");
-  expect("30222.50380000".padPoint(5).toComma()).toBe("30,222.50380");
-  expect((30222.12).padPoint(3).toComma()).toBe("30,222.120");
+  expect("300".fixPoint(3)).toBe("300.000");
+  expect((30222.12).fixPoint(5)).toBe("30222.12000");
+  expect("30222.50380000".fixPoint(5).toComma()).toBe("30,222.50380");
+  expect((30222.12).fixPoint(3).toComma()).toBe("30,222.120");
 });
