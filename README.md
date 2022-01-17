@@ -136,11 +136,11 @@ test.toComma(); // "123,456"
 
 ## Math
 
-### round10()
+### round10(x: number, point?: number)
 
-### floor10()
+### floor10(x: number, point?: number)
 
-### ceil10()
+### ceil10(x: number, point?: number)
 
 A function that allows you to use decimal points for discarding/rounding/round.
 
@@ -154,7 +154,7 @@ console.log(Math.floor10(112.5345, 3)); //112.534
 console.log(Math.ceil10(112.5345, 3)); //112.535
 ```
 
-### randomRange()
+### randomRange(a: number, b: number, point?: number)
 
 Create random numbers within that range.
 
@@ -163,4 +163,12 @@ Create random numbers within that range.
 ```ts
 console.log(Math.randomRange(112.5, 200, 1)); //135.1
 console.log(Math.randomRange(0, 200)); //169
+```
+
+### clamp(input: number, min: number, max: number)
+
+```ts
+console.log(Math.clamp(10, 3, 5)); // 5
+console.log(Math.clamp(1, 3, 5)); // 3
+console.log(Math.clamp(4, 3, 5)); // 4
 ```

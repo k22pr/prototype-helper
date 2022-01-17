@@ -55,6 +55,10 @@ console.log("30222.50380000".padPoint(5).toComma());
 // console.log((30222.12).toComma().pointPad(5));
 // console.log("30222.12".pointPad(5));
 
+// console.log(Math.clamp(10, 3, 5));
+// console.log(Math.clamp(1, 3, 5));
+// console.log(Math.clamp(4, 3, 5));
+
 const hello = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // hello.findIndex;
