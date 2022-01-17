@@ -96,3 +96,34 @@ test.toComma(); // "123,456"
 ---
 
 # Override Helper
+
+## Math
+
+### round10()
+
+### floor10()
+
+### ceil10()
+
+A function that allows you to use decimal points for discarding/rounding/round.
+
+I used the code of the MDN below.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil#decimal_adjustment
+
+```ts
+console.log(Math.round10(112.5345, 3)); //112.535
+console.log(Math.floor10(112.5345, 3)); //112.534
+console.log(Math.ceil10(112.5345, 3)); //112.535
+```
+
+### randomRange()
+
+Create random numbers within that range.
+
+(Includes maximum and minimum values.)
+
+```ts
+console.log(Math.randomRange(112.5, 200, 1)); //135.1
+console.log(Math.randomRange(0, 200, 0)); //169
+```
