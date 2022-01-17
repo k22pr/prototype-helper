@@ -71,6 +71,26 @@ console.log(0.1 * 0.2); // 0.020000000000000004
 console.log((0.1).safeMultiply(0.2)); // 0.02
 ```
 
+### padZero()
+
+Fix the number of digits to be marked.
+
+```ts
+console.log("30222.50380000".padPoint(5)); // 30222.50380
+console.log((30222).padPoint(3)); // 30222.000
+console.log((30222.12).padPoint(5).toComma()); // 30,222.12000
+```
+
+### padPoint()
+
+Fix the decimal place to be marked.
+
+```ts
+console.log("30222.50380000".padPoint(5)); // 30222.50380
+console.log((30222).padPoint(3)); // 30222.000
+console.log((30222.12).padPoint(5).toComma()); // 30,222.12000
+```
+
 ---
 
 ## String
@@ -125,5 +145,5 @@ Create random numbers within that range.
 
 ```ts
 console.log(Math.randomRange(112.5, 200, 1)); //135.1
-console.log(Math.randomRange(0, 200, 0)); //169
+console.log(Math.randomRange(0, 200)); //169
 ```

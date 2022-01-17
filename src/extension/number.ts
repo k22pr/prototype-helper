@@ -5,6 +5,8 @@ interface Number {
   safeMultiply(value: number): number;
   safeAdd(value: number): number;
   safeSubtract(value: number): number;
+  padPoint(length: number): string;
+  padZero(length: number): string;
 }
 
 Number.prototype.toComma = function () {
@@ -47,4 +49,12 @@ Number.prototype.safeAdd = function (value: number) {
 
 Number.prototype.safeSubtract = function (value: number) {
   return Math.round10(Math.floor10(Number(this) - value, 16), 15);
+};
+
+Number.prototype.padPoint = function (length: number) {
+  return `${this}`.padPoint(length);
+};
+
+Number.prototype.padZero = function (length: number) {
+  return `${this}`.padZero(length);
 };

@@ -1,8 +1,9 @@
 import "./string";
+import "./number";
 
 test("string - toComma()", () => {
-  expect("123".toComma().length).toBe(3);
-  expect("123456".toComma().length).toBe(7);
+  expect("123".toComma()).toBe("123");
+  expect("123456".toComma()).toBe("123,456");
 
   expect("24816246784".toComma()).toBe("24,816,246,784");
 
@@ -10,5 +11,8 @@ test("string - toComma()", () => {
 });
 
 test("string - pad extension", () => {
-  expect("300".padZero(10)).toBe("0000000300");
+  expect("300".padPoint(3)).toBe("300.000");
+  expect((30222.12).padPoint(5)).toBe("30222.12000");
+  expect("30222.50380000".padPoint(5).toComma()).toBe("30,222.50380");
+  expect((30222.12).padPoint(3).toComma()).toBe("30,222.120");
 });
