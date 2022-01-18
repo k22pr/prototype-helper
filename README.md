@@ -19,6 +19,17 @@
 Adds a convenient prototype function package.
 </p>
 
+# Getting started
+
+Import the package to the first file you call.
+
+```js
+import "prototype-helper";
+
+// and use
+console.log("10000".toComma()); // 10,000
+```
+
 # Prototype Helper
 
 ## Number
