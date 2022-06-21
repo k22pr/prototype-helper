@@ -24,9 +24,9 @@ import "./index";
 // console.log((0.3).safeAdd(-0.2));
 
 // console.log((0.1).safeSubtract(0.3)); // 0.6
-console.log((35).ampersand(0.8)); // 0.6
-console.log((39225.3).ampersand(0.1), 0); // 0
-console.log((39225.3).ampersand(0.01), 0); // 0
+console.log((35).mod(0.8)); // 0.6
+console.log((39225.3).mod(0.1), 0); // 0
+console.log((39225.3).mod(0.01), 0); // 0
 // console.log((0.2).safeDivision(0.6)); // 0.8333333333333334
 // console.log((0.1).safeMultiply(0.2)); // 0.02
 
@@ -65,5 +65,25 @@ console.log("30222.50380000".fixPoint(5).toComma());
 // console.log(Math.clamp(4, 3, 5));
 
 const hello = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(hello.singleOrDefault((e) => e == 99));
+console.log(hello.skip(3).take(5));
+console.log(hello.skip(1).skip(1));
+const test = hello.take(9).select((now, index) => {
+  return {
+    id: now,
+    index,
+    name: "test",
+  };
+});
+console.log(test);
+console.log(hello.skip(1).count());
+console.log(test.max((now) => now.id));
+console.log(test.min((now) => now.id));
+console.log(test.sum((now) => now.id));
+console.log(test.first((now) => now.id % 3 == 0));
+console.log(test.firstOrDefault((now) => now.id % 99 == 0, 991));
+console.log(test.last((now) => now.id % 3 == 0));
+console.log(test.lastOrDefault((now) => now.id % 3 == 4, 991));
+// console.log(hello.single((now) => now == 3));
 
 // hello.findIndex;

@@ -1,34 +1,12 @@
-interface Number {
-  toComma(): string;
-  ampersand(amp: number): number;
-  safeDivision(value: number): number;
-  safeMultiply(value: number): number;
-  safeAdd(value: number): number;
-  safeSubtract(value: number): number;
-  fixNumber(length: number): string;
-  fixPoint(length: number): string;
-}
+import decimal, { Decimal } from "decimal.js";
 
 Number.prototype.toComma = function () {
   if (`${this}`.length == 0) return "0";
   return `${this}`.toComma();
 };
 
-Number.prototype.ampersand = function (amp: number) {
-  let length = 1;
-  if (amp < 1) length = `${amp}`.length - 2;
-
-  const prepValue =
-    (Number(this) * Math.pow(10, length)).toFixed(8).toNumber() %
-    (amp * Math.pow(10, length)).toFixed(8).toNumber();
-  const tmp = prepValue.toString().split(".");
-  console.log(tmp);
-
-  if (tmp[1]) {
-    const pointValue = hexfloatNotation(`0.${tmp[1]}`.toNumber());
-    return Number(tmp[0] + (pointValue % amp));
-  }
-  return prepValue;
+Number.prototype.mod = function (amp: number) {
+  return decimal.mod(Number(this), amp).toNumber();
 };
 
 function hexfloatNotation(number: number, numberPoint = 8) {
@@ -41,20 +19,20 @@ function hexfloatNotation(number: number, numberPoint = 8) {
   }
 }
 
-Number.prototype.safeDivision = function (value: number) {
-  return Math.round10(Math.floor10(Number(this) / value, 16), 15);
+Number.prototype.div = function (value: number) {
+  return decimal.div(Number(this), value).toNumber();
 };
 
-Number.prototype.safeMultiply = function (value: number) {
-  return Math.round10(Math.floor10(Number(this) * value, 16), 15);
+Number.prototype.mul = function (value: number) {
+  return decimal.mul(Number(this), value).toNumber();
 };
 
-Number.prototype.safeAdd = function (value: number) {
-  return Math.round10(Math.floor10(Number(this) + value, 16), 15);
+Number.prototype.add = function (value: number) {
+  return decimal.add(Number(this), value).toNumber();
 };
 
-Number.prototype.safeSubtract = function (value: number) {
-  return Math.round10(Math.floor10(Number(this) - value, 16), 15);
+Number.prototype.sub = function (value: number) {
+  return decimal.sub(Number(this), value).toNumber();
 };
 
 Number.prototype.fixNumber = function (length: number = 8) {
@@ -63,4 +41,20 @@ Number.prototype.fixNumber = function (length: number = 8) {
 
 Number.prototype.fixPoint = function (length: number) {
   return `${this}`.fixPoint(length);
+};
+
+Number.prototype.abs = function () {
+  return Math.abs(Number(this));
+};
+
+Number.prototype.isFinite = function () {
+  return new decimal(Number(this)).isFinite();
+};
+
+Number.prototype.isNaN = function () {
+  return new decimal(Number(this)).isNaN();
+};
+
+Number.prototype.isInteger = function () {
+  return new decimal(Number(this)).isInteger();
 };
