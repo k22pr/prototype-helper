@@ -53,6 +53,9 @@ Ampsand that safely handles floating point errors.
 ```ts
 console.log(35 % 0.8); // 0.5999999999999981
 console.log((35).ampersand(0.8)); // 0.6
+
+console.log(39225.3 % 0.01); // 2.0938424605265737e-12
+console.log((39225.3).ampersand(0.01)); // 0
 ```
 
 ### safeAdd()

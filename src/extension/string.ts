@@ -19,18 +19,19 @@ String.prototype.leadingChars = function (chars: string | number, length: number
 };
 
 String.prototype.fixPoint = function (length: number = 0): string {
-  let base = this.split(".");
+  const base = this.split(".");
   let point = this.split(".");
   if (point.length == 1) point[1] = "";
   else if (point.length >= 3) throw new Error("Invalid String");
 
   let result = base[0];
-  if (point.length == 2 && length != 0) result += `.${point[1].padEnd(length, "0").slice(0, length)}`;
+  if (point.length == 2 && length != 0)
+    result += `.${point[1].padEnd(length, "0").slice(0, length)}`;
 
   return result;
 };
 
-String.prototype.fixNumber = function (length: number): string {
+String.prototype.fixNumber = function (length: number = 8): string {
   let point = this.split(".");
 
   let result = point[0].toNumber().toString().padStart(length, "0");

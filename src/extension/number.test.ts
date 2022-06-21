@@ -9,6 +9,8 @@ test("number - toComma", () => {
 
 test("number - safe operations", () => {
   expect((35).ampersand(0.8)).toBe(0.6);
+  expect((39225.3).ampersand(0.1)).toBe(0);
+  expect((39225.3).ampersand(0.01)).toBe(0);
 
   expect((0.1).safeAdd(0.2)).toBe(0.3);
   expect((0.3).safeAdd(-0.2)).toBe(0.1);

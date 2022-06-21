@@ -24,7 +24,9 @@ import "./index";
 // console.log((0.3).safeAdd(-0.2));
 
 // console.log((0.1).safeSubtract(0.3)); // 0.6
-// console.log((35).ampersand(0.8)); // 0.6
+console.log((35).ampersand(0.8)); // 0.6
+console.log((39225.3).ampersand(0.1), 0); // 0
+console.log((39225.3).ampersand(0.01), 0); // 0
 // console.log((0.2).safeDivision(0.6)); // 0.8333333333333334
 // console.log((0.1).safeMultiply(0.2)); // 0.02
 

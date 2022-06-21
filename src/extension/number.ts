@@ -15,8 +15,14 @@ Number.prototype.toComma = function () {
 };
 
 Number.prototype.ampersand = function (amp: number) {
-  const prepValue = Number(this) % amp;
+  let length = 1;
+  if (amp < 1) length = `${amp}`.length - 2;
+
+  const prepValue =
+    (Number(this) * Math.pow(10, length)).toFixed(8).toNumber() %
+    (amp * Math.pow(10, length)).toFixed(8).toNumber();
   const tmp = prepValue.toString().split(".");
+  console.log(tmp);
 
   if (tmp[1]) {
     const pointValue = hexfloatNotation(`0.${tmp[1]}`.toNumber());
@@ -51,7 +57,7 @@ Number.prototype.safeSubtract = function (value: number) {
   return Math.round10(Math.floor10(Number(this) - value, 16), 15);
 };
 
-Number.prototype.fixNumber = function (length: number) {
+Number.prototype.fixNumber = function (length: number = 8) {
   return `${this}`.fixNumber(length);
 };
 

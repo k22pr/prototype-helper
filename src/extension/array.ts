@@ -1,7 +1,12 @@
 interface Array<T> {
-  single(predicate: (value: T, index: T, obj: T[]) => unknown): T;
+  // single<T>(predicate: (value: T, index: T, obj: T[]) => unknown): T;
 }
 
-// const test = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// function single(predicate) {
+//   const test = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+//   console.log(test.findIndex);
 
-// test.findIndex;
+//   return 1;
+// }
+
+// Array.prototype.single = single;
