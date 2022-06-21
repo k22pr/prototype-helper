@@ -35,7 +35,8 @@ if (!Math.clamp) {
 function decimalAdjust(type: "round" | "floor" | "ceil") {
   const func = Math[type];
   return (number: number, precision: number = 0) => {
-    precision = precision == null ? 0 : precision >= 0 ? Math.min(precision, 292) : Math.max(precision, -292);
+    precision =
+      precision == null ? 0 : precision >= 0 ? Math.min(precision, 292) : Math.max(precision, -292);
     if (precision) {
       // Shift with exponential notation to avoid floating-point issues.
       // See [MDN](https://mdn.io/round#Examples) for more details.
