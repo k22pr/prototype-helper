@@ -5,7 +5,7 @@ import "./index";
 // console.warn("warn log");
 // console.error("error log");
 
-// console.log("300".pointPad(10));
+console.log("300".fixPoint(10));
 // console.log("300".toComma(10));
 // console.log("24816246784".toComma());
 // console.log("24816246784".toNumber());
@@ -85,5 +85,19 @@ console.log(test.firstOrDefault((now) => now.id % 99 == 0, 991));
 console.log(test.last((now) => now.id % 3 == 0));
 console.log(test.lastOrDefault((now) => now.id % 3 == 4, 991));
 // console.log(hello.single((now) => now == 3));
+
+console.log((134.5).addSymbol());
+console.log((0).addSymbol());
+console.log((-1.345).addSymbol());
+
+console.log((134.5).addSymbol(" "));
+console.log((134.5).addSymbol("   "));
+
+console.log((134.5).per(50));
+console.log((134.5).per(33));
+console.log((134.5).per(72));
+console.log((100).per(50));
+console.log((100).per(1250));
+console.log((300).per(10));
 
 // hello.findIndex;

@@ -1,5 +1,9 @@
 import decimal, { Decimal } from "decimal.js";
 
+Number.prototype.toNumber = function () {
+  return Number(this);
+};
+
 Number.prototype.toComma = function () {
   if (`${this}`.length == 0) return "0";
   return `${this}`.toComma();
@@ -39,7 +43,7 @@ Number.prototype.fixNumber = function (length: number = 8) {
   return `${this}`.fixNumber(length);
 };
 
-Number.prototype.fixPoint = function (length: number) {
+Number.prototype.fixPoint = function (length: number = 0) {
   return `${this}`.fixPoint(length);
 };
 
@@ -57,4 +61,12 @@ Number.prototype.isNaN = function () {
 
 Number.prototype.isInteger = function () {
   return new decimal(Number(this)).isInteger();
+};
+
+Number.prototype.addSymbol = function (space: string = "") {
+  return `${Number(this) > 0 ? "+" : ""}${space}${this}`;
+};
+
+Number.prototype.per = function (per: number) {
+  return (Number(this) / 100) * per;
 };

@@ -4,6 +4,7 @@ interface StringConstructor {
   leadingChars(chars: string | number, length: number): string;
   toComma(): string;
   toNumber(): number;
+  addSymbol(space?: string): string;
 }
 
 interface String {
@@ -12,6 +13,7 @@ interface String {
   leadingChars(chars: string | number, length: number): string;
   toComma(): string;
   toNumber(): number;
+  addSymbol(space?: string): string;
 }
 
 String.prototype.leadingChars = function (chars: string | number, length: number): string {
@@ -25,8 +27,7 @@ String.prototype.fixPoint = function (length: number = 0): string {
   else if (point.length >= 3) throw new Error("Invalid String");
 
   let result = base[0];
-  if (point.length == 2 && length != 0)
-    result += `.${point[1].padEnd(length, "0").slice(0, length)}`;
+  if (point.length == 2 && length != 0) result += `.${point[1].padEnd(length, "0").slice(0, length)}`;
 
   return result;
 };
@@ -50,5 +51,9 @@ String.prototype.toComma = function (): string {
 };
 
 String.prototype.toNumber = function (): number {
-  return Number(this.replace(/,/gi, ""));
+  return Number(this.replace(/[,\+\s]/gi, ""));
+};
+
+String.prototype.addSymbol = function (space: string = "") {
+  return `${this.toNumber() > 0 ? "+" : ""}${space}${this}`;
 };

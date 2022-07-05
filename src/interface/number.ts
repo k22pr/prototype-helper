@@ -1,4 +1,5 @@
 declare interface Number {
+  toNumber(): number;
   toComma(): string;
   mod(amp: number): number;
   div(value: number): number;
@@ -11,4 +12,6 @@ declare interface Number {
   isFinite(): boolean;
   isNaN(): boolean;
   isInteger(): boolean;
+  addSymbol(space?: string): string;
+  per(per: number): number;
 }
