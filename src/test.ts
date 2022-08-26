@@ -100,4 +100,6 @@ console.log((100).per(50));
 console.log((100).per(1250));
 console.log((300).per(10));
 
+console.log((2 ** 256 + 0.213445).toComma().fixPoint(10));
+
 // hello.findIndex;

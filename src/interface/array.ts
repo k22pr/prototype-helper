@@ -1,6 +1,6 @@
 interface Array<T> {
   single(predicate: (element: T, index: number) => boolean): T;
-  singleOrDefault(predicate: (element: any, index: number) => boolean, defaultValue?: any): T;
+  singleOrDefault(predicate: (element: T, index: number) => boolean, defaultValue?: any): T;
   where(predicate: (element: T, index: number) => boolean): T[];
   skip(count: number): T[];
   take(count: number): T[];

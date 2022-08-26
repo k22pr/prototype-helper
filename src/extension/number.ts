@@ -6,7 +6,7 @@ Number.prototype.toNumber = function () {
 
 Number.prototype.toComma = function () {
   if (`${this}`.length == 0) return "0";
-  return `${this}`.toComma();
+  return `${new decimal(Number(this)).toString()}`.toComma();
 };
 
 Number.prototype.mod = function (amp: number) {
@@ -40,11 +40,11 @@ Number.prototype.sub = function (value: number) {
 };
 
 Number.prototype.fixNumber = function (length: number = 8) {
-  return `${this}`.fixNumber(length);
+  return `${new decimal(Number(this)).toString()}`.fixNumber(length);
 };
 
 Number.prototype.fixPoint = function (length: number = 0) {
-  return `${this}`.fixPoint(length);
+  return `${new decimal(Number(this)).toString()}`.fixPoint(length);
 };
 
 Number.prototype.abs = function () {

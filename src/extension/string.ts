@@ -43,10 +43,8 @@ String.prototype.fixNumber = function (length: number = 8): string {
 
 String.prototype.toComma = function (): string {
   if (this.length == 0 || this == "NaN") return "0";
-  const tmp = this.split(".");
 
-  let result = tmp[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  if (tmp.length != 1) result += `.${tmp[1]}`;
+  let result = this.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   return result;
 };
 
