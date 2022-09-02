@@ -1,19 +1,9 @@
-interface Object {
-  deepClone(): Object;
+import deepClone from 'deep-clone'
+
+Object.prototype.deepClone = function () {
+  return deepClone(this);
 }
 
-function deepClone(obj: any) {
-  if (obj === null || typeof obj !== "object") {
-    return obj;
-  }
-
-  const result: any = Array.isArray(obj) ? [] : {};
-
-  for (let key of Object.keys(obj)) {
-    result[key] = deepClone(obj[key]);
-  }
-
-  return result;
+Object.prototype.toString = function () {
+  return JSON.stringify(this);
 }
-
-Object.prototype.deepClone = deepClone(this);

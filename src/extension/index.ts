@@ -1,3 +1,4 @@
-import "./array";
-import "./string";
 import "./number";
+import "./string";
+import "./array";
+import "./object";

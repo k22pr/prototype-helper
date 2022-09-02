@@ -5,6 +5,7 @@ interface StringConstructor {
   toComma(): string;
   toNumber(): number;
   addSymbol(space?: string): string;
+  fromJSON<T>(): T;
 }
 
 interface String {
@@ -14,6 +15,7 @@ interface String {
   toComma(): string;
   toNumber(): number;
   addSymbol(space?: string): string;
+  fromJSON<T>(): T;
 }
 
 String.prototype.leadingChars = function (chars: string | number, length: number): string {
@@ -55,3 +57,7 @@ String.prototype.toNumber = function (): number {
 String.prototype.addSymbol = function (space: string = "") {
   return `${this.toNumber() > 0 ? "+" : ""}${space}${this}`;
 };
+
+String.prototype.fromJSON = function <T>(): T {
+  return JSON.parse(`${this}`);
+}

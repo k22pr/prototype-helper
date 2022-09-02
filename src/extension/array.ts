@@ -1,3 +1,5 @@
+import deepClone from 'deep-clone'
+
 Array.prototype.where = function (predicate) {
   return this.filter(predicate);
 };
@@ -80,3 +82,11 @@ Array.prototype.last = function (predicate?: any, defaultValue = null) {
 
   return isset;
 };
+
+Array.prototype.deepClone = function () {
+  return deepClone(this);
+}
+
+Array.prototype.toJSON = function () {
+  return JSON.stringify(this);
+}
