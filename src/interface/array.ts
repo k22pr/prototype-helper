@@ -17,6 +17,7 @@ interface Array<T> {
   last(predicate?: (element: T, index: number) => boolean): T;
   lastOrDefault(predicate?: (element: T, index: number) => boolean, defaultValue?: any): T;
 
+  // deepClone<T>(camelcase?: boolean): T[];
   deepClone<T>(): T[];
-  toJSON(): string;
+  toJson(): string;
 }

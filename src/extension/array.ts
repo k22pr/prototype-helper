@@ -1,4 +1,5 @@
 import deepClone from 'deep-clone'
+import camelCase from 'camelcase'
 
 Array.prototype.where = function (predicate) {
   return this.filter(predicate);
@@ -83,10 +84,14 @@ Array.prototype.last = function (predicate?: any, defaultValue = null) {
   return isset;
 };
 
+// Array.prototype.deepClone = function (camelcase: boolean = false) {
+//   return deepClone(this, camelcase ? camelCase : undefined);
+// }
 Array.prototype.deepClone = function () {
   return deepClone(this);
 }
 
-Array.prototype.toJSON = function () {
+
+Array.prototype.toJson = function () {
   return JSON.stringify(this);
 }
