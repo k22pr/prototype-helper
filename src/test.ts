@@ -1,4 +1,6 @@
 import "./index";
+
+console.useTheme();
 // import "../dist";
 
 // console.log("hello");

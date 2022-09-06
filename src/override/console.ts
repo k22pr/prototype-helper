@@ -1,76 +1,92 @@
-// export { };
+export { };
 
-// interface ConsoleShowOption {
-//   log: boolean;
-//   info: boolean;
-//   warn: boolean;
-//   error: boolean;
-// }
+interface ConsoleShowOption {
+  log: boolean;
+  info: boolean;
+  warn: boolean;
+  error: boolean;
+}
 
-// interface ConsoleOption {
-//   development: ConsoleShowOption;
-//   production: ConsoleShowOption;
-// }
+interface ConsoleOption {
+  development: ConsoleShowOption;
+  production: ConsoleShowOption;
+}
 
-// declare global {
-//   interface Console {
-//     option: ConsoleOption;
-//     show(message?: any, ...optionalParams: any[]): void;
-//   }
-// }
+declare global {
+  interface Console {
+    show(message?: any, ...optionalParams: any[]): void;
+    useTheme(consoleOption?: ConsoleOption): void;
+  }
+}
 
-// function getTime() {
-//   const nowDate = new Date();
-//   return `${nowDate.getHours()}:${nowDate.getMinutes()}:${nowDate.getSeconds()}:${`${nowDate.getMilliseconds()}`.padStart(3, "0")}`;
-// }
 
-// console.option = {
-//   development: {
-//     log: true,
-//     info: true,
-//     warn: true,
-//     error: true,
-//   },
-//   production: {
-//     log: false,
-//     info: false,
-//     warn: true,
-//     error: true,
-//   },
-// };
+const TH = this;
+const temp = {
+  log: console.log.bind(TH),
+  info: console.log.bind(TH),
+  warn: console.log.bind(TH),
+  error: console.log.bind(TH),
+}
 
-// function showMessage(type: "info" | "warn" | "error", ...message: any) {
-//   console[type](`\x1b[2m[${getTime()}]\x1b[0m\x1b[37m`, ...message);
-// }
-// console.show = console.log.bind(this);
+function getTime() {
+  const nowDate = new Date();
+  return `${nowDate.getHours()}:${nowDate.getMinutes()}:${nowDate.getSeconds()}:${`${nowDate.getMilliseconds()}`.padStart(3, "0")}`;
+}
 
-// console.log = function (...message: any) {
-//   // if (
-//   //   (process.env.NODE_ENV === "development" && console.option.development.log) ||
-//   //   (process.env.NODE_ENV === "production" && console.option.production.log)
-//   // )
-//   showMessage("info", ...message);
-// };
-// console.info = function (...message: any) {
-//   // if (
-//   //   (process.env.NODE_ENV === "development" && console.option.development.info) ||
-//   //   (process.env.NODE_ENV === "production" && console.option.production.info)
-//   // )
-//   showMessage("info", ...message);
-// };
-// console.warn = function (...message: any) {
-//   // if (
-//   //   (process.env.NODE_ENV === "development" && console.option.development.warn) ||
-//   //   (process.env.NODE_ENV === "production" && console.option.production.warn)
-//   // )
-//   showMessage("warn", ...message);
-// };
-// console.error = function (...message: any) {
-//   // if (
-//   //   (process.env.NODE_ENV === "development" && console.option.development.error) ||
-//   //   (process.env.NODE_ENV === "production" && console.option.production.error)
-//   // )
-//   showMessage("error", ...message);
-// };
+function showMessage(type: "info" | "warn" | "error", message?: any, ...optionalParams: any[]) {
+  temp[type](`\x1b[2m[${getTime()}]\x1b[0m\x1b[37m`, message, optionalParams);
+}
 
-// globalThis.console = console;
+console.useTheme = useTheme;
+
+
+function useTheme(consoleOption = {
+  development: {
+    log: true,
+    info: true,
+    warn: true,
+    error: true,
+  },
+  production: {
+    log: false,
+    info: false,
+    warn: true,
+    error: true,
+  },
+}) {
+
+  console.log = function (message?: any, ...optionalParams: any[]) {
+    if (
+      (process.env.NODE_ENV === "development" && consoleOption.development.log) ||
+      (process.env.NODE_ENV === "production" && consoleOption.production.log) ||
+      !process.env.NODE_ENV
+    )
+      showMessage("info", message, optionalParams);
+  };
+  console.info = function (message?: any, ...optionalParams: any[]) {
+    if (
+      (process.env.NODE_ENV === "development" && consoleOption.development.info) ||
+      (process.env.NODE_ENV === "production" && consoleOption.production.info) ||
+      !process.env.NODE_ENV
+    )
+      showMessage("info", message, optionalParams);
+  };
+  console.warn = function (message?: any, ...optionalParams: any[]) {
+    if (
+      (process.env.NODE_ENV === "development" && consoleOption.development.warn) ||
+      (process.env.NODE_ENV === "production" && consoleOption.production.warn) ||
+      !process.env.NODE_ENV
+    )
+      showMessage("warn", message, optionalParams);
+  };
+  console.error = function (message?: any, ...optionalParams: any[]) {
+    if (
+      (process.env.NODE_ENV === "development" && consoleOption.development.error) ||
+      (process.env.NODE_ENV === "production" && consoleOption.production.error) ||
+      !process.env.NODE_ENV
+    )
+      showMessage("error", message, optionalParams);
+  };
+
+  globalThis.console = console;
+}
