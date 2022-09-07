@@ -105,11 +105,16 @@ console.log((300).per(10));
 console.log((2 ** 256 + 0.213445).toComma().fixPoint(10));
 
 
-const aaa = [1, 2, 3, 4, 5]
-console.log(aaa.toJson())
-const bbb = aaa.deepClone()
-const ccc = `[1,2,3,4,5]`
-console.log(aaa, bbb, aaa === bbb)
-console.log(ccc.fromJson())
+console.info("test1");
+console.warn("test2");
+console.error("test3");
+
+const aaa = [1, 2, 3, 4, 5];
+console.log(aaa.toJson());
+const bbb = aaa.deepClone();
+const ccc = `[1,2,3,4,5]`;
+console.log(aaa, bbb, aaa === bbb);
+console.log(ccc.fromJson());
+
 
 // hello.findIndex;
