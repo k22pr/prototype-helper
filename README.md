@@ -87,7 +87,7 @@ console.log((0.2).div(0.6)); // 0.3333333333333333
 
 ### mul()
 
-Division that safely handles floating point errors.
+Multiply that safely handles floating point errors.
 
 ```ts
 console.log(0.1 * 0.2); // 0.020000000000000004
