@@ -1,5 +1,5 @@
 
-interface Object {
-  _deepCopy(): Object;
-  _toJson(): string;
-}
+// interface Object {
+//   _deepCopy(): Object;
+//   _toJson(): string;
+// }
