@@ -1,4 +1,4 @@
-import decimal, { Decimal } from "decimal.js";
+import decimal from "decimal.js";
 
 Number.prototype.toNumber = function () {
   return Number(this);
@@ -12,16 +12,6 @@ Number.prototype.toComma = function () {
 Number.prototype.mod = function (amp: number) {
   return decimal.mod(Number(this), amp).toNumber();
 };
-
-function hexfloatNotation(number: number, numberPoint = 8) {
-  const tmp = number.toString().split(".");
-  if (tmp[1]) {
-    const size = Math.round(number * Math.pow(10, numberPoint)) / Math.pow(10, numberPoint);
-    return Number(tmp[0] + size);
-  } else {
-    return Number(tmp);
-  }
-}
 
 Number.prototype.div = function (value: number) {
   return decimal.div(Number(this), value).toNumber();

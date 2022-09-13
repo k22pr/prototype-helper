@@ -1,9 +1,13 @@
 import deepClone from 'deep-clone';
 
-Object.prototype.deepClone = function () {
-  return deepClone(this);
-};
+// if (!Object.prototype._deepCopy) {
+//   Object.prototype._deepCopy = function () {
+//     return deepClone(this);
+//   };
+// }
 
-Object.prototype.stringify = function () {
-  return JSON.stringify(this);
-};
+// if (!Object.prototype._toJson) {
+//   Object.prototype._toJson = function () {
+//     return JSON.stringify(this);
+//   };
+// }

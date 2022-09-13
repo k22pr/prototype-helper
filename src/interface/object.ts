@@ -1,5 +1,5 @@
 
 interface Object {
-  deepClone(): Object;
-  stringify(): string;
+  _deepCopy(): Object;
+  _toJson(): string;
 }

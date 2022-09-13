@@ -18,6 +18,6 @@ interface Array<T> {
   lastOrDefault(predicate?: (element: T, index: number) => boolean, defaultValue?: any): T;
 
   // deepClone<T>(camelcase?: boolean): T[];
-  deepClone<T>(): T[];
-  toJson(): string;
+  _deepCopy<T>(): T[];
+  _toJson(): string;
 }
