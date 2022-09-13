@@ -13,5 +13,10 @@ declare interface Number {
   isNaN(): boolean;
   isInteger(): boolean;
   addSymbol(space?: string): string;
-  per(per: number): number;
+  fromPer(per: number): number;
+  toPer(per: number): number;
+
+  ceil(point?: number): number;
+  floor(point?: number): number;
+  round(point?: number): number;
 }

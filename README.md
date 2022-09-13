@@ -46,60 +46,52 @@ test.toComma(); // "123,456"
 //
 ```
 
-### ampersand()
+### mod()
 
 Ampsand that safely handles floating point errors.
 
 ```ts
 console.log(35 % 0.8); // 0.5999999999999981
-console.log((35).ampersand(0.8)); // 0.6
+console.log((35).mod(0.8)); // 0.6
 
 console.log(39225.3 % 0.01); // 2.0938424605265737e-12
-console.log((39225.3).ampersand(0.01)); // 0
+console.log((39225.3).mod(0.01)); // 0
 ```
 
-### safeAdd()
+### add()
 
 Addition to safely handling floating point errors.
 
-Calculate only up to 15 decimal places.
-
 ```ts
 console.log(0.1 + 0.2); // 0.30000000000000004
-console.log((0.1).safeAdd(0.2)); // 0.3
+console.log((0.1).add(0.2)); // 0.3
 ```
 
-### safeSubtract()
+### sub()
 
 Subtraction that safely handles floating point errors.
 
-Calculate only up to 15 decimal places.
-
 ```ts
 console.log(0.1 - 0.3); // -0.19999999999999998
-console.log((0.1).safeSubtract(0.3)); // 0.2
+console.log((0.1).sub(0.3)); // 0.2
 ```
 
-### safeDivision()
+### div()
 
 Division that safely handles floating point errors.
-
-Calculate only up to 15 decimal places.
 
 ```ts
 console.log(0.2 / 0.6); // 0.33333333333333337
-console.log((0.2).safeDivision(0.6)); // 0.3333333333333333
+console.log((0.2).div(0.6)); // 0.3333333333333333
 ```
 
-### safeMultiply()
+### mul()
 
 Division that safely handles floating point errors.
 
-Calculate only up to 15 decimal places.
-
 ```ts
 console.log(0.1 * 0.2); // 0.020000000000000004
-console.log((0.1).safeMultiply(0.2)); // 0.02
+console.log((0.1).mul(0.2)); // 0.02
 ```
 
 ### fixNumber()
@@ -107,9 +99,9 @@ console.log((0.1).safeMultiply(0.2)); // 0.02
 Fix the number of digits to be marked.
 
 ```ts
-console.log("30222.50380000".fixPoint(5)); // 30222.50380
-console.log((30222).fixPoint(3)); // 30222.000
-console.log((30222.12).fixPoint(5).toComma()); // 30,222.12000
+console.log("3022.50380000".fixNumber(5)); // 03022.50380000
+console.log((3022).fixNumber(7)); // 0003022
+console.log((3222.12).fixNumber(5).toComma()); // 03,222.12
 ```
 
 ### fixPoint()
@@ -143,8 +135,9 @@ test.toComma(); // "123,456"
 Fix the number of digits to be marked.
 
 ```ts
-console.log("30222".fixPoint(5)); // 30222
-console.log("30222".fixPoint(5)); // 30222
+console.log("3022.50380000".fixNumber(5)); // 03022.50380000
+console.log((3022).fixNumber(7)); // 0003022
+console.log((3222.12).fixNumber(5).toComma()); // 03,222.12
 ```
 
 ### fixPoint()
@@ -155,7 +148,6 @@ Fix the decimal place to be marked.
 console.log("30222.50380000".fixPoint(5)); // 30222.50380
 console.log((30222).fixPoint(3)); // 30222.000
 console.log((30222.12).fixPoint(5).toComma()); // 30,222.12000
-console.log("30222.50380000".fixPoint(8).fixNumber(8)); // 00030222.50380000
 ```
 
 ## Object

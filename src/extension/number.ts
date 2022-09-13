@@ -67,6 +67,22 @@ Number.prototype.addSymbol = function (space: string = "") {
   return `${Number(this) > 0 ? "+" : ""}${space}${this}`;
 };
 
-Number.prototype.per = function (per: number) {
+Number.prototype.fromPer = function (per: number) {
   return (Number(this) / 100) * per;
+};
+
+Number.prototype.toPer = function (val: number) {
+  return (val / Number(this)) * 100;
+};
+
+Number.prototype.ceil = function (point: number = 0) {
+  return Math.ceil10(Number(this), point);
+};
+
+Number.prototype.floor = function (point: number = 0) {
+  return Math.floor10(Number(this), point);
+};
+
+Number.prototype.round = function (point: number = 0) {
+  return Math.round10(Number(this), point);
 };

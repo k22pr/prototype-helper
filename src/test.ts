@@ -95,12 +95,15 @@ console.log((-1.345).addSymbol());
 console.log((134.5).addSymbol(" "));
 console.log((134.5).addSymbol("   "));
 
-console.log((134.5).per(50));
-console.log((134.5).per(33));
-console.log((134.5).per(72));
-console.log((100).per(50));
-console.log((100).per(1250));
-console.log((300).per(10));
+console.log((134.5).fromPer(50));
+console.log((134.5).fromPer(33));
+console.log((134.5).fromPer(72));
+console.log((100).fromPer(50));
+console.log((100).fromPer(1250));
+console.log((300).fromPer(10));
+
+console.log((300).toPer(10));
+
 
 console.log((2 ** 256 + 0.213445).toComma().fixPoint(10));
 
@@ -115,6 +118,16 @@ const bbb = aaa.deepClone();
 const ccc = `[1,2,3,4,5]`;
 console.log(aaa, bbb, aaa === bbb);
 console.log(ccc.fromJson());
+console.log({ a: 1, b: 3 }.stringify());
 
+
+console.log((1234.1234).round(2));
+console.log((1234.1234).floor(2));
+console.log((1234.1234).ceil(2));
+
+
+console.log("3022.50380000".fixNumber(5)); // 03022.50380000
+console.log((3022).fixNumber(7)); // 30222
+console.log((3222.12).fixNumber(5).toComma()); // 03,222.12
 
 // hello.findIndex;

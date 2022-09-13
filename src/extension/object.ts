@@ -1,9 +1,9 @@
-import deepClone from 'deep-clone'
+import deepClone from 'deep-clone';
 
 Object.prototype.deepClone = function () {
   return deepClone(this);
-}
+};
 
-Object.prototype.toString = function () {
+Object.prototype.stringify = function () {
   return JSON.stringify(this);
-}
+};
