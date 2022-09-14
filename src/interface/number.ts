@@ -15,6 +15,8 @@ declare interface Number {
   addSymbol(space?: string): string;
   fromPer(per: number): number;
   toPer(per: number): number;
+  pow(value: number): number;
+  normalize(): number;
 
   ceil(point?: number): number;
   floor(point?: number): number;

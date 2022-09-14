@@ -29,6 +29,15 @@ Number.prototype.sub = function (value: number) {
   return decimal.sub(Number(this), value).toNumber();
 };
 
+Number.prototype.pow = function (value: number) {
+  return decimal.pow(Number(this), value).toNumber();
+};
+
+Number.prototype.normalize = function () {
+  return Number(this).pow(2);
+};
+
+
 Number.prototype.fixNumber = function (length: number = 8) {
   return `${new decimal(Number(this)).toString()}`.fixNumber(length);
 };
