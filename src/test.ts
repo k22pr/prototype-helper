@@ -118,7 +118,7 @@ const bbb = aaa._deepCopy();
 const ccc = `[1,2,3,4,5]`;
 console.log(aaa, bbb, aaa === bbb);
 console.log(ccc.fromJson());
-console.log({ a: 1, b: 3 }._toJson());
+// console.log({ a: 1, b: 3 }._toJson());
 
 
 console.log((1234.1234).round(2));
