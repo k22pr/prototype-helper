@@ -7,6 +7,7 @@ interface StringConstructor {
   addSymbol(space?: string): string;
   fromJSON<T>(): T;
   issetWord(word: string): boolean;
+  getChar(index: number): string;
 }
 
 interface String {
@@ -18,7 +19,9 @@ interface String {
   addSymbol(space?: string): string;
   fromJson<T>(): T;
   issetWord(word: string): boolean;
+  getChar(index: number): string;
 }
+
 
 String.prototype.leadingChars = function (chars: string | number, length: number): string {
   return (chars.toString().repeat(length) + this).substr(-length);
@@ -66,4 +69,8 @@ String.prototype.fromJson = function <T>(): T {
 
 String.prototype.issetWord = function (word: string) {
   return this.indexOf(word) == -1 ? false : true;
+};
+
+String.prototype.getChar = function (index: number) {
+  return this.slice(index, index + 1);
 };

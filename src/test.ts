@@ -135,4 +135,12 @@ console.log("hello world".issetWord("xx"));
 console.log("hello world".issetWord(""));
 console.log("helloworld".issetWord(" "));
 
+
+console.log("hello world".getChar(0));
+console.log("hello world".getChar(1));
+console.log("hello world".getChar(2));
+console.log("hello world".getChar(3));
+console.log("hello world".getChar(4));
+console.log("hello world".getChar(5));
+
 // hello.findIndex;
