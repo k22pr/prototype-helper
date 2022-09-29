@@ -130,4 +130,9 @@ console.log("3022.50380000".fixNumber(5)); // 03022.50380000
 console.log((3022).fixNumber(7)); // 30222
 console.log((3222.12).fixNumber(5).toComma()); // 03,222.12
 
+console.log("hello world".issetWord("ell"));
+console.log("hello world".issetWord("xx"));
+console.log("hello world".issetWord(""));
+console.log("helloworld".issetWord(" "));
+
 // hello.findIndex;
