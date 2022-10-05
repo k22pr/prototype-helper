@@ -1,5 +1,4 @@
 import deepClone from 'deep-clone';
-import camelCase from 'camelcase';
 
 Array.prototype.where = function (predicate) {
   return this.filter(predicate);

@@ -50,12 +50,16 @@ String.prototype.fixNumber = function (length: number = 8): string {
 
 String.prototype.toComma = function (): string {
   if (this.length == 0 || this == "NaN") return "0";
-
-  let result = this.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  const point = this.split(".");
+  let result = point[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if (point.length == 2) result += `.${point[1]}`;
+  // let result = this.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  // let result = Number(this).toLocaleString();
   return result;
 };
 
 String.prototype.toNumber = function (): number {
+  // return Number(this.replace(",", "").replace(" ", "").replace("+", ""));
   return Number(this.replace(/[,\+\s]/gi, ""));
 };
 

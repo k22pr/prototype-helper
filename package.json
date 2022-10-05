@@ -1,6 +1,6 @@
 {
   "name": "prototype-helper",
-  "version": "0.3.9",
+  "version": "0.3.12",
   "private": false,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -22,19 +22,20 @@
   },
   "homepage": "https://github.com/k22pr/prototype-helper#readme",
   "dependencies": {
-    "decimal.js": "^10.3.1",
+    "decimal.js": "^10.4.1",
     "deep-clone": "^3.0.3"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.23",
-    "@types/node": "^14.6.0",
-    "jest": "^27.0.4",
-    "nodemon": "^1.19.1",
-    "supertest": "^6.1.3",
-    "ts-jest": "^27.0.3",
-    "ts-loader": "^6.0.4",
-    "ts-node": "^10.0.0",
-    "typescript": "^3.5.2"
+    "@types/jest": "^27.5.2",
+    "@types/node": "^14.18.31",
+    "@types/prettier": "^2.7.1",
+    "jest": "^27.5.1",
+    "nodemon": "^1.19.4",
+    "supertest": "^6.2.4",
+    "ts-jest": "^27.1.5",
+    "ts-loader": "^6.2.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
   },
   "scripts": {
     "build": "jest && tsc",
