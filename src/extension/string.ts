@@ -28,14 +28,14 @@ String.prototype.leadingChars = function (chars: string | number, length: number
 };
 
 String.prototype.fixPoint = function (length: number = 0): string {
-  const base = this.split(".");
-  let point = this.split(".");
-  if (point.length == 1) point[1] = "";
-  else if (point.length >= 3) throw new Error("Invalid String");
+  let base = this.split(".");
+  if (base.length == 1) base[1] = "";
+  else if (base.length >= 3) throw new Error("Invalid String");
 
   let result = base[0];
-  if (point.length == 2 && length != 0) result += `.${point[1].padEnd(length, "0").slice(0, length)}`;
-
+  if (base.length == 2 && length != 0) {
+    result += `.${base[1].padEnd(length, "0").slice(0, length)}`;
+  }
   return result;
 };
 
