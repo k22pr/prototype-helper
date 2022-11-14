@@ -32,7 +32,7 @@ const temp = {
 
 function getTime() {
   const nowDate = new Date();
-  return `${nowDate.getHours()}:${nowDate.getMinutes()}:${nowDate.getSeconds()}:${`${nowDate.getMilliseconds()}`.padStart(3, "0")}`;
+  return `${nowDate.getHours().fixNumber(2)}:${nowDate.getMinutes().fixNumber(2)}:${nowDate.getSeconds().fixNumber(2)}:${`${nowDate.getMilliseconds()}`.fixNumber(3)}`;
 }
 
 function showMessage(type: "log" | "info" | "warn" | "error", message?: any, ...optionalParams: any[]) {
