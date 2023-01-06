@@ -118,7 +118,7 @@ const bbb = aaa._deepCopy();
 const ccc = `[1,2,3,4,5]`;
 console.log(aaa, bbb, aaa === bbb);
 console.log(ccc.fromJson());
-console.log({ a: 1, b: 3 }._toJson());
+// console.log({ a: 1, b: 3 }._toJson());
 
 
 console.log((1234.1234).round(2));
@@ -129,5 +129,18 @@ console.log((1234.1234).ceil(2));
 console.log("3022.50380000".fixNumber(5)); // 03022.50380000
 console.log((3022).fixNumber(7)); // 30222
 console.log((3222.12).fixNumber(5).toComma()); // 03,222.12
+
+console.log("hello world".issetWord("ell"));
+console.log("hello world".issetWord("xx"));
+console.log("hello world".issetWord(""));
+console.log("helloworld".issetWord(" "));
+
+
+console.log("hello world".getChar(0));
+console.log("hello world".getChar(1));
+console.log("hello world".getChar(2));
+console.log("hello world".getChar(3));
+console.log("hello world".getChar(4));
+console.log("hello world".getChar(5));
 
 // hello.findIndex;

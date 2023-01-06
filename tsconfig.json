@@ -6,10 +6,16 @@
     "module": "commonjs",
     "moduleResolution": "Node",
     "sourceMap": true,
-    "lib": ["es2016"],
+    "lib": [
+      "es2016"
+    ],
     "paths": {
-      "@/*": ["/src/*"],
-      "~/*": ["/src/*"]
+      "@/*": [
+        "/src/*"
+      ],
+      "~/*": [
+        "/src/*"
+      ]
     },
     "noImplicitAny": false,
     "esModuleInterop": true,
@@ -20,10 +26,20 @@
     "resolveJsonModule": true,
     "declaration": true
   },
-  "include": ["./src/**/*.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts"],
-  "typeRoots": ["./node_modules/@types"],
-  "types": ["@types/node"],
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ],
+  "typeRoots": [
+    "./node_modules/@types"
+  ],
+  "types": [
+    "@types/node",
+    "./types.d.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/k22pr/ts-proto"
