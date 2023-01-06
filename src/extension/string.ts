@@ -1,3 +1,4 @@
+
 interface StringConstructor {
   fixPoint(s: string, length: number): string;
   fixNumber(length: number): string;
@@ -8,6 +9,8 @@ interface StringConstructor {
   fromJSON<T>(): T;
   issetWord(word: string): boolean;
   getChar(index: number): string;
+  isNumber(num: any): boolean;
+
 }
 
 interface String {
@@ -20,6 +23,7 @@ interface String {
   fromJson<T>(): T;
   issetWord(word: string): boolean;
   getChar(index: number): string;
+  isNumber(num: any): boolean;
 }
 
 
@@ -77,4 +81,14 @@ String.prototype.issetWord = function (word: string) {
 
 String.prototype.getChar = function (index: number) {
   return this.slice(index, index + 1);
+};
+
+String.prototype.isNumber = function (num: any) {
+  if (typeof num === "number") {
+    return num - num === 0;
+  }
+  if (typeof num === "string" && num.trim() !== "") {
+    return Number.isFinite ? Number.isFinite(+num) : isFinite(+num);
+  }
+  return false;
 };
