@@ -1,4 +1,4 @@
-import { isNumber } from "src/utils/valid";
+import { isNumber } from "../utils/valid";
 
 String.prototype.leadingChars = function (chars: string | number, length: number): string {
   return (chars.toString().repeat(length) + this).substr(-length);
