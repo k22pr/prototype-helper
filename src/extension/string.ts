@@ -1,31 +1,4 @@
-
-interface StringConstructor {
-  fixPoint(s: string, length: number): string;
-  fixNumber(length: number): string;
-  leadingChars(chars: string | number, length: number): string;
-  toComma(): string;
-  toNumber(): number;
-  addSymbol(space?: string): string;
-  fromJSON<T>(): T;
-  issetWord(word: string): boolean;
-  getChar(index: number): string;
-  isNumber(num: any): boolean;
-
-}
-
-interface String {
-  fixPoint(length: number): string;
-  fixNumber(length: number): string;
-  leadingChars(chars: string | number, length: number): string;
-  toComma(): string;
-  toNumber(): number;
-  addSymbol(space?: string): string;
-  fromJson<T>(): T;
-  issetWord(word: string): boolean;
-  getChar(index: number): string;
-  isNumber(num: any): boolean;
-}
-
+import { isNumber } from "src/utils/valid";
 
 String.prototype.leadingChars = function (chars: string | number, length: number): string {
   return (chars.toString().repeat(length) + this).substr(-length);
@@ -84,11 +57,5 @@ String.prototype.getChar = function (index: number) {
 };
 
 String.prototype.isNumber = function (num: any) {
-  if (typeof num === "number") {
-    return num - num === 0;
-  }
-  if (typeof num === "string" && num.trim() !== "") {
-    return Number.isFinite ? Number.isFinite(+num) : isFinite(+num);
-  }
-  return false;
+  return isNumber(num);
 };
