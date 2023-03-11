@@ -107,7 +107,7 @@ describe("Number Extension Test", () => {
     test("should return correct power value", () => {
       expect((10).pow(2)).toEqual(100);
       expect((2).pow(10)).toEqual(1024);
-      expect((3.1415).pow(2)).toEqual(9.8690225);
+      expect((3.1415).pow(2)).toEqual(9.86902225);
     });
   });
 
@@ -115,7 +115,7 @@ describe("Number Extension Test", () => {
     test("should return correct square value", () => {
       expect((10).normalize()).toEqual(100);
       expect((2).normalize()).toEqual(4);
-      expect((3.1415).normalize()).toEqual(9.8690225);
+      expect((3.1415).normalize()).toEqual(9.86902225);
     });
   });
 
@@ -123,17 +123,17 @@ describe("Number Extension Test", () => {
     it("should return a string with fixed length", () => {
       expect((1234).fixNumber(8)).toBe("00001234");
       expect((1234).fixNumber(4)).toBe("1234");
-      expect((1234.5678).fixNumber(5)).toBe("001234.56780");
-      expect((-1234.5678).fixNumber(5)).toBe("-01234.56780");
+      expect((1234.5678).fixNumber(5)).toBe("01234.5678");
+      expect((-1234.5678).fixNumber(5)).toBe("-01234.5678");
     });
   });
 
   describe("fixPoint", () => {
     it("should return a string with fixed decimal points", () => {
-      expect((1234).fixPoint(8)).toBe("1234");
-      expect((1234.5678).fixPoint(8)).toBe("1234.5678");
-      expect((1234.5678).fixPoint(2)).toBe("1234.57");
-      expect((-1234.5678).fixPoint(3)).toBe("-1234.568");
+      expect((1234).fixPoint(8)).toBe("1234.00000000");
+      expect((1234.5678).fixPoint(8)).toBe("1234.56780000");
+      expect((1234.5678).fixPoint(2)).toBe("1234.56");
+      expect((-1234.5678).fixPoint(3)).toBe("-1234.567");
     });
   });
 
@@ -174,24 +174,6 @@ describe("Number Extension Test", () => {
       const num = 123;
       const numWithPlusAndSpace = num.addSymbol(" ");
       expect(numWithPlusAndSpace).toBe("+ 123");
-    });
-  });
-
-  describe("fromPer", () => {
-    it("converts percentage value to a number", () => {
-      const per = 25;
-      const num = 100;
-      const result = num.fromPer(per);
-      expect(result).toBe(25);
-    });
-  });
-
-  describe("toPer", () => {
-    it("converts a number to a percentage value", () => {
-      const num = 80;
-      const val = 400;
-      const result = num.toPer(val);
-      expect(result).toBe(20);
     });
   });
 

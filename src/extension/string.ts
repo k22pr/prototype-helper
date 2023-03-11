@@ -19,8 +19,10 @@ String.prototype.fixPoint = function (length: number = 0): string {
 String.prototype.fixNumber = function (length: number = 8): string {
   let point = this.split(".");
 
-  let result = point[0].toNumber().toString().padStart(length, "0");
+  const neg = point[0].indexOf("-") == 0;
+  let result = Math.abs(Number(point[0])).toNumber().toString().padStart(length, "0");
   if (point.length == 2) result += `.${point[1]}`;
+  if (neg) result = `-${result}`;
 
   return result;
 };

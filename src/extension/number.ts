@@ -38,15 +38,16 @@ Number.prototype.pow = function (value: number) {
 };
 
 Number.prototype.normalize = function () {
-  return Math.pow(Number(this), 2);
+  return Number(this).pow(2);
+  // return Math.pow(Number(this), 2);
 };
 
 Number.prototype.fixNumber = function (length: number = 8) {
-  return `${this.toDecimal.toString()}`.fixNumber(length);
+  return `${this}`.fixNumber(length);
 };
 
 Number.prototype.fixPoint = function (length: number = 0) {
-  return `${this.toDecimal.toString()}`.fixPoint(length);
+  return `${this}`.fixPoint(length);
 };
 
 Number.prototype.abs = function (): number {
@@ -66,7 +67,7 @@ Number.prototype.isInteger = function (): boolean {
 };
 
 Number.prototype.addSymbol = function (space: string = "") {
-  return `${Number(this) > 0 ? "+" : ""}${space}${this}`;
+  return `${Number(this) > 0 ? "+" : Number(this) < 0 ? "-" : ""}${space}${Math.abs(Number(this))}`;
 };
 
 Number.prototype.fromPer = function (per: number) {
@@ -74,7 +75,7 @@ Number.prototype.fromPer = function (per: number) {
 };
 
 Number.prototype.toPer = function (val: number) {
-  return (val / Number(this)) * 100;
+  return (Number(this) / val) * 100;
 };
 
 Number.prototype.ceil = function (point: number = 0) {

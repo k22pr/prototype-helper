@@ -1,4 +1,5 @@
-// // import "./index";
+import "./index";
+import "./extension";
 // // import "../dist";
 
 // console.useTheme();
@@ -144,3 +145,9 @@
 // console.log("hello world".getChar(5));
 
 // // hello.findIndex;
+
+const arr = [1, 2, 3, 4, 5];
+const other = [3, 4, 5, 6, 7];
+
+console.log(arr.diff(other));
+console.log(arr.inter(other));

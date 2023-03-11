@@ -7,7 +7,7 @@ Array.prototype.singleOrDefault = function (predicate, defaultValue = null) {
   const isset = this.where(predicate);
   if (isset.length >= 2) throw new Error("single:sequence contains more than one element.");
 
-  return !isset ? defaultValue : isset[0];
+  return isset.length ? isset[0] : defaultValue;
 };
 
 Array.prototype.single = function (predicate) {
@@ -29,12 +29,17 @@ Array.prototype.select = function <R>(element: any) {
 };
 
 Array.prototype.any = function (predicate?: any) {
-  if (!predicate) predicate = () => true;
-  return this.singleOrDefault(predicate) ? true : false;
+  let list = this;
+  if (predicate) return this.singleOrDefault(predicate) ? true : false;
+  else return list.length ? true : false;
+  // if (!predicate) predicate = () => true;
+  // return this.singleOrDefault(predicate) ? true : false;
 };
 
 Array.prototype.count = function (predicate?: any) {
-  return this.where(predicate).length;
+  let list = this;
+  if (predicate) list = this.where(predicate);
+  return list.length;
 };
 
 Array.prototype.max = function (predicate?: any) {
@@ -85,13 +90,13 @@ Array.prototype.last = function (predicate?: any) {
   return isset;
 };
 
-Array.prototype.diff = function (other?: any) {
-  return this.where((x: any) => !other.indexOf(x));
-};
+// Array.prototype.diff = function (other: any) {
+//   return this.where((x: any) => !other.indexOf(x));
+// };
 
-Array.prototype.inter = function (other?: any) {
-  return this.where((x: any) => other.indexOf(x));
-};
+// Array.prototype.inter = function (other: any) {
+//   return this.where((x: any) => other.indexOf(x));
+// };
 
 // Array.prototype.deepClone = function (camelcase: boolean = false) {
 //   return deepClone(this, camelcase ? camelCase : undefined);
