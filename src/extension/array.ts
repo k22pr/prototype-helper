@@ -39,19 +39,19 @@ Array.prototype.count = function (predicate?: any) {
 
 Array.prototype.max = function (predicate?: any) {
   if (predicate == null) predicate = () => true;
-  return this.select(predicate).reduce((a: any, b: any) => {
+  return this.where(predicate).reduce((a: any, b: any) => {
     return a > b ? a : b;
   });
 };
 Array.prototype.min = function (predicate?: any) {
   if (predicate == null) predicate = () => true;
-  return this.select(predicate).reduce((a: any, b: any) => {
+  return this.where(predicate).reduce((a: any, b: any) => {
     return a < b ? a : b;
   });
 };
 Array.prototype.sum = function (predicate?: any) {
   if (predicate == null) predicate = () => true;
-  return this.select(predicate).reduce((a: any, b: any) => {
+  return this.where(predicate).reduce((a: any, b: any) => {
     return a + b;
   }, 0) as number;
 };
