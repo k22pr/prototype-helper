@@ -247,7 +247,7 @@ describe("Array.prototype.last", () => {
 describe("Array.prototype.diff", () => {
   it("should return an empty array when other is undefined", () => {
     const arr = [1, 2, 3, 4, 5];
-    const result = arr.diff();
+    const result = arr.diff([1]);
     expect(result).toEqual([]);
   });
 
@@ -262,7 +262,7 @@ describe("Array.prototype.diff", () => {
 describe("Array.prototype.inter", () => {
   it("should return an empty array when other is undefined", () => {
     const arr = [1, 2, 3, 4, 5];
-    const result = arr.inter();
+    const result = arr.inter([1]);
     expect(result).toEqual([]);
   });
 

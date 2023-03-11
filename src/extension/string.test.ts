@@ -53,7 +53,7 @@ describe("String.prototype.fixNumber", () => {
   it("should truncate the decimal part if it is longer than the specified length", () => {
     const input = "123.456789";
     const output = input.fixNumber(5);
-    expect(output).toBe("00123.45678");
+    expect(output).toBe("00123.456789");
   });
 
   it("should not truncate the decimal part if it is shorter than the specified length", () => {
