@@ -8,17 +8,17 @@ interface Array<T> {
   any(predicate?: (element: T, index: number) => boolean): boolean;
   count(predicate?: (element: T, index: number) => boolean): number;
 
-  max(predicate?: (element: T, index: number) => number): T;
-  min(predicate?: (element: T, index: number) => number): T;
-  sum(predicate?: (element: T, index: number) => number): number;
+  max(predicate?: (element: T, index: number) => boolean): T;
+  min(predicate?: (element: T, index: number) => boolean): T;
+  sum(predicate?: (element: T, index: number) => boolean): number;
 
   first(predicate?: (element: T, index: number) => boolean): T;
   firstOrDefault(predicate?: (element: T, index: number) => boolean, defaultValue?: any): T;
   last(predicate?: (element: T, index: number) => boolean): T;
   lastOrDefault(predicate?: (element: T, index: number) => boolean, defaultValue?: any): T;
 
-  diff(other: T[]): T[];
-  inter(other: T[]): T[];
+  diff(other?: T[]): T[];
+  inter(other?: T[]): T[];
 
 
   // deepClone<T>(camelcase?: boolean): T[];

@@ -38,20 +38,23 @@ Array.prototype.count = function (predicate?: any) {
 };
 
 Array.prototype.max = function (predicate?: any) {
-  if (predicate == null) predicate = () => true;
-  return this.where(predicate).reduce((a: any, b: any) => {
+  let list = this;
+  if (predicate) list = this.where(predicate);
+  return list.reduce((a: any, b: any) => {
     return a > b ? a : b;
   });
 };
 Array.prototype.min = function (predicate?: any) {
-  if (predicate == null) predicate = () => true;
-  return this.where(predicate).reduce((a: any, b: any) => {
+  let list = this;
+  if (predicate) list = this.where(predicate);
+  return list.reduce((a: any, b: any) => {
     return a < b ? a : b;
   });
 };
 Array.prototype.sum = function (predicate?: any) {
-  if (predicate == null) predicate = () => true;
-  return this.where(predicate).reduce((a: any, b: any) => {
+  let list = this;
+  if (predicate) list = this.where(predicate);
+  return list.reduce((a: any, b: any) => {
     return a + b;
   }, 0) as number;
 };
@@ -61,7 +64,7 @@ Array.prototype.firstOrDefault = function (predicate?: any, defaultValue = null)
   const isset = this.where(predicate);
   return isset == null || isset.length == 0 ? defaultValue : isset[0];
 };
-Array.prototype.first = function (predicate?: any, defaultValue = null) {
+Array.prototype.first = function (predicate?: any) {
   if (predicate == null) predicate = () => true;
   const isset = this.firstOrDefault(predicate);
   if (isset == null) throw new Error("first:No element satisfies the condition.");
@@ -74,7 +77,7 @@ Array.prototype.lastOrDefault = function (predicate?: any, defaultValue = null) 
   const isset = this.where(predicate);
   return isset == null || isset.length == 0 ? defaultValue : isset[isset.length - 1];
 };
-Array.prototype.last = function (predicate?: any, defaultValue = null) {
+Array.prototype.last = function (predicate?: any) {
   if (predicate == null) predicate = () => true;
   const isset = this.lastOrDefault(predicate);
   if (isset == null) throw new Error("last:No element satisfies the condition.");
@@ -83,11 +86,11 @@ Array.prototype.last = function (predicate?: any, defaultValue = null) {
 };
 
 Array.prototype.diff = function (other?: any) {
-  return this.filter((x: any) => !other.indexOf(x));
+  return this.where((x: any) => !other.indexOf(x));
 };
 
 Array.prototype.inter = function (other?: any) {
-  return this.filter((x: any) => other.indexOf(x));
+  return this.where((x: any) => other.indexOf(x));
 };
 
 // Array.prototype.deepClone = function (camelcase: boolean = false) {

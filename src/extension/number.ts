@@ -1,7 +1,11 @@
-import decimal from "decimal.js";
+import decimal, { Decimal } from "decimal.js";
 
 Number.prototype.toNumber = function () {
   return Number(this);
+};
+
+Number.prototype.toDecimal = function (): Decimal {
+  return new Decimal(this.toNumber());
 };
 
 Number.prototype.toComma = function () {
@@ -34,32 +38,31 @@ Number.prototype.pow = function (value: number) {
 };
 
 Number.prototype.normalize = function () {
-  return Number(this).pow(2);
+  return Math.pow(Number(this), 2);
 };
 
-
 Number.prototype.fixNumber = function (length: number = 8) {
-  return `${new decimal(Number(this)).toString()}`.fixNumber(length);
+  return `${this.toDecimal.toString()}`.fixNumber(length);
 };
 
 Number.prototype.fixPoint = function (length: number = 0) {
-  return `${new decimal(Number(this)).toString()}`.fixPoint(length);
+  return `${this.toDecimal.toString()}`.fixPoint(length);
 };
 
-Number.prototype.abs = function () {
-  return Math.abs(Number(this));
+Number.prototype.abs = function (): number {
+  return this.toDecimal().abs().toNumber();
 };
 
-Number.prototype.isFinite = function () {
-  return new decimal(Number(this)).isFinite();
+Number.prototype.isFinite = function (): boolean {
+  return this.toDecimal().isFinite();
 };
 
-Number.prototype.isNaN = function () {
-  return new decimal(Number(this)).isNaN();
+Number.prototype.isNaN = function (): boolean {
+  return this.toDecimal().isNaN();
 };
 
-Number.prototype.isInteger = function () {
-  return new decimal(Number(this)).isInteger();
+Number.prototype.isInteger = function (): boolean {
+  return this.toDecimal().isInteger();
 };
 
 Number.prototype.addSymbol = function (space: string = "") {
