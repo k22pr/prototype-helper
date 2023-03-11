@@ -34,7 +34,6 @@ Array.prototype.any = function (predicate?: any) {
 };
 
 Array.prototype.count = function (predicate?: any) {
-  if (!predicate) predicate = () => true;
   return this.where(predicate).length;
 };
 
@@ -81,6 +80,14 @@ Array.prototype.last = function (predicate?: any, defaultValue = null) {
   if (isset == null) throw new Error("last:No element satisfies the condition.");
 
   return isset;
+};
+
+Array.prototype.diff = function (other?: any) {
+  return this.filter((x: any) => !other.indexOf(x));
+};
+
+Array.prototype.inter = function (other?: any) {
+  return this.filter((x: any) => other.indexOf(x));
 };
 
 // Array.prototype.deepClone = function (camelcase: boolean = false) {
