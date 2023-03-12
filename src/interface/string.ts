@@ -1,5 +1,5 @@
 interface StringConstructor {
-  fixPoint(s: string, length: number): string;
+  fixPoint(length: number): string;
   fixNumber(length: number): string;
   leadingChars(chars: string | number, length: number): string;
   toComma(): string;

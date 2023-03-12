@@ -90,13 +90,13 @@ Array.prototype.last = function (predicate?: any) {
   return isset;
 };
 
-// Array.prototype.diff = function (other: any) {
-//   return this.where((x: any) => !other.indexOf(x));
-// };
+Array.prototype.diff = function (other: any) {
+  return this.where((x: any) => !other.indexOf(x));
+};
 
-// Array.prototype.inter = function (other: any) {
-//   return this.where((x: any) => other.indexOf(x));
-// };
+Array.prototype.inter = function (other: any) {
+  return this.where((x: any) => other.indexOf(x));
+};
 
 // Array.prototype.deepClone = function (camelcase: boolean = false) {
 //   return deepClone(this, camelcase ? camelCase : undefined);

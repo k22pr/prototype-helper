@@ -1,4 +1,4 @@
-// import "./index";
+import "./index";
 // import "./extension";
 // import "../dist";
 
@@ -146,8 +146,17 @@
 
 // // hello.findIndex;
 
+Array.prototype.diff = function (other: any) {
+  return this.where((x: any) => !other.indexOf(x));
+};
+
+Array.prototype.inter = function (other: any) {
+  return this.where((x: any) => other.indexOf(x));
+};
+
+
 const arr = [1, 2, 3, 4, 5];
 const other = [3, 4, 5, 6, 7];
 
-// console.log(arr.diff(other));
-// console.log(arr.inter(other));
+console.log(arr.diff(other));
+console.log(arr.inter(other));
