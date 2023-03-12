@@ -244,32 +244,32 @@ describe("Array.prototype.last", () => {
 });
 
 
-// describe("Array.prototype.diff", () => {
-//   it("should return an empty array when other is undefined", () => {
-//     const arr = [1, 2, 3, 4, 5];
-//     const result = arr.diff([1]);
-//     expect(result).toEqual([]);
-//   });
+describe("Array.prototype.diff", () => {
+  it("should return an empty array when other is undefined", () => {
+    const arr = [1, 2, 3, 4, 5];
+    const result = arr.diff([1, 5, 6]);
+    expect(result).toEqual([2, 3, 4]);
+  });
 
-//   it("should return an array of elements that are not in other", () => {
-//     const arr = [1, 2, 3, 4, 5];
-//     const other = [3, 4, 5, 6, 7];
-//     const result = arr.diff(other);
-//     expect(result).toEqual([1, 2]);
-//   });
-// });
+  it("should return an array of elements that are not in other", () => {
+    const arr = [1, 2, 3, 4, 5];
+    const other = [3, 4, 5, 6, 7];
+    const result = arr.diff(other);
+    expect(result).toEqual([1, 2]);
+  });
+});
 
-// describe("Array.prototype.inter", () => {
-//   it("should return an empty array when other is undefined", () => {
-//     const arr = [1, 2, 3, 4, 5];
-//     const result = arr.inter([1]);
-//     expect(result).toEqual([]);
-//   });
+describe("Array.prototype.inter", () => {
+  it("should return an empty array when other is undefined", () => {
+    const arr = [1, 2, 3, 4, 5];
+    const result = arr.inter([1, 3, 5, 6]);
+    expect(result).toEqual([1, 3, 5]);
+  });
 
-//   it("should return an array of elements that are in both arrays", () => {
-//     const arr = [1, 2, 3, 4, 5];
-//     const other = [3, 4, 5, 6, 7];
-//     const result = arr.inter(other);
-//     expect(result).toEqual([3, 4, 5]);
-//   });
-// });
+  it("should return an array of elements that are in both arrays", () => {
+    const arr = [1, 2, 3, 4, 5];
+    const other = [3, 4, 5, 6, 7];
+    const result = arr.inter(other);
+    expect(result).toEqual([3, 4, 5]);
+  });
+});

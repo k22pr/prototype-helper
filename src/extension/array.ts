@@ -91,11 +91,11 @@ Array.prototype.last = function (predicate?: any) {
 };
 
 Array.prototype.diff = function (other: any) {
-  return this.where((x: any) => !other.indexOf(x));
+  return this.filter((x: any) => !other.includes(x));
 };
 
 Array.prototype.inter = function (other: any) {
-  return this.where((x: any) => other.indexOf(x));
+  return this.where((x: any) => other.includes(x));
 };
 
 // Array.prototype.deepClone = function (camelcase: boolean = false) {
