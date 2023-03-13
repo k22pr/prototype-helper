@@ -40,11 +40,23 @@ console.log("10000".toComma()); // 10,000
 
 - Number 인스턴스의 기본값을 반환하는 메서드입니다.
 
+```ts
+expect((3.141592).toNumber()).toBe(3.141592);
+expect((12345).toNumber()).toBe(12345);
+expect("3.14".toNumber()).toBe(3.14);
+```
+
 ### toDecimal(): Decimal;
 
 - Converts a Number instance to a Decimal instance.
 
 - Number 인스턴스를 Decimal 인스턴스로 변환하는 메서드입니다.
+
+```ts
+expect((3.141592).toDecimal()).toStrictEqual(new Decimal(3.141592));
+expect((12345).toDecimal()).toStrictEqual(new Decimal(12345));
+expect(NaN.toDecimal().isNaN()).toBeTruthy();
+```
 
 ### toComma(): string;
 
@@ -312,6 +324,12 @@ expect(output).toBe("00123.45");
 
 - 문자열의 시작 부분에 주어진 문자열 또는 숫자를 주어진 길이만큼 채우는 메서드입니다.
 
+```ts
+const str = "123";
+const result = str.leadingChars("0", 5);
+expect(result).toEqual("00123");
+```
+
 ### toComma(): string;
 
 - Returns a string representation of a number with commas separating groups of thousands.
@@ -330,11 +348,23 @@ expect("12345".toComma()).toBe("12,345");
 
 - 문자열을 숫자로 변환하여 반환하는 메서드입니다.
 
+```ts
+expect("3.14".toNumber()).toBe(3.14);
+expect("12345".toNumber()).toBe(12345);
+```
+
 ### addSymbol(space?: string): string;
 
 - Returns a string with a symbol added in front, where the symbol is "+" if the number is positive, "-" if it is negative, or an empty string if it is zero.
 
 - 숫자에 부호를 추가하여 반환하는 메서드입니다.
+
+```ts
+expect("123".toComma()).toBe("123");
+expect("12345".toComma()).toBe("12,345");
+expect("0.12345".toComma()).toBe("0.12345");
+expect("".toComma()).toBe("0");
+```
 
 ### fromJSON<T>(): T;
 

@@ -58,6 +58,6 @@ String.prototype.getChar = function (index: number) {
   return this.slice(index, index + 1);
 };
 
-String.prototype.isNumber = function (num: any) {
-  return isNumber(num);
+String.prototype.isNumber = function () {
+  return isNumber(this);
 };

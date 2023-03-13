@@ -3,6 +3,7 @@ import "./string";
 import "./number";
 import "./array";
 
+
 describe("String.prototype.leadingChars", () => {
   it("should return a string of specified length with leading characters", () => {
     const str = "123";
@@ -111,4 +112,21 @@ test('String.prototype.getChar() - should return empty string if index is out of
   const string = 'Hello, world!';
   expect(string.getChar(-1)).toBe('');
   expect(string.getChar(13)).toBe('');
+});
+
+test('isNumber: should return true if input is a string representing a number', () => {
+  expect(("42").isNumber()).toBe(true);
+  expect(("-42").isNumber()).toBe(true);
+  expect(("0").isNumber()).toBe(true);
+  expect(("0.42").isNumber()).toBe(true);
+  expect((".42").isNumber()).toBe(true);
+  expect(("1e3").isNumber()).toBe(true);
+  expect(("0xFF").isNumber()).toBe(true);
+  expect((" 42 ").isNumber()).toBe(true);
+  expect(("\t\r\n42\n\r\t").isNumber()).toBe(true);
+  expect(("0x92").isNumber()).toBe(true);
+  expect(("d35").isNumber()).toBe(false);
+  expect(("[]").isNumber()).toBe(false);
+  expect(("()").isNumber()).toBe(false);
+  expect(("hello").isNumber()).toBe(false);
 });

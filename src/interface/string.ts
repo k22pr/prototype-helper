@@ -8,7 +8,7 @@ interface StringConstructor {
   fromJSON<T>(): T;
   issetWord(word: string): boolean;
   getChar(index: number): string;
-  isNumber(num: any): boolean;
+  isNumber(): boolean;
 
 }
 
@@ -22,5 +22,5 @@ interface String {
   fromJson<T>(): T;
   issetWord(word: string): boolean;
   getChar(index: number): string;
-  isNumber(num: any): boolean;
+  isNumber(): boolean;
 }

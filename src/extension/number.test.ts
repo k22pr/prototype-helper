@@ -1,7 +1,28 @@
+import Decimal from 'decimal.js';
 import "../override/math";
 import "./string";
 import "./number";
 import "./array";
+
+describe("Number.prototype.toNumber", () => {
+  test("converts to number", () => {
+    expect((3.141592).toNumber()).toBe(3.141592);
+    expect((12345).toNumber()).toBe(12345);
+    expect(("3.14").toNumber()).toBe(3.14);
+    expect(("12345").toNumber()).toBe(12345);
+    expect((NaN).toNumber()).toBeNaN();
+    expect((Infinity).toNumber()).toBe(Infinity);
+  });
+});
+
+describe("Number.prototype.toDecimal", () => {
+  test("converts to Decimal", () => {
+    expect((3.141592).toDecimal()).toStrictEqual(new Decimal(3.141592));
+    expect((12345).toDecimal()).toStrictEqual(new Decimal(12345));
+    expect((NaN).toDecimal().isNaN()).toBeTruthy();
+    expect((Infinity).toDecimal().isFinite()).toBeFalsy();
+  });
+});
 
 describe("Number prototype 기본 확장 테스트", () => {
   test("toNumber", () => {
