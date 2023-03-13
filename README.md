@@ -141,11 +141,23 @@ expect((1234.5678).fixPoint(2)).toBe("1234.56");
 
 - 숫자의 절대값을 반환하는 메서드입니다.
 
+```ts
+expect((-3).abs()).toBe(3);
+expect((3.14).abs()).toBe(3.14);
+expect((0).abs()).toBe(0);
+```
+
 ### isFinite(): boolean;
 
 - Checks if a number is finite.
 
 - 숫자가 유한한지 검사하는 메서드입니다.
+
+```ts
+expect((-5).isFinite()).toBe(true);
+expect((1 / 0).isFinite()).toBe(false);
+expect((-1 / 0).isFinite()).toBe(false);
+```
 
 ### isNaN(): boolean;
 
@@ -153,11 +165,23 @@ expect((1234.5678).fixPoint(2)).toBe("1234.56");
 
 - 숫자가 NaN인지 검사하는 메서드입니다.
 
+```ts
+expect(NaN.isNaN()).toBe(true);
+expect((0 / 0).isNaN()).toBe(true);
+expect((-1).isNaN()).toBe(false);
+```
+
 ### isInteger(): boolean;
 
 - Checks if a number is an integer.
 
 - 숫자가 정수인지 검사하는 메서드입니다.
+
+```ts
+expect((3).isInteger()).toBe(true);
+expect((3.0).isInteger()).toBe(true);
+expect((-3.1).isInteger()).toBe(false);
+```
 
 ### addSymbol(space?: string): string;
 

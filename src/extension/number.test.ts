@@ -137,6 +137,44 @@ describe("Number Extension Test", () => {
     });
   });
 
+  describe("abs()", () => {
+    it("should return absolute value of a number", () => {
+      expect((-3).abs()).toBe(3);
+      expect(3.14.abs()).toBe(3.14);
+      expect((0).abs()).toBe(0);
+    });
+  });
+
+  describe("isFinite()", () => {
+    it("should return true if a number is finite", () => {
+      expect(0.1.isFinite()).toBe(true);
+      expect((-5).isFinite()).toBe(true);
+      expect((1 / 0).isFinite()).toBe(false);
+      expect((-1 / 0).isFinite()).toBe(false);
+      expect((0 / 0).isFinite()).toBe(false);
+    });
+  });
+
+  describe("isNaN()", () => {
+    it("should return true if a number is NaN", () => {
+      expect(NaN.isNaN()).toBe(true);
+      expect((0 / 0).isNaN()).toBe(true);
+      expect((-1).isNaN()).toBe(false);
+      expect((0).isNaN()).toBe(false);
+      expect((1).isNaN()).toBe(false);
+    });
+  });
+
+  describe("isInteger()", () => {
+    it("should return true if a number is integer", () => {
+      expect((-3).isInteger()).toBe(true);
+      expect((3).isInteger()).toBe(true);
+      expect((3.0).isInteger()).toBe(true);
+      expect((-3.1).isInteger()).toBe(false);
+      expect((3.1).isInteger()).toBe(false);
+    });
+  });
+
   test("addSymbol: add plus sign with space", () => {
     expect((10).addSymbol()).toBe("+10");
     expect((0).addSymbol()).toBe("0");
