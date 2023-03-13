@@ -165,11 +165,23 @@ expect((1234.5678).fixPoint(2)).toBe("1234.56");
 
 - 숫자에 부호 기호를 추가하는 메서드입니다.
 
+```ts
+expect((10).addSymbol()).toBe("+10");
+expect((0).addSymbol()).toBe("0");
+expect((-10).addSymbol()).toBe("-10");
+```
+
 ### fromPer(per: number): number;
 
 - Calculates a value from a percentage of another value.
 
 - 다른 숫자의 백분율 값을 계산하는 메서드입니다.
+
+```ts
+expect((100).fromPer(50)).toBe(50);
+expect((200).fromPer(25)).toBe(50);
+expect((50).fromPer(10)).toBe(5);
+```
 
 ### toPer(per: number): number;
 
@@ -177,11 +189,22 @@ expect((1234.5678).fixPoint(2)).toBe("1234.56");
 
 - 숫자의 백분율 값을 계산하는 메서드입니다.
 
+```ts
+expect((50).toPer(100)).toBe(50);
+expect((50).toPer(200)).toBe(25);
+expect((5).toPer(50)).toBe(10);
+```
+
 ### pow(value: number): number;
 
 - Returns a number raised to a power.
 
 - 숫자를 지수로 거듭제곱한 결과를 반환하는 메서드입니다.
+
+```ts
+expect((10).pow(2)).toEqual(100);
+expect((2).pow(10)).toEqual(1024);
+```
 
 ### normalize(): number;
 
@@ -189,11 +212,22 @@ expect((1234.5678).fixPoint(2)).toBe("1234.56");
 
 - 숫자를 제곱한 결과를 반환하는 메서드입니다.
 
+```ts
+expect((2).normalize()).toEqual(4);
+expect((3.1415).normalize()).toEqual(9.86902225);
+```
+
 ### ceil(point?: number): number;
 
 - Rounds a number up to the nearest integer or decimal point.
 
 - 숫자를 가장 가까운 정수나 소수점으로 올림하는 메서드입니다.
+
+```ts
+expect((3.14159).ceil()).toBe(4);
+expect((3.14159).ceil(1)).toBe(3.2);
+expect((1234).ceil(-2)).toBe(1300);
+```
 
 ### floor(point?: number): number;
 
@@ -201,11 +235,24 @@ expect((1234.5678).fixPoint(2)).toBe("1234.56");
 
 - 주어진 숫자보다 작거나 같은 가장 큰 정수를 반환합니다.
 
+```ts
+expect((3.14159).floor()).toBe(3);
+expect((3.14159).floor(1)).toBe(3.1);
+expect((1234).floor(-2)).toBe(1200);
+```
+
 ### round(point?: number): number;
 
 - Returns the value of a number rounded to the nearest integer.
 
 - 주어진 숫자를 가장 가까운 정수로 반올림하여 반환합니다.
+
+```ts
+expect((3.14159).round()).toBe(3);
+expect((3.14159).round(1)).toBe(3.1);
+expect((3.14159).round(3)).toBe(3.142);
+expect((1234).round(-2)).toBe(1200);
+```
 
 ---
 
@@ -316,11 +363,23 @@ expect(string.getChar(7)).toBe("w");
 
 - 조건을 만족하는 시퀀스의 유일한 요소를 반환하며, 해당 조건을 만족하는 요소가 두 개 이상 존재하는 경우 에러를 발생시킵니다.
 
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.single((x) => x === 3);
+expect(result).toBe(3);
+```
+
 ### singleOrDefault(predicate: (element: T, index: number) => boolean, defaultValue?: any): T;
 
 - Returns the only element of a sequence that satisfies a specified condition or a default value if no such element exists, and throws an error if more than one such element exists.
 
 - 조건을 만족하는 시퀀스의 유일한 요소를 반환하거나, 해당 조건을 만족하는 요소가 없는 경우 기본값을 반환하며, 해당 조건을 만족하는 요소가 두 개 이상 존재하는 경우 에러를 발생시킵니다.
+
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.singleOrDefault((x) => x === 3);
+expect(result).toBe(3);
+```
 
 ### where(predicate: (element: T, index: number) => boolean): T[];
 
@@ -328,11 +387,23 @@ expect(string.getChar(7)).toBe("w");
 
 - 조건에 따라 값을 필터링합니다.
 
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.where((x) => x % 2 === 0);
+expect(result).toEqual([2, 4]);
+```
+
 ### skip(count: number): T[];
 
 - Bypasses a specified number of elements in a sequence and returns the remaining elements.
 
 - 시퀀스에서 지정된 수의 요소를 생략하고 나머지 요소를 반환합니다.
+
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.skip(2);
+expect(result).toEqual([3, 4, 5]);
+```
 
 ### take(count: number): T[];
 
@@ -340,11 +411,23 @@ expect(string.getChar(7)).toBe("w");
 
 - 시퀀스의 시작부터 지정된 수의 연속적인 요소를 반환합니다.
 
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.take(3);
+expect(result).toEqual([1, 2, 3]);
+```
+
 ### select<R>(predicate: (element: T, index: number) => R): R[];
 
 - Projects each element of a sequence into a new form.
 
 - 시퀀스의 각 요소를 새로운 형태로 변환합니다.
+
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.select((x) => x * 2);
+expect(result).toEqual([2, 4, 6, 8, 10]);
+```
 
 ### any(predicate?: (element: T, index: number) => boolean): boolean;
 
@@ -352,11 +435,27 @@ expect(string.getChar(7)).toBe("w");
 
 - 시퀀스에 요소가 하나 이상 존재하는지 또는 조건을 만족하는 요소가 있는지 확인합니다.
 
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.any((x) => x === 3);
+expect(result).toBe(true);
+```
+
 ### count(predicate?: (element: T, index: number) => boolean): number;
 
 - Returns the number of elements in a sequence.
 
 - 시퀀스의 요소 수를 반환합니다.
+
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.count();
+expect(result).toBe(5);
+
+const arr = [1, 2, 3, 4, 5];
+const result = arr.count((x) => x % 2 === 0);
+expect(result).toBe(2);
+```
 
 ### max(predicate?: (element: T, index: number) => boolean): T;
 
@@ -364,11 +463,23 @@ expect(string.getChar(7)).toBe("w");
 
 - 배열에서 가장 큰 값을 가지는 요소를 반환합니다. 선택적 매개변수인 predicate를 사용하여 최대값이 선택되는 조건을 지정할 수 있습니다.
 
+```ts
+const arr = [1, 3, 5, 4, 2];
+const result = arr.max();
+expect(result).toBe(5);
+```
+
 ### min(predicate?: (element: T, index: number) => boolean): T;
 
 - Returns the element in the array with the minimum value. The optional predicate parameter can be used to specify a custom condition for the minimum value to be selected.
 
 - 배열에서 가장 작은 값을 가지는 요소를 반환합니다. 선택적 매개변수인 predicate를 사용하여 최소값이 선택되는 조건을 지정할 수 있습니다.
+
+```ts
+const arr = [1, 3, 5, 4, 2];
+const result = arr.min();
+expect(result).toBe(1);
+```
 
 ### sum(predicate?: (element: T, index: number) => boolean): number;
 
@@ -376,11 +487,23 @@ expect(string.getChar(7)).toBe("w");
 
 배열의 모든 요소의 합을 반환합니다. 선택적 매개변수인 predicate를 사용하여 합산할 요소를 지정할 수 있습니다.
 
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.sum();
+expect(result).toBe(15);
+```
+
 ### first(predicate?: (element: T, index: number) => boolean): T;
 
 - Returns the first element in the array that matches the specified predicate function. If no element matches the predicate, an error is thrown.
 
 - 지정된 predicate 함수와 일치하는 첫 번째 요소를 반환합니다. 일치하는 요소가 없으면 오류가 발생합니다.
+
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.sum((x) => x % 2 === 0);
+expect(result).toBe(6);
+```
 
 ### firstOrDefault(predicate?: (element: T, index: number) => boolean, defaultValue?: any): T;
 
@@ -388,11 +511,23 @@ expect(string.getChar(7)).toBe("w");
 
 - 지정된 predicate 함수와 일치하는 첫 번째 요소를 반환합니다. 일치하는 요소가 없으면 기본값을 반환합니다.
 
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.firstOrDefault();
+expect(result).toBe(1);
+```
+
 ### last(predicate?: (element: T, index: number) => boolean): T;
 
 - Returns the last element in the array that matches the specified predicate function. If no element matches the predicate, an error is thrown.
 
 - 지정된 predicate 함수와 일치하는 마지막 요소를 반환합니다. 일치하는 요소가 없으면 오류가 발생합니다.
+
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.last();
+expect(result).toBe(5);
+```
 
 ### lastOrDefault(predicate?: (element: T, index: number) => boolean, defaultValue?: any): T;
 
@@ -400,17 +535,35 @@ expect(string.getChar(7)).toBe("w");
 
 - 지정된 predicate 함수와 일치하는 마지막 요소를 반환합니다. 일치하는 요소가 없으면 기본값을 반환합니다.
 
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.lastOrDefault((x) => x % 2 === 0);
+expect(result).toBe(4);
+```
+
 ### diff(other: T[]): T[];
 
 - Returns an array of elements that exist in the current array but not in the other array.
 
 - 현재 배열에서는 존재하지만 다른 배열에는 존재하지 않는 요소들의 배열을 반환합니다.
 
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.diff([1, 5, 6]);
+expect(result).toEqual([2, 3, 4]);
+```
+
 ### inter(other: T[]): T[];
 
 - Returns an array of elements that exist in both the current array and the other array.
 
 - 현재 배열과 다른 배열 모두에 존재하는 요소들의 배열을 반환합니다.
+
+```ts
+const arr = [1, 2, 3, 4, 5];
+const result = arr.inter([1, 3, 5, 6]);
+expect(result).toEqual([1, 3, 5]);
+```
 
 ### \_deepCopy<T>(): T[];
 
