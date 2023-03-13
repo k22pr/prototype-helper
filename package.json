@@ -1,6 +1,6 @@
 {
   "name": "prototype-helper",
-  "version": "0.3.14",
+  "version": "0.4.0",
   "private": false,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -41,7 +41,7 @@
     "build": "jest && tsc",
     "dev": "nodemon --exec ts-node ./src/test.ts",
     "test": "jest --detectOpenHandles --forceExit",
-    "publish": "jest && tsc && npm publish"
+    "publish": "npm publish"
   },
   "nodemonConfig": {
     "ignore": [
