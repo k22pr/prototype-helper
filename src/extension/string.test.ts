@@ -114,7 +114,7 @@ test('String.prototype.getChar() - should return empty string if index is out of
   expect(string.getChar(13)).toBe('');
 });
 
-test('isNumber: should return true if input is a string representing a number', () => {
+test('String.prototype.isNumber()', () => {
   expect(("42").isNumber()).toBe(true);
   expect(("-42").isNumber()).toBe(true);
   expect(("0").isNumber()).toBe(true);

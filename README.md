@@ -401,11 +401,18 @@ expect(string.getChar(0)).toBe("H");
 expect(string.getChar(7)).toBe("w");
 ```
 
-### isNumber(num: any): boolean;
+### isNumber(): boolean;
 
 - Returns true if the given value is a number, false otherwise.
 
 - 주어진 값이 숫자인지 여부를 반환하는 메서드입니다.
+
+```ts
+expect("42".isNumber()).toBe(true);
+expect("0xFF".isNumber()).toBe(true);
+expect("()".isNumber()).toBe(false);
+expect("hello".isNumber()).toBe(false);
+```
 
 ## Object
 
