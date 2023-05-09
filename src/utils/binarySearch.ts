@@ -18,5 +18,11 @@ function binarySearch(arr: number[], target: number): number {
   return -1;
 }
 
+function binarySearchWithSort(arr: number[], target: number): number {
+  const list = arr.sort((a, b) => Number(a) - Number(b));
+  return binarySearch(list, target);
+}
+
 
 export default binarySearch;
+export { binarySearch, binarySearchWithSort };

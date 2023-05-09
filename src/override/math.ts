@@ -1,5 +1,5 @@
 import { decimalAdjust } from '../utils/math';
-import binarySearch from '../utils/binarySearch';
+import binarySearch, { binarySearchWithSort } from '../utils/binarySearch';
 import { gcd, gcds, lcm, lcms } from '../utils/mostFrequent';
 export { };
 
@@ -15,6 +15,8 @@ declare global {
     gcds(a: number[]): number;
     lcm(a: number, b: number): number;
     lcms(a: number[]): number;
+    binarySearch(arr: number[], target: number): number;
+    binarySearchWithSort(arr: number[], target: number): number;
   }
 }
 
@@ -27,6 +29,7 @@ if (!Math.floor10) {
 if (!Math.ceil10) {
   Math.ceil10 = decimalAdjust("ceil");
 }
+
 if (!Math.gcd) {
   Math.gcd = gcd;
 }
@@ -39,6 +42,15 @@ if (!Math.lcm) {
 if (!Math.lcms) {
   Math.lcms = lcms;
 }
+
+if (!Math.binarySearch) {
+  Math.binarySearch = binarySearch;
+}
+
+if (!Math.binarySearchWithSort) {
+  Math.binarySearchWithSort = binarySearchWithSort;
+}
+
 
 if (!Math.randomRange) {
   Math.randomRange = function (a: number, b: number, point: number = 0) {
