@@ -7,6 +7,7 @@ interface Array<T> {
   select<R>(predicate: (element: T, index: number) => R): R[];
   any(predicate?: (element: T, index: number) => boolean): boolean;
   count(predicate?: (element: T, index: number) => boolean): number;
+  union(other: T[]): T[];
 
   max(predicate?: (element: T, index: number) => boolean): T;
   min(predicate?: (element: T, index: number) => boolean): T;
@@ -19,6 +20,7 @@ interface Array<T> {
 
   diff(other: T[]): T[];
   inter(other: T[]): T[];
+
 
 
   // deepClone<T>(camelcase?: boolean): T[];

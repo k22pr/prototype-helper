@@ -42,6 +42,10 @@ Array.prototype.count = function (predicate?: any) {
   return list.length;
 };
 
+Array.prototype.union = function (other: any) {
+  return this.concat(other.diff(this));
+};
+
 Array.prototype.max = function (predicate?: any) {
   let list = this;
   if (predicate) list = this.where(predicate);
@@ -97,6 +101,11 @@ Array.prototype.diff = function (other: any) {
 Array.prototype.inter = function (other: any) {
   return this.where((x: any) => other.includes(x));
 };
+
+//binarySearch
+// Array.prototype.binarySearch = function (predicate?: any,) {
+
+// };
 
 // Array.prototype.deepClone = function (camelcase: boolean = false) {
 //   return deepClone(this, camelcase ? camelCase : undefined);

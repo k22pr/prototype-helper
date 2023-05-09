@@ -151,5 +151,15 @@ import "./index";
 const arr = [1, 2, 3, 4, 5];
 const other = [3, 4, 5, 6, 7];
 
-console.log(arr.diff(other));
-console.log(arr.inter(other));
+// console.log(arr.diff(other));
+// console.log(arr.inter(other));
+
+
+console.log(Math.gcds([12, 24, 48]));
+console.log(Math.lcm(6, 21));
+
+console.log(Math.lcms(arr));
+console.log(Math.lcms(other));
+
+console.log(Math.gcds(arr));
+console.log(Math.gcds(other));
