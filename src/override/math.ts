@@ -1,7 +1,6 @@
-import { decimalAdjust } from '../utils/math';
-import binarySearch, { binarySearchWithSort } from '../utils/binarySearch';
-import { gcd, gcds, lcm, lcms } from '../utils/mostFrequent';
-export { };
+import binarySearch, { binarySearchWithSort } from "../utils/binarySearch";
+import { decimalAdjust } from "../utils/math";
+import { gcd, gcds, lcm, lcms } from "../utils/mostFrequent";
 
 declare global {
   interface Math {
@@ -15,7 +14,6 @@ declare global {
     gcds(a: number[]): number;
     lcm(a: number, b: number): number;
     lcms(a: number[]): number;
-    binarySearch(arr: number[], target: number): number;
     binarySearchWithSort(arr: number[], target: number): number;
   }
 }
@@ -51,21 +49,13 @@ if (!Math.binarySearchWithSort) {
   Math.binarySearchWithSort = binarySearchWithSort;
 }
 
-
 if (!Math.randomRange) {
-  Math.randomRange = function (a: number, b: number, point: number = 0) {
-    return Math.floor10(Math.random() * (b - a + 1) + a, point);
-  };
+  Math.randomRange = (a: number, b: number, point = 0) =>
+    Math.floor10(Math.random() * (b - a + 1) + a, point);
 }
 
 if (!Math.clamp) {
-  Math.clamp = function (input: number, min: number, max: number) {
-    return Math.min(Math.max(input, min), max);
-  };
-}
-
-if (!Math.binarySearch) {
-  Math.binarySearch = binarySearch;
+  Math.clamp = (input: number, min: number, max: number) => Math.min(Math.max(input, min), max);
 }
 
 globalThis.Math = Math;

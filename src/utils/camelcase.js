@@ -28,9 +28,11 @@ const preserveCamelCase = (string, toLowerCase, toUpperCase) => {
       isLastCharUpper = false;
       isLastCharLower = true;
     } else {
-      isLastCharLower = toLowerCase(character) === character && toUpperCase(character) !== character;
+      isLastCharLower =
+        toLowerCase(character) === character && toUpperCase(character) !== character;
       isLastLastCharUpper = isLastCharUpper;
-      isLastCharUpper = toUpperCase(character) === character && toLowerCase(character) !== character;
+      isLastCharUpper =
+        toUpperCase(character) === character && toLowerCase(character) !== character;
     }
   }
 
@@ -47,7 +49,9 @@ const postProcess = (input, toUpperCase) => {
   SEPARATORS_AND_IDENTIFIER.lastIndex = 0;
   NUMBERS_AND_IDENTIFIER.lastIndex = 0;
 
-  return input.replace(SEPARATORS_AND_IDENTIFIER, (_, identifier) => toUpperCase(identifier)).replace(NUMBERS_AND_IDENTIFIER, (m) => toUpperCase(m));
+  return input
+    .replace(SEPARATORS_AND_IDENTIFIER, (_, identifier) => toUpperCase(identifier))
+    .replace(NUMBERS_AND_IDENTIFIER, (m) => toUpperCase(m));
 };
 
 export default function camelCase(input, options) {
@@ -74,9 +78,15 @@ export default function camelCase(input, options) {
     return "";
   }
 
-  const toLowerCase = options.locale === false ? (string) => string.toLowerCase() : (string) => string.toLocaleLowerCase(options.locale);
+  const toLowerCase =
+    options.locale === false
+      ? (string) => string.toLowerCase()
+      : (string) => string.toLocaleLowerCase(options.locale);
 
-  const toUpperCase = options.locale === false ? (string) => string.toUpperCase() : (string) => string.toLocaleUpperCase(options.locale);
+  const toUpperCase =
+    options.locale === false
+      ? (string) => string.toUpperCase()
+      : (string) => string.toLocaleUpperCase(options.locale);
 
   if (input.length === 1) {
     if (SEPARATORS.test(input)) {
@@ -93,7 +103,9 @@ export default function camelCase(input, options) {
   }
 
   input = input.replace(LEADING_SEPARATORS, "");
-  input = options.preserveConsecutiveUppercase ? preserveConsecutiveUppercase(input, toLowerCase) : toLowerCase(input);
+  input = options.preserveConsecutiveUppercase
+    ? preserveConsecutiveUppercase(input, toLowerCase)
+    : toLowerCase(input);
 
   if (options.pascalCase) {
     input = toUpperCase(input.charAt(0)) + input.slice(1);

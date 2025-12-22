@@ -1,3 +1,3 @@
 import "./number";
 import "./array";
-import "./object"
+import "./object";

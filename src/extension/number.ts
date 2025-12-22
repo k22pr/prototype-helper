@@ -9,7 +9,7 @@ Number.prototype.toDecimal = function (): Decimal {
 };
 
 Number.prototype.toComma = function () {
-  if (`${this}`.length == 0) return "0";
+  if (`${this}`.length === 0) return "0";
   return `${new decimal(Number(this)).toString()}`.toComma();
 };
 
@@ -42,11 +42,11 @@ Number.prototype.normalize = function () {
   // return Math.pow(Number(this), 2);
 };
 
-Number.prototype.fixNumber = function (length: number = 8) {
+Number.prototype.fixNumber = function (length = 8) {
   return `${this}`.fixNumber(length);
 };
 
-Number.prototype.fixPoint = function (length: number = 0) {
+Number.prototype.fixPoint = function (length = 0) {
   return `${this}`.fixPoint(length);
 };
 
@@ -66,26 +66,26 @@ Number.prototype.isInteger = function (): boolean {
   return this.toDecimal().isInteger();
 };
 
-Number.prototype.addSymbol = function (space: string = "") {
+Number.prototype.addSymbol = function (space = "") {
   return `${Number(this) > 0 ? "+" : Number(this) < 0 ? "-" : ""}${space}${Math.abs(Number(this))}`;
 };
 
-Number.prototype.fromPer = function (per: number) {
+Number.prototype.percentOf = function (per: number) {
   return (Number(this) / 100) * per;
 };
 
-Number.prototype.toPer = function (val: number) {
+Number.prototype.toPercent = function (val: number) {
   return (Number(this) / val) * 100;
 };
 
-Number.prototype.ceil = function (point: number = 0) {
+Number.prototype.ceil = function (point = 0) {
   return Math.ceil10(Number(this), point);
 };
 
-Number.prototype.floor = function (point: number = 0) {
+Number.prototype.floor = function (point = 0) {
   return Math.floor10(Number(this), point);
 };
 
-Number.prototype.round = function (point: number = 0) {
+Number.prototype.round = function (point = 0) {
   return Math.round10(Number(this), point);
 };

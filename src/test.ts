@@ -107,9 +107,7 @@ import "./index";
 
 // console.log((300).toPer(10));
 
-
 // console.log((2 ** 256 + 0.213445).toComma().fixPoint(10));
-
 
 // console.info("test1");
 // console.warn("test2");
@@ -123,11 +121,9 @@ import "./index";
 // console.log(ccc.fromJson());
 // // console.log({ a: 1, b: 3 }._toJson());
 
-
 // console.log((1234.1234).round(2));
 // console.log((1234.1234).floor(2));
 // console.log((1234.1234).ceil(2));
-
 
 // console.log("3022.50380000".fixNumber(5)); // 03022.50380000
 // console.log((3022).fixNumber(7)); // 30222
@@ -137,7 +133,6 @@ import "./index";
 // console.log("hello world".issetWord("xx"));
 // console.log("hello world".issetWord(""));
 // console.log("helloworld".issetWord(" "));
-
 
 // console.log("hello world".getChar(0));
 // console.log("hello world".getChar(1));
@@ -153,7 +148,6 @@ const other = [3, 4, 5, 6, 7];
 
 // console.log(arr.diff(other));
 // console.log(arr.inter(other));
-
 
 console.log(Math.gcds([12, 24, 48]));
 console.log(Math.lcm(6, 21));

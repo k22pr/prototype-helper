@@ -1,0 +1,496 @@
+.\src\extension\number.ts format ?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺??
+  횞 Formatter would have printed the following content:
+  
+    68 68 ??  
+    69 69 ??  Number.prototype.addSymbol = function (space = "") {
+    70    ??- 쨌쨌return쨌`${
+    71    ??- 쨌쨌쨌쨌Number(this)쨌>쨌0쨌?쨌"+"쨌:쨌Number(this)쨌<쨌0쨌?쨌"-"쨌:쨌""
+    72    ??- 쨌쨌}${space}${Math.abs(Number(this))}`;
+       70 ??+ 쨌쨌return쨌`${Number(this)쨌>쨌0쨌?쨌"+"쨌:쨌Number(this)쨌<쨌0쨌?쨌"-"쨌:쨌""}${space}${Math.abs(Number(this))}`;
+    73 71 ??  };
+    74 72 ??  
+  
+
+.\src\extension\string.ts format ?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺??
+  횞 Formatter would have printed the following content:
+  
+     1  1 ??  import { isNumber } from "../utils/valid";
+     2  2 ??  
+     3    ??- String.prototype.leadingChars쨌=쨌function쨌(
+     4    ??- 쨌쨌chars:쨌string쨌|쨌number,
+     5    ??- 쨌쨌length:쨌number
+     6    ??- ):쨌string쨌{
+        3 ??+ String.prototype.leadingChars쨌=쨌function쨌(chars:쨌string쨌|쨌number,쨌length:쨌number):쨌string쨌{
+     7  4 ??    return (chars.toString().repeat(length) + this).substr(-length);
+     8  5 ??  };
+    쨌쨌쨌쨌쨌 ??
+    24 21 ??  
+    25 22 ??    const neg = point[0].indexOf("-") === 0;
+    26    ??- 쨌쨌let쨌result쨌=쨌Math.abs(Number(point[0]))
+    27    ??- 쨌쨌쨌쨌.toNumber()
+    28    ??- 쨌쨌쨌쨌.toString()
+    29    ??- 쨌쨌쨌쨌.padStart(length,쨌"0");
+       23 ??+ 쨌쨌let쨌result쨌=쨌Math.abs(Number(point[0])).toNumber().toString().padStart(length,쨌"0");
+    30 24 ??    if (point.length === 2) result += `.${point[1]}`;
+    31 25 ??    if (neg) result = `-${result}`;
+  
+
+.\src\override\console.ts format ?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺??
+  횞 Formatter would have printed the following content:
+  
+     29  29 ??  function getTime() {
+     30  30 ??    const nowDate = new Date();
+     31     ??- 쨌쨌return쨌`${nowDate.getHours().fixNumber(2)}:${nowDate
+     32     ??- 쨌쨌쨌쨌.getMinutes()
+     33     ??- 쨌쨌쨌쨌.fixNumber(2)}:${nowDate
+         31 ??+ 쨌쨌return쨌`${nowDate.getHours().fixNumber(2)}:${nowDate.getMinutes().fixNumber(2)}:${nowDate
+     34  32 ??      .getSeconds()
+     35  33 ??      .fixNumber(2)}:${`${nowDate.getMilliseconds()}`.fixNumber(3)}`;
+    쨌쨌쨌쨌쨌쨌쨌 ??
+     50  48 ??    //   rightLogList.push([message, ...optionalParams]);
+     51  49 ??  
+     52     ??- 쨌쨌temp[type](
+     53     ??- 쨌쨌쨌쨌`${color[0]}[${getTime()}]\x1b[0m\x1b[37m`,
+     54     ??- 쨌쨌쨌쨌message,
+     55     ??- 쨌쨌쨌쨌...optionalParams
+     56     ??- 쨌쨌);
+         50 ??+ 쨌쨌temp[type](`${color[0]}[${getTime()}]\x1b[0m\x1b[37m`,쨌message,쨌...optionalParams);
+     57  51 ??  }
+     58  52 ??  
+    쨌쨌쨌쨌쨌쨌쨌 ??
+     77  71 ??    console.log = (message?: any, ...optionalParams: any[]) => {
+     78  72 ??      if (
+     79     ??- 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"development"쨌&&
+     80     ??- 쨌쨌쨌쨌쨌쨌쨌쨌consoleOption.development.log)쨌||
+         73 ??+ 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"development"쨌&&쨌consoleOption.development.log)쨌||
+     81  74 ??        (process.env.NODE_ENV === "production" && consoleOption.production.log) ||
+     82  75 ??        !process.env.NODE_ENV
+    쨌쨌쨌쨌쨌쨌쨌 ??
+     86  79 ??    console.info = (message?: any, ...optionalParams: any[]) => {
+     87  80 ??      if (
+     88     ??- 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"development"쨌&&
+     89     ??- 쨌쨌쨌쨌쨌쨌쨌쨌consoleOption.development.info)쨌||
+     90     ??- 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"production"쨌&&
+     91     ??- 쨌쨌쨌쨌쨌쨌쨌쨌consoleOption.production.info)쨌||
+         81 ??+ 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"development"쨌&&쨌consoleOption.development.info)쨌||
+         82 ??+ 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"production"쨌&&쨌consoleOption.production.info)쨌||
+     92  83 ??        !process.env.NODE_ENV
+     93  84 ??      )
+    쨌쨌쨌쨌쨌쨌쨌 ??
+     96  87 ??    console.warn = (message?: any, ...optionalParams: any[]) => {
+     97  88 ??      if (
+     98     ??- 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"development"쨌&&
+     99     ??- 쨌쨌쨌쨌쨌쨌쨌쨌consoleOption.development.warn)쨌||
+    100     ??- 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"production"쨌&&
+    101     ??- 쨌쨌쨌쨌쨌쨌쨌쨌consoleOption.production.warn)쨌||
+         89 ??+ 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"development"쨌&&쨌consoleOption.development.warn)쨌||
+         90 ??+ 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"production"쨌&&쨌consoleOption.production.warn)쨌||
+    102  91 ??        !process.env.NODE_ENV
+    103  92 ??      )
+    쨌쨌쨌쨌쨌쨌쨌 ??
+    106  95 ??    console.error = (message?: any, ...optionalParams: any[]) => {
+    107  96 ??      if (
+    108     ??- 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"development"쨌&&
+    109     ??- 쨌쨌쨌쨌쨌쨌쨌쨌consoleOption.development.error)쨌||
+    110     ??- 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"production"쨌&&
+    111     ??- 쨌쨌쨌쨌쨌쨌쨌쨌consoleOption.production.error)쨌||
+         97 ??+ 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"development"쨌&&쨌consoleOption.development.error)쨌||
+         98 ??+ 쨌쨌쨌쨌쨌쨌(process.env.NODE_ENV쨌===쨌"production"쨌&&쨌consoleOption.production.error)쨌||
+    112  99 ??        !process.env.NODE_ENV
+    113 100 ??      )
+  
+
+.\src\extension\array.ts format ?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Formatter would have printed the following content:
+  
+      6   6 ??  Array.prototype.singleOrDefault = function (predicate, defaultValue = null) {
+      7   7 ??    const isset = this.where(predicate);
+      8     ??- 쨌쨌if쨌(isset.length쨌>=쨌2)
+      9     ??- 쨌쨌쨌쨌throw쨌new쨌Error("single:sequence쨌contains쨌more쨌than쨌one쨌element.");
+          8 ??+ 쨌쨌if쨌(isset.length쨌>=쨌2)쨌throw쨌new쨌Error("single:sequence쨌contains쨌more쨌than쨌one쨌element.");
+     10   9 ??  
+     11  10 ??    return isset.length ? isset[0] : defaultValue;
+    쨌쨌쨌쨌쨌쨌쨌 ??
+     69  68 ??  };
+     70  69 ??  
+     71     ??- Array.prototype.firstOrDefault쨌=쨌function쨌(
+     72     ??- 쨌쨌predicate?:쨌any,
+     73     ??- 쨌쨌defaultValue쨌=쨌null
+     74     ??- )쨌{
+         70 ??+ Array.prototype.firstOrDefault쨌=쨌function쨌(predicate?:쨌any,쨌defaultValue쨌=쨌null)쨌{
+     75  71 ??    if (predicate == null) predicate = () => true;
+     76  72 ??    const isset = this.where(predicate);
+    쨌쨌쨌쨌쨌쨌쨌 ??
+     80  76 ??    if (predicate == null) predicate = () => true;
+     81  77 ??    const isset = this.firstOrDefault(predicate);
+     82     ??- 쨌쨌if쨌(isset쨌==쨌null)
+     83     ??- 쨌쨌쨌쨌throw쨌new쨌Error("first:No쨌element쨌satisfies쨌the쨌condition.");
+         78 ??+ 쨌쨌if쨌(isset쨌==쨌null)쨌throw쨌new쨌Error("first:No쨌element쨌satisfies쨌the쨌condition.");
+     84  79 ??  
+     85  80 ??    return isset;
+     86  81 ??  };
+     87  82 ??  
+     88     ??- Array.prototype.lastOrDefault쨌=쨌function쨌(
+     89     ??- 쨌쨌predicate?:쨌any,
+     90     ??- 쨌쨌defaultValue쨌=쨌null
+     91     ??- )쨌{
+         83 ??+ Array.prototype.lastOrDefault쨌=쨌function쨌(predicate?:쨌any,쨌defaultValue쨌=쨌null)쨌{
+     92  84 ??    if (predicate == null) predicate = () => true;
+     93  85 ??    const isset = this.where(predicate);
+     94     ??- 쨌쨌return쨌isset쨌==쨌null쨌||쨌isset.length쨌===쨌0
+     95     ??- 쨌쨌쨌쨌?쨌defaultValue
+     96     ??- 쨌쨌쨌쨌:쨌isset[isset.length쨌-쨌1];
+         86 ??+ 쨌쨌return쨌isset쨌==쨌null쨌||쨌isset.length쨌===쨌0쨌?쨌defaultValue쨌:쨌isset[isset.length쨌-쨌1];
+     97  87 ??  };
+     98  88 ??  Array.prototype.last = function (predicate?: any) {
+     99  89 ??    if (predicate == null) predicate = () => true;
+    100  90 ??    const isset = this.lastOrDefault(predicate);
+    101     ??- 쨌쨌if쨌(isset쨌==쨌null)
+    102     ??- 쨌쨌쨌쨌throw쨌new쨌Error("last:No쨌element쨌satisfies쨌the쨌condition.");
+         91 ??+ 쨌쨌if쨌(isset쨌==쨌null)쨌throw쨌new쨌Error("last:No쨌element쨌satisfies쨌the쨌condition.");
+    103  92 ??  
+    104  93 ??    return isset;
+  
+
+.\src\utils\camelcase.js:7:39 lint/style/useTemplate  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺??
+  횞 Template literals are preferred over string concatenation.
+  
+    5 ??const SEPARATORS = /[_.\- ]+/;
+    6 ??
+  > 7 ??const LEADING_SEPARATORS = new RegExp("^" + SEPARATORS.source);
+      ??                                      ^^^^^^^^^^^^^^^^^^^^^^^
+    8 ??const SEPARATORS_AND_IDENTIFIER = new RegExp(SEPARATORS.source + IDENTIFIER.source, "gu");
+    9 ??const NUMBERS_AND_IDENTIFIER = new RegExp("\\d+" + IDENTIFIER.source, "gu");
+  
+  i Unsafe fix: Use a template literal.
+  
+      5   5 ??  const SEPARATORS = /[_.\- ]+/;
+      6   6 ??  
+      7     ??- const쨌LEADING_SEPARATORS쨌=쨌new쨌RegExp("^"쨌+쨌SEPARATORS.source);
+          7 ??+ const쨌LEADING_SEPARATORS쨌=쨌new쨌RegExp(`^${SEPARATORS.source}`);
+      8   8 ??  const SEPARATORS_AND_IDENTIFIER = new RegExp(SEPARATORS.source + IDENTIFIER.source, "gu");
+      9   9 ??  const NUMBERS_AND_IDENTIFIER = new RegExp("\\d+" + IDENTIFIER.source, "gu");
+  
+
+.\src\utils\camelcase.js:9:43 lint/style/useTemplate  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺??
+  횞 Template literals are preferred over string concatenation.
+  
+     7 ??const LEADING_SEPARATORS = new RegExp("^" + SEPARATORS.source);
+     8 ??const SEPARATORS_AND_IDENTIFIER = new RegExp(SEPARATORS.source + IDENTIFIER.source, "gu");
+   > 9 ??const NUMBERS_AND_IDENTIFIER = new RegExp("\\d+" + IDENTIFIER.source, "gu");
+       ??                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    10 ??
+    11 ??const preserveCamelCase = (string, toLowerCase, toUpperCase) => {
+  
+  i Unsafe fix: Use a template literal.
+  
+      7   7 ??  const LEADING_SEPARATORS = new RegExp("^" + SEPARATORS.source);
+      8   8 ??  const SEPARATORS_AND_IDENTIFIER = new RegExp(SEPARATORS.source + IDENTIFIER.source, "gu");
+      9     ??- const쨌NUMBERS_AND_IDENTIFIER쨌=쨌new쨌RegExp("\\d+"쨌+쨌IDENTIFIER.source,쨌"gu");
+          9 ??+ const쨌NUMBERS_AND_IDENTIFIER쨌=쨌new쨌RegExp(`\\d+${IDENTIFIER.source}`,쨌"gu");
+     10  10 ??  
+     11  11 ??  const preserveCamelCase = (string, toLowerCase, toUpperCase) => {
+  
+
+.\src\utils\camelcase.js:20:16 lint/style/useTemplate  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Template literals are preferred over string concatenation.
+  
+    19 ??    if (isLastCharLower && UPPERCASE.test(character)) {
+  > 20 ??      string = string.slice(0, index) + "-" + string.slice(index);
+       ??               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    21 ??      isLastCharLower = false;
+    22 ??      isLastLastCharUpper = isLastCharUpper;
+  
+  i Unsafe fix: Use a template literal.
+  
+     18  18 ??  
+     19  19 ??      if (isLastCharLower && UPPERCASE.test(character)) {
+     20     ??- 쨌쨌쨌쨌쨌쨌string쨌=쨌string.slice(0,쨌index)쨌+쨌"-"쨌+쨌string.slice(index);
+         20 ??+ 쨌쨌쨌쨌쨌쨌string쨌=쨌`${string.slice(0,쨌index)}-${string.slice(index)}`;
+     21  21 ??        isLastCharLower = false;
+     22  22 ??        isLastLastCharUpper = isLastCharUpper;
+  
+
+.\src\utils\camelcase.js:26:16 lint/style/useTemplate  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Template literals are preferred over string concatenation.
+  
+    24 ??      index++;
+    25 ??    } else if (isLastCharUpper && isLastLastCharUpper && LOWERCASE.test(character)) {
+  > 26 ??      string = string.slice(0, index - 1) + "-" + string.slice(index - 1);
+       ??               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    27 ??      isLastLastCharUpper = isLastCharUpper;
+    28 ??      isLastCharUpper = false;
+  
+  i Unsafe fix: Use a template literal.
+  
+     24  24 ??        index++;
+     25  25 ??      } else if (isLastCharUpper && isLastLastCharUpper && LOWERCASE.test(character)) {
+     26     ??- 쨌쨌쨌쨌쨌쨌string쨌=쨌string.slice(0,쨌index쨌-쨌1)쨌+쨌"-"쨌+쨌string.slice(index쨌-쨌1);
+         26 ??+ 쨌쨌쨌쨌쨌쨌string쨌=쨌`${string.slice(0,쨌index쨌-쨌1)}-${string.slice(index쨌-쨌1)}`;
+     27  27 ??        isLastLastCharUpper = isLastCharUpper;
+     28  28 ??        isLastCharUpper = false;
+  
+
+.\src\extension\number.test.ts:9:13 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+     7 ??describe("Number.prototype.toNumber", () => {
+     8 ??  test("converts to number", () => {
+   > 9 ??    expect((3.141592).toNumber()).toBe(3.141592);
+       ??            ^^^^^^^^
+    10 ??    expect((12345).toNumber()).toBe(12345);
+    11 ??    expect("3.14".toNumber()).toBe(3.14);
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+      7   7 ??  describe("Number.prototype.toNumber", () => {
+      8   8 ??    test("converts to number", () => {
+      9     ??- 쨌쨌쨌쨌expect((3.141592).toNumber()).toBe(3.141592);
+          9 ??+ 쨌쨌쨌쨌expect((Math.PI).toNumber()).toBe(3.141592);
+     10  10 ??      expect((12345).toNumber()).toBe(12345);
+     11  11 ??      expect("3.14".toNumber()).toBe(3.14);
+  
+
+.\src\extension\number.test.ts:9:40 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+     7 ??describe("Number.prototype.toNumber", () => {
+     8 ??  test("converts to number", () => {
+   > 9 ??    expect((3.141592).toNumber()).toBe(3.141592);
+       ??                                       ^^^^^^^^
+    10 ??    expect((12345).toNumber()).toBe(12345);
+    11 ??    expect("3.14".toNumber()).toBe(3.14);
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+      7   7 ??  describe("Number.prototype.toNumber", () => {
+      8   8 ??    test("converts to number", () => {
+      9     ??- 쨌쨌쨌쨌expect((3.141592).toNumber()).toBe(3.141592);
+          9 ??+ 쨌쨌쨌쨌expect((3.141592).toNumber()).toBe(Math.PI);
+     10  10 ??      expect((12345).toNumber()).toBe(12345);
+     11  11 ??      expect("3.14".toNumber()).toBe(3.14);
+  
+
+.\src\extension\number.test.ts:20:13 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+    18 ??describe("Number.prototype.toDecimal", () => {
+    19 ??  test("converts to Decimal", () => {
+  > 20 ??    expect((3.141592).toDecimal()).toStrictEqual(new Decimal(3.141592));
+       ??            ^^^^^^^^
+    21 ??    expect((12345).toDecimal()).toStrictEqual(new Decimal(12345));
+    22 ??    expect(Number.NaN.toDecimal().isNaN()).toBeTruthy();
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+     18  18 ??  describe("Number.prototype.toDecimal", () => {
+     19  19 ??    test("converts to Decimal", () => {
+     20     ??- 쨌쨌쨌쨌expect((3.141592).toDecimal()).toStrictEqual(new쨌Decimal(3.141592));
+         20 ??+ 쨌쨌쨌쨌expect((Math.PI).toDecimal()).toStrictEqual(new쨌Decimal(3.141592));
+     21  21 ??      expect((12345).toDecimal()).toStrictEqual(new Decimal(12345));
+     22  22 ??      expect(Number.NaN.toDecimal().isNaN()).toBeTruthy();
+  
+
+.\src\extension\number.test.ts:20:62 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+    18 ??describe("Number.prototype.toDecimal", () => {
+    19 ??  test("converts to Decimal", () => {
+  > 20 ??    expect((3.141592).toDecimal()).toStrictEqual(new Decimal(3.141592));
+       ??                                                             ^^^^^^^^
+    21 ??    expect((12345).toDecimal()).toStrictEqual(new Decimal(12345));
+    22 ??    expect(Number.NaN.toDecimal().isNaN()).toBeTruthy();
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+     18  18 ??  describe("Number.prototype.toDecimal", () => {
+     19  19 ??    test("converts to Decimal", () => {
+     20     ??- 쨌쨌쨌쨌expect((3.141592).toDecimal()).toStrictEqual(new쨌Decimal(3.141592));
+         20 ??+ 쨌쨌쨌쨌expect((3.141592).toDecimal()).toStrictEqual(new쨌Decimal(Math.PI));
+     21  21 ??      expect((12345).toDecimal()).toStrictEqual(new Decimal(12345));
+     22  22 ??      expect(Number.NaN.toDecimal().isNaN()).toBeTruthy();
+  
+
+.\src\extension\number.test.ts:73:15 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+    71 ??      expect((100).toNumber()).toEqual(100);
+    72 ??      expect((0).toNumber()).toEqual(0);
+  > 73 ??      expect((3.1415).toNumber()).toEqual(3.1415);
+       ??              ^^^^^^
+    74 ??      expect((-10).toNumber()).toEqual(-10);
+    75 ??    });
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+     71  71 ??        expect((100).toNumber()).toEqual(100);
+     72  72 ??        expect((0).toNumber()).toEqual(0);
+     73     ??- 쨌쨌쨌쨌쨌쨌expect((3.1415).toNumber()).toEqual(3.1415);
+         73 ??+ 쨌쨌쨌쨌쨌쨌expect((Math.PI).toNumber()).toEqual(3.1415);
+     74  74 ??        expect((-10).toNumber()).toEqual(-10);
+     75  75 ??      });
+  
+
+.\src\extension\number.test.ts:73:43 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+    71 ??      expect((100).toNumber()).toEqual(100);
+    72 ??      expect((0).toNumber()).toEqual(0);
+  > 73 ??      expect((3.1415).toNumber()).toEqual(3.1415);
+       ??                                          ^^^^^^
+    74 ??      expect((-10).toNumber()).toEqual(-10);
+    75 ??    });
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+     71  71 ??        expect((100).toNumber()).toEqual(100);
+     72  72 ??        expect((0).toNumber()).toEqual(0);
+     73     ??- 쨌쨌쨌쨌쨌쨌expect((3.1415).toNumber()).toEqual(3.1415);
+         73 ??+ 쨌쨌쨌쨌쨌쨌expect((3.1415).toNumber()).toEqual(Math.PI);
+     74  74 ??        expect((-10).toNumber()).toEqual(-10);
+     75  75 ??      });
+  
+
+.\src\extension\number.test.ts:131:15 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+    129 ??      expect((10).pow(2)).toEqual(100);
+    130 ??      expect((2).pow(10)).toEqual(1024);
+  > 131 ??      expect((3.1415).pow(2)).toEqual(9.86902225);
+        ??              ^^^^^^
+    132 ??    });
+    133 ??  });
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+    129 129 ??        expect((10).pow(2)).toEqual(100);
+    130 130 ??        expect((2).pow(10)).toEqual(1024);
+    131     ??- 쨌쨌쨌쨌쨌쨌expect((3.1415).pow(2)).toEqual(9.86902225);
+        131 ??+ 쨌쨌쨌쨌쨌쨌expect((Math.PI).pow(2)).toEqual(9.86902225);
+    132 132 ??      });
+    133 133 ??    });
+  
+
+.\src\extension\number.test.ts:139:15 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+    137 ??      expect((10).normalize()).toEqual(100);
+    138 ??      expect((2).normalize()).toEqual(4);
+  > 139 ??      expect((3.1415).normalize()).toEqual(9.86902225);
+        ??              ^^^^^^
+    140 ??    });
+    141 ??  });
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+    137 137 ??        expect((10).normalize()).toEqual(100);
+    138 138 ??        expect((2).normalize()).toEqual(4);
+    139     ??- 쨌쨌쨌쨌쨌쨌expect((3.1415).normalize()).toEqual(9.86902225);
+        139 ??+ 쨌쨌쨌쨌쨌쨌expect((Math.PI).normalize()).toEqual(9.86902225);
+    140 140 ??      });
+    141 141 ??    });
+  
+
+.\src\extension\number.test.ts:241:15 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+    239 ??  describe("Number.prototype", () => {
+    240 ??    test("ceil", () => {
+  > 241 ??      expect((3.14159).ceil()).toBe(4);
+        ??              ^^^^^^^
+    242 ??      expect((3.14159).ceil(1)).toBe(3.2);
+    243 ??      expect((1234).ceil(-2)).toBe(1300);
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+    239 239 ??    describe("Number.prototype", () => {
+    240 240 ??      test("ceil", () => {
+    241     ??- 쨌쨌쨌쨌쨌쨌expect((3.14159).ceil()).toBe(4);
+        241 ??+ 쨌쨌쨌쨌쨌쨌expect((Math.PI).ceil()).toBe(4);
+    242 242 ??        expect((3.14159).ceil(1)).toBe(3.2);
+    243 243 ??        expect((1234).ceil(-2)).toBe(1300);
+  
+
+The number of diagnostics exceeds the number allowed by Biome.
+Diagnostics not shown: 4.
+Checked 27 files in 22ms. No fixes applied.
+Found 24 errors.
+.\src\extension\number.test.ts:242:15 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+    240 ??    test("ceil", () => {
+    241 ??      expect((3.14159).ceil()).toBe(4);
+  > 242 ??      expect((3.14159).ceil(1)).toBe(3.2);
+        ??              ^^^^^^^
+    243 ??      expect((1234).ceil(-2)).toBe(1300);
+    244 ??    });
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+    240 240 ??      test("ceil", () => {
+    241 241 ??        expect((3.14159).ceil()).toBe(4);
+    242     ??- 쨌쨌쨌쨌쨌쨌expect((3.14159).ceil(1)).toBe(3.2);
+        242 ??+ 쨌쨌쨌쨌쨌쨌expect((Math.PI).ceil(1)).toBe(3.2);
+    243 243 ??        expect((1234).ceil(-2)).toBe(1300);
+    244 244 ??      });
+  
+
+.\src\extension\number.test.ts:247:15 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+    246 ??    test("floor", () => {
+  > 247 ??      expect((3.14159).floor()).toBe(3);
+        ??              ^^^^^^^
+    248 ??      expect((3.14159).floor(1)).toBe(3.1);
+    249 ??      expect((1234).floor(-2)).toBe(1200);
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+    245 245 ??  
+    246 246 ??      test("floor", () => {
+    247     ??- 쨌쨌쨌쨌쨌쨌expect((3.14159).floor()).toBe(3);
+        247 ??+ 쨌쨌쨌쨌쨌쨌expect((Math.PI).floor()).toBe(3);
+    248 248 ??        expect((3.14159).floor(1)).toBe(3.1);
+    249 249 ??        expect((1234).floor(-2)).toBe(1200);
+  
+
+.\src\extension\number.test.ts:248:15 lint/suspicious/noApproximativeNumericConstant  FIXABLE  ?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Prefer constants from the standard library.
+  
+    246 ??    test("floor", () => {
+    247 ??      expect((3.14159).floor()).toBe(3);
+  > 248 ??      expect((3.14159).floor(1)).toBe(3.1);
+        ??              ^^^^^^^
+    249 ??      expect((1234).floor(-2)).toBe(1200);
+    250 ??    });
+  
+  i Unsafe fix: Use Math.PI instead.
+  
+    246 246 ??      test("floor", () => {
+    247 247 ??        expect((3.14159).floor()).toBe(3);
+    248     ??- 쨌쨌쨌쨌쨌쨌expect((3.14159).floor(1)).toBe(3.1);
+        248 ??+ 쨌쨌쨌쨌쨌쨌expect((Math.PI).floor(1)).toBe(3.1);
+    249 249 ??        expect((1234).floor(-2)).toBe(1200);
+    250 250 ??      });
+  
+
+check ?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺?곣봺
+
+  횞 Some errors were emitted while running checks.
+  
+

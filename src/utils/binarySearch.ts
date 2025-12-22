@@ -23,6 +23,5 @@ function binarySearchWithSort(arr: number[], target: number): number {
   return binarySearch(list, target);
 }
 
-
 export default binarySearch;
 export { binarySearch, binarySearchWithSort };

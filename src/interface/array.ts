@@ -1,6 +1,9 @@
 interface Array<T> {
   single(predicate: (element: T, index: number) => boolean): T;
-  singleOrDefault(predicate: (element: T, index: number) => boolean, defaultValue?: any): T;
+  singleOrDefault<D = T>(
+    predicate: (element: T, index: number) => boolean,
+    defaultValue?: D
+  ): T | D;
   where(predicate: (element: T, index: number) => boolean): T[];
   skip(count: number): T[];
   take(count: number): T[];
@@ -14,16 +17,20 @@ interface Array<T> {
   sum(predicate?: (element: T, index: number) => boolean): number;
 
   first(predicate?: (element: T, index: number) => boolean): T;
-  firstOrDefault(predicate?: (element: T, index: number) => boolean, defaultValue?: any): T;
+  firstOrDefault<D = T>(
+    predicate?: (element: T, index: number) => boolean,
+    defaultValue?: D
+  ): T | D;
   last(predicate?: (element: T, index: number) => boolean): T;
-  lastOrDefault(predicate?: (element: T, index: number) => boolean, defaultValue?: any): T;
+  lastOrDefault<D = T>(
+    predicate?: (element: T, index: number) => boolean,
+    defaultValue?: D
+  ): T | D;
 
   diff(other: T[]): T[];
   inter(other: T[]): T[];
 
-
-
   // deepClone<T>(camelcase?: boolean): T[];
-  _deepCopy<T>(): T[];
+  _deepCopy<R = T[]>(): R;
   _toJson(): string;
 }

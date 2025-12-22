@@ -3,7 +3,6 @@ import "./string";
 import "./number";
 import "./array";
 
-
 describe("String.prototype.leadingChars", () => {
   it("should return a string of specified length with leading characters", () => {
     const str = "123";
@@ -64,7 +63,6 @@ describe("String.prototype.fixNumber", () => {
   });
 });
 
-
 test("toComma returns correctly formatted string", () => {
   expect("0".toComma()).toBe("0");
   expect("123".toComma()).toBe("123");
@@ -78,55 +76,55 @@ test("toComma returns correctly formatted string", () => {
   expect("".toComma()).toBe("0");
 });
 
-test('String.prototype.fromJson() - should parse JSON string to object', () => {
+test("String.prototype.parseJson() - should parse JSON string to object", () => {
   const jsonString = '{"name": "John", "age": 30}';
-  const parsedObject = jsonString.fromJson();
-  expect(parsedObject).toEqual({ name: 'John', age: 30 });
+  const parsedObject = jsonString.parseJson();
+  expect(parsedObject).toEqual({ name: "John", age: 30 });
 });
 
-test('String.prototype.fromJson() - should throw error for invalid JSON string', () => {
+test("String.prototype.parseJson() - should throw error for invalid JSON string", () => {
   const invalidJsonString = '{name: "John", age: 30}';
   expect(() => {
-    invalidJsonString.fromJson();
+    invalidJsonString.parseJson();
   }).toThrow();
 });
 
-test('String.prototype.issetWord() - should return true if word exists in string', () => {
-  const string = 'The quick brown fox jumps over the lazy dog';
-  expect(string.issetWord('fox')).toBe(true);
+test("String.prototype.issetWord() - should return true if word exists in string", () => {
+  const string = "The quick brown fox jumps over the lazy dog";
+  expect(string.issetWord("fox")).toBe(true);
 });
 
-test('String.prototype.issetWord() - should return false if word does not exist in string', () => {
-  const string = 'The quick brown fox jumps over the lazy dog';
-  expect(string.issetWord('cat')).toBe(false);
+test("String.prototype.issetWord() - should return false if word does not exist in string", () => {
+  const string = "The quick brown fox jumps over the lazy dog";
+  expect(string.issetWord("cat")).toBe(false);
 });
 
-test('String.prototype.getChar() - should return correct character at given index', () => {
-  const string = 'Hello, world!';
-  expect(string.getChar(0)).toBe('H');
-  expect(string.getChar(7)).toBe('w');
-  expect(string.getChar(12)).toBe('!');
+test("String.prototype.getChar() - should return correct character at given index", () => {
+  const string = "Hello, world!";
+  expect(string.getChar(0)).toBe("H");
+  expect(string.getChar(7)).toBe("w");
+  expect(string.getChar(12)).toBe("!");
 });
 
-test('String.prototype.getChar() - should return empty string if index is out of bounds', () => {
-  const string = 'Hello, world!';
-  expect(string.getChar(-1)).toBe('');
-  expect(string.getChar(13)).toBe('');
+test("String.prototype.getChar() - should return empty string if index is out of bounds", () => {
+  const string = "Hello, world!";
+  expect(string.getChar(-1)).toBe("");
+  expect(string.getChar(13)).toBe("");
 });
 
-test('String.prototype.isNumber()', () => {
-  expect(("42").isNumber()).toBe(true);
-  expect(("-42").isNumber()).toBe(true);
-  expect(("0").isNumber()).toBe(true);
-  expect(("0.42").isNumber()).toBe(true);
-  expect((".42").isNumber()).toBe(true);
-  expect(("1e3").isNumber()).toBe(true);
-  expect(("0xFF").isNumber()).toBe(true);
-  expect((" 42 ").isNumber()).toBe(true);
-  expect(("\t\r\n42\n\r\t").isNumber()).toBe(true);
-  expect(("0x92").isNumber()).toBe(true);
-  expect(("d35").isNumber()).toBe(false);
-  expect(("[]").isNumber()).toBe(false);
-  expect(("()").isNumber()).toBe(false);
-  expect(("hello").isNumber()).toBe(false);
+test("String.prototype.isNumber()", () => {
+  expect("42".isNumber()).toBe(true);
+  expect("-42".isNumber()).toBe(true);
+  expect("0".isNumber()).toBe(true);
+  expect("0.42".isNumber()).toBe(true);
+  expect(".42".isNumber()).toBe(true);
+  expect("1e3".isNumber()).toBe(true);
+  expect("0xFF".isNumber()).toBe(true);
+  expect(" 42 ".isNumber()).toBe(true);
+  expect("\t\r\n42\n\r\t".isNumber()).toBe(true);
+  expect("0x92".isNumber()).toBe(true);
+  expect("d35".isNumber()).toBe(false);
+  expect("[]".isNumber()).toBe(false);
+  expect("()".isNumber()).toBe(false);
+  expect("hello".isNumber()).toBe(false);
 });

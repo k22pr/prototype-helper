@@ -1,4 +1,3 @@
-
 interface ConsoleShowOption {
   log: boolean;
   info: boolean;
@@ -17,14 +16,11 @@ declare global {
     useTheme(consoleOption?: ConsoleOption): void;
   }
 }
-
-
-const TH = this;
 const temp = {
-  log: console.log.bind(TH),
-  info: console.log.bind(TH),
-  warn: console.log.bind(TH),
-  error: console.log.bind(TH),
+  log: console.log.bind(this),
+  info: console.log.bind(this),
+  warn: console.log.bind(this),
+  error: console.log.bind(this),
 };
 
 // let leftLogList: any[] = [];
@@ -32,15 +28,21 @@ const temp = {
 
 function getTime() {
   const nowDate = new Date();
-  return `${nowDate.getHours().fixNumber(2)}:${nowDate.getMinutes().fixNumber(2)}:${nowDate.getSeconds().fixNumber(2)}:${`${nowDate.getMilliseconds()}`.fixNumber(3)}`;
+  return `${nowDate.getHours().fixNumber(2)}:${nowDate.getMinutes().fixNumber(2)}:${nowDate
+    .getSeconds()
+    .fixNumber(2)}:${`${nowDate.getMilliseconds()}`.fixNumber(3)}`;
 }
 
-function showMessage(type: "log" | "info" | "warn" | "error", message?: any, ...optionalParams: any[]) {
-  let color = ["\x1b[2m"];
-  if (type == "info") color[0] = "\x1b[34m";
-  else if (type == "warn") color[0] = "\x1b[33m";
-  else if (type == "error") color[0] = "\x1b[31m";
-  // if (type == "info") 
+function showMessage(
+  type: "log" | "info" | "warn" | "error",
+  message?: any,
+  ...optionalParams: any[]
+) {
+  const color = ["\x1b[2m"];
+  if (type === "info") color[0] = "\x1b[34m";
+  else if (type === "warn") color[0] = "\x1b[33m";
+  else if (type === "error") color[0] = "\x1b[31m";
+  // if (type == "info")
   //   leftLogList.push([message, ...optionalParams]);
   // else if (type == "warn" || type == "error")
   //   rightLogList.push([message, ...optionalParams]);
@@ -50,23 +52,23 @@ function showMessage(type: "log" | "info" | "warn" | "error", message?: any, ...
 
 console.useTheme = useTheme;
 
-
-function useTheme(consoleOption = {
-  development: {
-    log: true,
-    info: true,
-    warn: true,
-    error: true,
-  },
-  production: {
-    log: false,
-    info: false,
-    warn: true,
-    error: true,
-  },
-}) {
-
-  console.log = function (message?: any, ...optionalParams: any[]) {
+function useTheme(
+  consoleOption = {
+    development: {
+      log: true,
+      info: true,
+      warn: true,
+      error: true,
+    },
+    production: {
+      log: false,
+      info: false,
+      warn: true,
+      error: true,
+    },
+  }
+) {
+  console.log = (message?: any, ...optionalParams: any[]) => {
     if (
       (process.env.NODE_ENV === "development" && consoleOption.development.log) ||
       (process.env.NODE_ENV === "production" && consoleOption.production.log) ||
@@ -74,7 +76,7 @@ function useTheme(consoleOption = {
     )
       showMessage("log", message, ...optionalParams);
   };
-  console.info = function (message?: any, ...optionalParams: any[]) {
+  console.info = (message?: any, ...optionalParams: any[]) => {
     if (
       (process.env.NODE_ENV === "development" && consoleOption.development.info) ||
       (process.env.NODE_ENV === "production" && consoleOption.production.info) ||
@@ -82,7 +84,7 @@ function useTheme(consoleOption = {
     )
       showMessage("info", message, ...optionalParams);
   };
-  console.warn = function (message?: any, ...optionalParams: any[]) {
+  console.warn = (message?: any, ...optionalParams: any[]) => {
     if (
       (process.env.NODE_ENV === "development" && consoleOption.development.warn) ||
       (process.env.NODE_ENV === "production" && consoleOption.production.warn) ||
@@ -90,7 +92,7 @@ function useTheme(consoleOption = {
     )
       showMessage("warn", message, ...optionalParams);
   };
-  console.error = function (message?: any, ...optionalParams: any[]) {
+  console.error = (message?: any, ...optionalParams: any[]) => {
     if (
       (process.env.NODE_ENV === "development" && consoleOption.development.error) ||
       (process.env.NODE_ENV === "production" && consoleOption.production.error) ||
@@ -102,4 +104,4 @@ function useTheme(consoleOption = {
   globalThis.console = console;
 }
 
-export { };
+export {};

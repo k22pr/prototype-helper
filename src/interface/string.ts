@@ -5,11 +5,10 @@ interface StringConstructor {
   toComma(): string;
   toNumber(): number;
   addSymbol(space?: string): string;
-  fromJSON<T>(): T;
+  parseJSON<T>(): T;
   issetWord(word: string): boolean;
   getChar(index: number): string;
   isNumber(): boolean;
-
 }
 
 interface String {
@@ -19,7 +18,7 @@ interface String {
   toComma(): string;
   toNumber(): number;
   addSymbol(space?: string): string;
-  fromJson<T>(): T;
+  parseJson<T>(): T;
   issetWord(word: string): boolean;
   getChar(index: number): string;
   isNumber(): boolean;

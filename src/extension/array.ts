@@ -1,11 +1,16 @@
-import deepClone from 'deep-clone';
+import deepClone from "deep-clone";
 
 Array.prototype.where = function (predicate) {
   return this.filter(predicate);
 };
-Array.prototype.singleOrDefault = function (predicate, defaultValue = null) {
+Array.prototype.singleOrDefault = function <T, D = T>(
+  this: T[],
+  predicate: (element: T, index: number) => boolean,
+  defaultValue: any = null
+): T | D {
   const isset = this.where(predicate);
-  if (isset.length >= 2) throw new Error("single:sequence contains more than one element.");
+  if (isset.length >= 2)
+    throw new Error("single:sequence contains more than one element.");
 
   return isset.length ? isset[0] : defaultValue;
 };
@@ -29,9 +34,8 @@ Array.prototype.select = function <R>(element: any) {
 };
 
 Array.prototype.any = function (predicate?: any) {
-  let list = this;
   if (predicate) return this.singleOrDefault(predicate) ? true : false;
-  else return list.length ? true : false;
+  else return this.length ? true : false;
   // if (!predicate) predicate = () => true;
   // return this.singleOrDefault(predicate) ? true : false;
 };
@@ -49,6 +53,7 @@ Array.prototype.union = function (other: any) {
 Array.prototype.max = function (predicate?: any) {
   let list = this;
   if (predicate) list = this.where(predicate);
+  if (list.length === 0) throw new Error("max: Sequence contains no elements.");
   return list.reduce((a: any, b: any) => {
     return a > b ? a : b;
   });
@@ -56,6 +61,7 @@ Array.prototype.max = function (predicate?: any) {
 Array.prototype.min = function (predicate?: any) {
   let list = this;
   if (predicate) list = this.where(predicate);
+  if (list.length === 0) throw new Error("min: Sequence contains no elements.");
   return list.reduce((a: any, b: any) => {
     return a < b ? a : b;
   });
@@ -68,28 +74,40 @@ Array.prototype.sum = function (predicate?: any) {
   }, 0) as number;
 };
 
-Array.prototype.firstOrDefault = function (predicate?: any, defaultValue = null) {
+Array.prototype.firstOrDefault = function <T, D = T>(
+  this: T[],
+  predicate?: (element: T, index: number) => boolean,
+  defaultValue: any = null
+): T | D {
   if (predicate == null) predicate = () => true;
   const isset = this.where(predicate);
-  return isset == null || isset.length == 0 ? defaultValue : isset[0];
+  return isset == null || isset.length === 0 ? defaultValue : isset[0];
 };
 Array.prototype.first = function (predicate?: any) {
   if (predicate == null) predicate = () => true;
   const isset = this.firstOrDefault(predicate);
-  if (isset == null) throw new Error("first:No element satisfies the condition.");
+  if (isset == null)
+    throw new Error("first:No element satisfies the condition.");
 
   return isset;
 };
 
-Array.prototype.lastOrDefault = function (predicate?: any, defaultValue = null) {
+Array.prototype.lastOrDefault = function <T, D = T>(
+  this: T[],
+  predicate?: (element: T, index: number) => boolean,
+  defaultValue: any = null
+): T | D {
   if (predicate == null) predicate = () => true;
   const isset = this.where(predicate);
-  return isset == null || isset.length == 0 ? defaultValue : isset[isset.length - 1];
+  return isset == null || isset.length === 0
+    ? defaultValue
+    : isset[isset.length - 1];
 };
 Array.prototype.last = function (predicate?: any) {
   if (predicate == null) predicate = () => true;
   const isset = this.lastOrDefault(predicate);
-  if (isset == null) throw new Error("last:No element satisfies the condition.");
+  if (isset == null)
+    throw new Error("last:No element satisfies the condition.");
 
   return isset;
 };
@@ -111,14 +129,13 @@ Array.prototype.inter = function (other: any) {
 //   return deepClone(this, camelcase ? camelCase : undefined);
 // }
 if (!Array.prototype._deepCopy) {
-  Array.prototype._deepCopy = function () {
+  Array.prototype._deepCopy = function (): any {
     return deepClone(this);
   };
 }
-
 
 if (!Array.prototype._toJson) {
   Array.prototype._toJson = function () {
     return JSON.stringify(this);
   };
-};
+}

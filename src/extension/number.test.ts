@@ -1,4 +1,4 @@
-import Decimal from 'decimal.js';
+import Decimal from "decimal.js";
 import "../override/math";
 import "./string";
 import "./number";
@@ -6,38 +6,38 @@ import "./array";
 
 describe("Number.prototype.toNumber", () => {
   test("converts to number", () => {
-    expect((3.141592).toNumber()).toBe(3.141592);
+    expect(Math.PI.toNumber()).toBe(Math.PI);
     expect((12345).toNumber()).toBe(12345);
-    expect(("3.14").toNumber()).toBe(3.14);
-    expect(("12345").toNumber()).toBe(12345);
-    expect((NaN).toNumber()).toBeNaN();
-    expect((Infinity).toNumber()).toBe(Infinity);
+    expect("1.23".toNumber()).toBe(1.23);
+    expect("12345".toNumber()).toBe(12345);
+    expect(Number.NaN.toNumber()).toBeNaN();
+    expect(Number.POSITIVE_INFINITY.toNumber()).toBe(Number.POSITIVE_INFINITY);
   });
 });
 
 describe("Number.prototype.toDecimal", () => {
   test("converts to Decimal", () => {
-    expect((3.141592).toDecimal()).toStrictEqual(new Decimal(3.141592));
+    expect(Math.PI.toDecimal()).toStrictEqual(new Decimal(Math.PI));
     expect((12345).toDecimal()).toStrictEqual(new Decimal(12345));
-    expect((NaN).toDecimal().isNaN()).toBeTruthy();
-    expect((Infinity).toDecimal().isFinite()).toBeFalsy();
+    expect(Number.NaN.toDecimal().isNaN()).toBeTruthy();
+    expect(Number.POSITIVE_INFINITY.toDecimal().isFinite()).toBeFalsy();
   });
 });
 
 describe("Number prototype 기본 확장 테스트", () => {
   test("toNumber", () => {
     expect((10).toNumber()).toBe(10);
-    expect((3.14).toNumber()).toBe(3.14);
+    expect(Math.PI.toNumber()).toBe(Math.PI);
     expect((0).toNumber()).toBe(0);
   });
 
   test("toComma", () => {
     expect((100000).toComma()).toBe("100,000");
-    expect((3141592).toComma()).toBe("3,141,592");
+    expect((3333333).toComma()).toBe("3,333,333");
     expect((0).toComma()).toBe("0");
     expect((-100000).toComma()).toBe("-100,000");
-    expect((3.14).toComma()).toBe("3.14");
-    expect((-3.14).toComma()).toBe("-3.14");
+    expect((1.23).toComma()).toBe("1.23");
+    expect((-1.23).toComma()).toBe("-1.23");
   });
 });
 
@@ -70,7 +70,7 @@ describe("Number Extension Test", () => {
     test("should return correct number", () => {
       expect((100).toNumber()).toEqual(100);
       expect((0).toNumber()).toEqual(0);
-      expect((3.1415).toNumber()).toEqual(3.1415);
+      expect(Math.PI.toNumber()).toEqual(Math.PI);
       expect((-10).toNumber()).toEqual(-10);
     });
   });
@@ -128,7 +128,7 @@ describe("Number Extension Test", () => {
     test("should return correct power value", () => {
       expect((10).pow(2)).toEqual(100);
       expect((2).pow(10)).toEqual(1024);
-      expect((3.1415).pow(2)).toEqual(9.86902225);
+      expect(Math.PI.pow(2)).toBeCloseTo(Math.PI ** 2, 8);
     });
   });
 
@@ -136,7 +136,7 @@ describe("Number Extension Test", () => {
     test("should return correct square value", () => {
       expect((10).normalize()).toEqual(100);
       expect((2).normalize()).toEqual(4);
-      expect((3.1415).normalize()).toEqual(9.86902225);
+      expect(Math.PI.normalize()).toBeCloseTo(Math.PI ** 2, 8);
     });
   });
 
@@ -161,14 +161,14 @@ describe("Number Extension Test", () => {
   describe("abs()", () => {
     it("should return absolute value of a number", () => {
       expect((-3).abs()).toBe(3);
-      expect(3.14.abs()).toBe(3.14);
+      expect(Math.PI.abs()).toBe(Math.PI);
       expect((0).abs()).toBe(0);
     });
   });
 
   describe("isFinite()", () => {
     it("should return true if a number is finite", () => {
-      expect(0.1.isFinite()).toBe(true);
+      expect((0.1).isFinite()).toBe(true);
       expect((-5).isFinite()).toBe(true);
       expect((1 / 0).isFinite()).toBe(false);
       expect((-1 / 0).isFinite()).toBe(false);
@@ -178,7 +178,7 @@ describe("Number Extension Test", () => {
 
   describe("isNaN()", () => {
     it("should return true if a number is NaN", () => {
-      expect(NaN.isNaN()).toBe(true);
+      expect(Number.NaN.isNaN()).toBe(true);
       expect((0 / 0).isNaN()).toBe(true);
       expect((-1).isNaN()).toBe(false);
       expect((0).isNaN()).toBe(false);
@@ -204,16 +204,16 @@ describe("Number Extension Test", () => {
     expect((-10).addSymbol(" ")).toBe("- 10");
   });
 
-  test("fromPer: convert from percent to decimal", () => {
-    expect((100).fromPer(50)).toBe(50);
-    expect((200).fromPer(25)).toBe(50);
-    expect((50).fromPer(10)).toBe(5);
+  test("percentOf: convert from percent to decimal", () => {
+    expect((100).percentOf(50)).toBe(50);
+    expect((200).percentOf(25)).toBe(50);
+    expect((50).percentOf(10)).toBe(5);
   });
 
-  test("toPer: convert from decimal to percent", () => {
-    expect((50).toPer(100)).toBe(50);
-    expect((50).toPer(200)).toBe(25);
-    expect((5).toPer(50)).toBe(10);
+  test("toPercent: convert from decimal to percent", () => {
+    expect((50).toPercent(100)).toBe(50);
+    expect((50).toPercent(200)).toBe(25);
+    expect((5).toPercent(50)).toBe(10);
   });
 
   describe("addSymbol", () => {
@@ -238,24 +238,22 @@ describe("Number Extension Test", () => {
 
   describe("Number.prototype", () => {
     test("ceil", () => {
-      expect((3.14159).ceil()).toBe(4);
-      expect((3.14159).ceil(1)).toBe(3.2);
+      expect(Math.PI.ceil()).toBe(4);
+      expect(Math.PI.ceil(1)).toBe(3.2);
       expect((1234).ceil(-2)).toBe(1300);
     });
 
     test("floor", () => {
-      expect((3.14159).floor()).toBe(3);
-      expect((3.14159).floor(1)).toBe(3.1);
+      expect(Math.PI.floor()).toBe(3);
+      expect(Math.PI.floor(1)).toBe(3.1);
       expect((1234).floor(-2)).toBe(1200);
     });
 
     test("round", () => {
-      expect((3.14159).round()).toBe(3);
-      expect((3.14159).round(1)).toBe(3.1);
-      expect((3.14159).round(3)).toBe(3.142);
+      expect(Math.PI.round()).toBe(3);
+      expect(Math.PI.round(1)).toBe(3.1);
+      expect(Math.PI.round(3)).toBe(3.142);
       expect((1234).round(-2)).toBe(1200);
     });
   });
-
-
 });

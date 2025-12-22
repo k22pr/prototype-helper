@@ -1,4 +1,4 @@
-import Decimal from "decimal.js";
+import type Decimal from "decimal.js";
 
 declare global {
   interface Number {
@@ -17,8 +17,8 @@ declare global {
     isNaN(): boolean;
     isInteger(): boolean;
     addSymbol(space?: string): string;
-    fromPer(per: number): number;
-    toPer(per: number): number;
+    percentOf(per: number): number;
+    toPercent(val: number): number;
     pow(value: number): number;
     normalize(): number;
 

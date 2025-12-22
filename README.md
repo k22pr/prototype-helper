@@ -2,8 +2,8 @@
 <!-- <h1 align="center">Typescript Prototype Helper</h1> -->
 
 <p align="center">
- <a href="https://github.com/prettier/prettier">
-    <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge">
+ <a href="https://biomejs.dev">
+    <img alt="code style: biome" src="https://img.shields.io/badge/code_style-biome-60a5fa.svg?style=for-the-badge">
   </a>
  <a href="https://www.npmjs.com/package/prototype-helper">
     <img alt="code style: prettier" src="https://img.shields.io/npm/v/prototype-helper.svg?style=for-the-badge">
@@ -13,7 +13,7 @@
   </a>
   <img alt="npm" src="https://img.shields.io/npm/dm/prototype-helper?style=for-the-badge">
   <!-- <img alt="AppVeyor tests (compact)" src="https://img.shields.io/appveyor/tests/k22pr/prototype-helper?compact_message&style=for-the-badge"> -->
-  
+
 </p>
 <p align="center">
 Adds a convenient prototype function package.
@@ -207,28 +207,28 @@ expect((0).addSymbol()).toBe("0");
 expect((-10).addSymbol()).toBe("-10");
 ```
 
-### fromPer(per: number): number;
+### percentOf(per: number): number;
 
 - Calculates a value from a percentage of another value.
 
 - 다른 숫자의 백분율 값을 계산하는 메서드입니다.
 
 ```ts
-expect((100).fromPer(50)).toBe(50);
-expect((200).fromPer(25)).toBe(50);
-expect((50).fromPer(10)).toBe(5);
+expect((100).percentOf(50)).toBe(50);
+expect((200).percentOf(25)).toBe(50);
+expect((50).percentOf(10)).toBe(5);
 ```
 
-### toPer(per: number): number;
+### toPercent(val: number): number;
 
 - Calculates a percentage of a value.
 
 - 숫자의 백분율 값을 계산하는 메서드입니다.
 
 ```ts
-expect((50).toPer(100)).toBe(50);
-expect((50).toPer(200)).toBe(25);
-expect((5).toPer(50)).toBe(10);
+expect((50).toPercent(100)).toBe(50);
+expect((50).toPercent(200)).toBe(25);
+expect((5).toPercent(50)).toBe(10);
 ```
 
 ### pow(value: number): number;
@@ -518,6 +518,18 @@ const result = arr.count((x) => x % 2 === 0);
 expect(result).toBe(2);
 ```
 
+### union(other: T[]): T[];
+
+- Computes the set union of two arrays.
+
+- 두 배열의 합집합을 반환합니다.
+
+```ts
+const arr = [1, 2, 3];
+const result = arr.union([3, 4, 5]);
+expect(result).toEqual([1, 2, 3, 4, 5]);
+```
+
 ### max(predicate?: (element: T, index: number) => boolean): T;
 
 - Returns the element in the array with the maximum value. The optional predicate parameter can be used to specify a custom condition for the maximum value to be selected.
@@ -562,8 +574,11 @@ expect(result).toBe(15);
 
 ```ts
 const arr = [1, 2, 3, 4, 5];
-const result = arr.sum((x) => x % 2 === 0);
-expect(result).toBe(6);
+const result = arr.first();
+expect(result).toBe(1);
+
+const result2 = arr.first((x) => x > 3);
+expect(result2).toBe(4);
 ```
 
 ### firstOrDefault(predicate?: (element: T, index: number) => boolean, defaultValue?: any): T;
