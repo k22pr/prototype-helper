@@ -551,6 +551,18 @@ expect(obj._omit(["b"])).toEqual({ a: 1, c: 3 });
 
 - 객체의 고유한 열거 가능한 문자열 키 속성 값들의 배열을 반환합니다.
 
+### _entries(): [string, any][];
+
+- Returns an array of a given object's own enumerable string-keyed property [key, value] pairs.
+
+- 객체의 고유한 열거 가능한 문자열 키 속성의 [키, 값] 쌍들의 배열을 반환합니다.
+
+### _forEach(callback: (key: string, value: any, index: number) => void): void;
+
+- Executes a provided function once for each object entry.
+
+- 객체의 각 엔트리에 대해 제공된 함수를 한 번씩 실행합니다.
+
 ## Array
 
 ### single(predicate: (element: T, index: number) => boolean): T;

@@ -45,3 +45,15 @@ Object.prototype._keys = function (): string[] {
 Object.prototype._values = function (): any[] {
   return Object.values(this);
 };
+
+Object.prototype._entries = function (): [string, any][] {
+  return Object.entries(this);
+};
+
+Object.prototype._forEach = function (
+  callback: (key: string, value: any, index: number) => void
+): void {
+  Object.entries(this).forEach(([key, value], index) => {
+    callback(key, value, index);
+  });
+};

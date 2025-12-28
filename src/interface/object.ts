@@ -8,6 +8,8 @@ declare global {
         _merge(other: object): this;
         _keys(): string[];
         _values(): any[];
+        _entries(): [string, any][];
+        _forEach(callback: (key: string, value: any, index: number) => void): void;
     }
 }
 

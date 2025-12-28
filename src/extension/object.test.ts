@@ -84,4 +84,22 @@ describe("Object.prototype Extensions", () => {
             expect(obj._toJson()).toBe('{"a":1,"b":2}');
         });
     });
+
+    describe("_entries", () => {
+        it("should return object entries", () => {
+            const obj: any = { a: 1, b: 2 };
+            expect(obj._entries().sort()).toEqual([["a", 1], ["b", 2]].sort());
+        });
+    });
+
+    describe("_forEach", () => {
+        it("should iterate over object entries", () => {
+            const obj: any = { a: 1, b: 2 };
+            const result: any = {};
+            obj._forEach((key: string, value: any) => {
+                result[key] = value;
+            });
+            expect(result).toEqual(obj);
+        });
+    });
 });
