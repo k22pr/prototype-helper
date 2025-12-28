@@ -43,7 +43,7 @@ console.log("10000".toComma()); // 10,000
 ```ts
 expect((3.141592).toNumber()).toBe(3.141592);
 expect((12345).toNumber()).toBe(12345);
-expect("3.14".toNumber()).toBe(3.14);
+expect((3.14).toNumber()).toBe(3.14);
 ```
 
 ### toDecimal(): Decimal;
@@ -360,10 +360,10 @@ expect("12345".toNumber()).toBe(12345);
 - 숫자에 부호를 추가하여 반환하는 메서드입니다.
 
 ```ts
-expect("123".toComma()).toBe("123");
-expect("12345".toComma()).toBe("12,345");
-expect("0.12345".toComma()).toBe("0.12345");
-expect("".toComma()).toBe("0");
+expect("123".addSymbol()).toBe("+123");
+expect("-123".addSymbol()).toBe("-123");
+expect("0".addSymbol()).toBe("0");
+expect("123".addSymbol(" ")).toBe("+ 123");
 ```
 
 ### fromJSON<T>(): T;
@@ -374,7 +374,7 @@ expect("".toComma()).toBe("0");
 
 ```ts
 const jsonString = '{"name": "John", "age": 30}';
-const parsedObject = jsonString.fromJson();
+const parsedObject = jsonString.fromJson(); // or fromJSON(), parseJson()
 expect(parsedObject).toEqual({ name: "John", age: 30 });
 ```
 
@@ -415,6 +415,18 @@ expect("hello".isNumber()).toBe(false);
 ```
 
 ## Object
+
+### _deepCopy<T>(): T;
+
+- Returns a deep copy of the current object.
+
+- 현재 객체의 깊은 복사본을 반환합니다.
+
+### _toJson(): string;
+
+- Returns a JSON string representation of the current object.
+
+- 현재 객체의 JSON 문자열 표현을 반환합니다.
 
 ## Array
 
@@ -478,7 +490,7 @@ const result = arr.take(3);
 expect(result).toEqual([1, 2, 3]);
 ```
 
-### select<R>(predicate: (element: T, index: number) => R): R[];
+### select<R>(selector: (element: T, index: number) => R): R[];
 
 - Projects each element of a sequence into a new form.
 
@@ -695,6 +707,36 @@ console.log(Math.clamp(10, 3, 5)); // 5
 console.log(Math.clamp(1, 3, 5)); // 3
 console.log(Math.clamp(4, 3, 5)); // 4
 ```
+
+### gcd(a: number, b: number): number;
+
+- Returns the greatest common divisor of two numbers.
+
+- 두 수의 최대공약수를 반환합니다.
+
+### gcds(numbers: number[]): number;
+
+- Returns the greatest common divisor of an array of numbers.
+
+- 숫자 배열의 최대공약수를 반환합니다.
+
+### lcm(a: number, b: number): number;
+
+- Returns the least common multiple of two numbers.
+
+- 두 수의 최소공배수를 반환합니다.
+
+### lcms(numbers: number[]): number;
+
+- Returns the least common multiple of an array of numbers.
+
+- 숫자 배열의 최소공배수를 반환합니다.
+
+### binarySearch(arr: number[], target: number): number;
+
+- Performs a binary search on a sorted array.
+
+- 정렬된 배열에서 이진 탐색을 수행합니다.
 
 ```
 
