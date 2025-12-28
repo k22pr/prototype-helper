@@ -255,5 +255,19 @@ describe("Number Extension Test", () => {
       expect(Math.PI.round(3)).toBe(3.142);
       expect((1234).round(-2)).toBe(1200);
     });
+
+    test("toFileSize", () => {
+      expect((1024).toFileSize()).toBe("1.00KB");
+      expect((1048576).toFileSize()).toBe("1.00MB");
+      expect((500).toFileSize()).toBe("500.00B");
+    });
+
+    test("isBetween", () => {
+      expect((5).isBetween(1, 10)).toBe(true);
+      expect((1).isBetween(1, 10)).toBe(true);
+      expect((10).isBetween(1, 10)).toBe(true);
+      expect((0).isBetween(1, 10)).toBe(false);
+      expect((11).isBetween(1, 10)).toBe(false);
+    });
   });
 });

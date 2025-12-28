@@ -25,5 +25,8 @@ declare global {
     ceil(point?: number): number;
     floor(point?: number): number;
     round(point?: number): number;
+
+    toFileSize(): string;
+    isBetween(min: number, max: number): boolean;
   }
 }

@@ -89,3 +89,19 @@ Number.prototype.floor = function (point = 0) {
 Number.prototype.round = function (point = 0) {
   return Math.round10(Number(this), point);
 };
+
+Number.prototype.toFileSize = function (): string {
+  const units = ["B", "KB", "MB", "GB", "TB", "PB"];
+  let value = Number(this);
+  let index = 0;
+  while (value >= 1024 && index < units.length - 1) {
+    value /= 1024;
+    index++;
+  }
+  return `${value.fixPoint(2)}${units[index]}`;
+};
+
+Number.prototype.isBetween = function (min: number, max: number): boolean {
+  const val = Number(this);
+  return val >= min && val <= max;
+};

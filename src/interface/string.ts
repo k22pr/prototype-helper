@@ -19,7 +19,15 @@ interface String {
   toNumber(): number;
   addSymbol(space?: string): string;
   parseJson<T>(): T;
+  fromJson<T>(): T;
+  fromJSON<T>(): T;
   issetWord(word: string): boolean;
   getChar(index: number): string;
   isNumber(): boolean;
+
+  toCamelCase(): string;
+  toSnakeCase(): string;
+  toKebabCase(): string;
+  truncate(length: number, suffix?: string): string;
+  capitalize(): string;
 }

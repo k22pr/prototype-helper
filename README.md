@@ -290,6 +290,28 @@ expect((3.14159).round(3)).toBe(3.142);
 expect((1234).round(-2)).toBe(1200);
 ```
 
+### toFileSize(): string;
+
+- Returns a human-readable file size string.
+
+- 숫자를 읽기 쉬운 파일 크기 단위(B, KB, MB 등)로 변환합니다.
+
+```ts
+expect((1024).toFileSize()).toBe("1.00KB");
+expect((1048576).toFileSize()).toBe("1.00MB");
+```
+
+### isBetween(min: number, max: number): boolean;
+
+- Checks if a number is between a specified range (inclusive).
+
+- 숫자가 지정된 범위 내에 있는지 확인합니다.
+
+```ts
+expect((5).isBetween(1, 10)).toBe(true);
+expect((15).isBetween(1, 10)).toBe(false);
+```
+
 ---
 
 ## String
@@ -414,6 +436,56 @@ expect("()".isNumber()).toBe(false);
 expect("hello".isNumber()).toBe(false);
 ```
 
+### toCamelCase(): string;
+
+- Converts a string to camelCase.
+
+- 문자열을 camelCase 형식으로 변환합니다.
+
+```ts
+expect("hello world".toCamelCase()).toBe("helloWorld");
+```
+
+### toSnakeCase(): string;
+
+- Converts a string to snake_case.
+
+- 문자열을 snake_case 형식으로 변환합니다.
+
+```ts
+expect("helloWorld".toSnakeCase()).toBe("hello_world");
+```
+
+### toKebabCase(): string;
+
+- Converts a string to kebab-case.
+
+- 문자열을 kebab-case 형식으로 변환합니다.
+
+```ts
+expect("helloWorld".toKebabCase()).toBe("hello-world");
+```
+
+### truncate(length: number, suffix?: string): string;
+
+- Truncates a string to a specified length and appends a suffix.
+
+- 문자열을 지정된 길이로 자르고 접미사를 추가합니다.
+
+```ts
+expect("hello world".truncate(5)).toBe("hello...");
+```
+
+### capitalize(): string;
+
+- Capitalizes the first letter of a string.
+
+- 문자열의 첫 글자를 대문자로 변환합니다.
+
+```ts
+expect("hello".capitalize()).toBe("Hello");
+```
+
 ## Object
 
 ### _deepCopy<T>(): T;
@@ -427,6 +499,57 @@ expect("hello".isNumber()).toBe(false);
 - Returns a JSON string representation of the current object.
 
 - 현재 객체의 JSON 문자열 표현을 반환합니다.
+
+### _isEmpty(): boolean;
+
+- Checks if an object is empty.
+
+- 객체가 비어 있는지 확인합니다.
+
+```ts
+expect({}._isEmpty()).toBe(true);
+expect({ a: 1 }._isEmpty()).toBe(false);
+```
+
+### _pick<K>(keys: K[]): Pick<this, K>;
+
+- Creates a new object composed of the picked object properties.
+
+- 객체에서 특정 키만 선택하여 새로운 객체를 생성합니다.
+
+```ts
+const obj = { a: 1, b: 2, c: 3 };
+expect(obj._pick(["a", "c"])).toEqual({ a: 1, c: 3 });
+```
+
+### _omit<K>(keys: K[]): Omit<this, K>;
+
+- Creates a new object composed of the properties not omitted.
+
+- 객체에서 특정 키를 제외한 새로운 객체를 생성합니다.
+
+```ts
+const obj = { a: 1, b: 2, c: 3 };
+expect(obj._omit(["b"])).toEqual({ a: 1, c: 3 });
+```
+
+### _merge(other: object): this;
+
+- Merges the enumerable properties of one or more source objects into the target object.
+
+- 하나 이상의 소스 객체의 열거 가능한 속성을 대상 객체로 병합합니다.
+
+### _keys(): string[];
+
+- Returns an array of a given object's own enumerable string-keyed property names.
+
+- 객체의 고유한 열거 가능한 문자열 키 속성 이름들의 배열을 반환합니다.
+
+### _values(): any[];
+
+- Returns an array of a given object's own enumerable string-keyed property values.
+
+- 객체의 고유한 열거 가능한 문자열 키 속성 값들의 배열을 반환합니다.
 
 ## Array
 
@@ -539,43 +662,53 @@ expect(result).toBe(2);
 ```ts
 const arr = [1, 2, 3];
 const result = arr.union([3, 4, 5]);
-expect(result).toEqual([1, 2, 3, 4, 5]);
+expect([1, 2, 3].union([3, 4, 5])).toEqual([1, 2, 3, 4, 5]);
+
+const data1 = [{ id: 1, val: "A" }, { id: 2, val: "B" }];
+const data2 = [{ id: 2, val: "B" }, { id: 3, val: "C" }];
+expect(data1.union(data2, x => x.id).length).toBe(3);
 ```
 
-### max(predicate?: (element: T, index: number) => boolean): T;
+### max<R>(selector?: (element: T, index: number) => R): R;
 
-- Returns the element in the array with the maximum value. The optional predicate parameter can be used to specify a custom condition for the maximum value to be selected.
+- Returns the maximum value in the array. If a selector is provided, it returns the maximum value produced by the selector.
 
-- 배열에서 가장 큰 값을 가지는 요소를 반환합니다. 선택적 매개변수인 predicate를 사용하여 최대값이 선택되는 조건을 지정할 수 있습니다.
+- 배열에서 가장 큰 값을 반환합니다. 선택자(selector)가 제공되면 해당 선택자를 통해 생성된 값들 중 최대값을 반환합니다.
 
 ```ts
 const arr = [1, 3, 5, 4, 2];
-const result = arr.max();
-expect(result).toBe(5);
+expect(arr.max()).toBe(5);
+
+const dataList = [{ price: 100 }, { price: 500 }, { price: 300 }];
+expect(dataList.max(now => now.price)).toBe(500);
 ```
 
-### min(predicate?: (element: T, index: number) => boolean): T;
+### min<R>(selector?: (element: T, index: number) => R): R;
 
-- Returns the element in the array with the minimum value. The optional predicate parameter can be used to specify a custom condition for the minimum value to be selected.
+- Returns the minimum value in the array. If a selector is provided, it returns the minimum value produced by the selector.
 
-- 배열에서 가장 작은 값을 가지는 요소를 반환합니다. 선택적 매개변수인 predicate를 사용하여 최소값이 선택되는 조건을 지정할 수 있습니다.
+- 배열에서 가장 작은 값을 반환합니다. 선택자(selector)가 제공되면 해당 선택자를 통해 생성된 값들 중 최소값을 반환합니다.
 
 ```ts
 const arr = [1, 3, 5, 4, 2];
-const result = arr.min();
-expect(result).toBe(1);
+expect(arr.min()).toBe(1);
+
+const dataList = [{ price: 100 }, { price: 500 }, { price: 300 }];
+expect(dataList.min(now => now.price)).toBe(100);
 ```
 
-### sum(predicate?: (element: T, index: number) => boolean): number;
+### sum(selector?: (element: T, index: number) => number): number;
 
-- Returns the sum of all the elements in the array. The optional predicate parameter can be used to specify a custom condition for which elements should be included in the sum.
+- Returns the sum of all elements in the array. If a selector is provided, it returns the sum of values produced by the selector.
 
-배열의 모든 요소의 합을 반환합니다. 선택적 매개변수인 predicate를 사용하여 합산할 요소를 지정할 수 있습니다.
+- 배열의 모든 요소의 합을 반환합니다. 선택자(selector)가 제공되면 해당 선택자를 통해 생성된 값들의 합을 반환합니다.
 
 ```ts
 const arr = [1, 2, 3, 4, 5];
-const result = arr.sum();
-expect(result).toBe(15);
+expect(arr.sum()).toBe(15);
+
+const dataList = [{ price: 100 }, { price: 500 }, { price: 300 }];
+expect(dataList.sum(now => now.price)).toBe(900);
 ```
 
 ### first(predicate?: (element: T, index: number) => boolean): T;
@@ -639,6 +772,10 @@ expect(result).toBe(4);
 const arr = [1, 2, 3, 4, 5];
 const result = arr.diff([1, 5, 6]);
 expect(result).toEqual([2, 3, 4]);
+
+const data1 = [{ id: 1 }, { id: 2 }, { id: 3 }];
+const data2 = [{ id: 1 }, { id: 4 }];
+expect(data1.diff(data2, x => x.id)).toEqual([{ id: 2 }, { id: 3 }]);
 ```
 
 ### inter(other: T[]): T[];
@@ -651,6 +788,10 @@ expect(result).toEqual([2, 3, 4]);
 const arr = [1, 2, 3, 4, 5];
 const result = arr.inter([1, 3, 5, 6]);
 expect(result).toEqual([1, 3, 5]);
+
+const data1 = [{ id: 1 }, { id: 2 }, { id: 3 }];
+const data2 = [{ id: 1 }, { id: 4 }];
+expect(data1.inter(data2, x => x.id)).toEqual([{ id: 1 }]);
 ```
 
 ### \_deepCopy<T>(): T[];
@@ -664,6 +805,46 @@ expect(result).toEqual([1, 3, 5]);
 - Returns a JSON string representation of the current array.
 
 - 현재 배열의 JSON 문자열 표현을 반환합니다.
+
+### groupBy<K>(keySelector: (element: T, index: number) => K): Record<K, T[]>;
+
+- Groups the elements of an array according to a specified key selector function.
+
+- 지정된 키 선택 함수에 따라 배열의 요소를 그룹화합니다.
+
+```ts
+const arr = [{ id: 1, name: 'A' }, { id: 2, name: 'B' }, { id: 3, name: 'A' }];
+expect(arr.groupBy(x => x.name)).toEqual({ 'A': [{ id: 1, name: 'A' }, { id: 3, name: 'A' }], 'B': [{ id: 2, name: 'B' }] });
+```
+
+### distinct(selector?: (element: T) => any): T[];
+
+- Returns distinct elements from a sequence, optionally using a selector for comparison.
+
+- 배열에서 중복 요소를 제거합니다. 선택적으로 비교를 위한 선택자(selector)를 사용할 수 있습니다.
+
+```ts
+expect([1, 1, 2].distinct()).toEqual([1, 2]);
+
+const data = [{ id: 1, val: "A" }, { id: 1, val: "B" }, { id: 2, val: "C" }];
+expect(data.distinct(x => x.id)).toEqual([{ id: 1, val: "A" }, { id: 2, val: "C" }]);
+```
+
+### shuffle(): T[];
+
+- Randomly shuffles the elements of an array.
+
+- 배열의 요소를 무작위로 섞습니다.
+
+### chunk(size: number): T[][];
+
+- Splits an array into chunks of a specified size.
+
+- 배열을 지정된 크기의 덩어리로 나눕니다.
+
+```ts
+expect([1, 2, 3, 4, 5].chunk(2)).toEqual([[1, 2], [3, 4], [5]]);
+```
 
 ---
 
@@ -737,6 +918,28 @@ console.log(Math.clamp(4, 3, 5)); // 4
 - Performs a binary search on a sorted array.
 
 - 정렬된 배열에서 이진 탐색을 수행합니다.
+
+## Promise
+
+### static delay(ms: number): Promise<void>;
+
+- Delays the execution for a specified number of milliseconds.
+
+- 지정된 밀리초 동안 실행을 지연시킵니다.
+
+```ts
+await Promise.delay(1000);
+```
+
+### timeout(ms: number, message?: string): Promise<T>;
+
+- Sets a timeout for a promise.
+
+- 프로미스에 타임아웃을 설정합니다.
+
+```ts
+await somePromise.timeout(2000, "Timed out!");
+```
 
 ```
 

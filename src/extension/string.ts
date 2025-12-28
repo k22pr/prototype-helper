@@ -49,6 +49,8 @@ String.prototype.addSymbol = function (space = "") {
 String.prototype.parseJson = function <T>(): T {
   return JSON.parse(`${this}`);
 };
+String.prototype.fromJson = String.prototype.parseJson;
+String.prototype.fromJSON = String.prototype.parseJson;
 
 String.prototype.issetWord = function (word: string) {
   return this.indexOf(word) === -1 ? false : true;
@@ -60,4 +62,31 @@ String.prototype.getChar = function (index: number) {
 
 String.prototype.isNumber = function () {
   return isNumber(this);
+};
+
+String.prototype.toCamelCase = function (): string {
+  return this.replace(/[-_ ]+(.)/g, (_, char) => char.toUpperCase())
+    .replace(/^(.)/, (_, char) => char.toLowerCase());
+};
+
+String.prototype.toSnakeCase = function (): string {
+  return this.replace(/([a-z])([A-Z])/g, "$1_$2")
+    .replace(/[- ]+/g, "_")
+    .toLowerCase();
+};
+
+String.prototype.toKebabCase = function (): string {
+  return this.replace(/([a-z])([A-Z])/g, "$1-$2")
+    .replace(/[_ ]+/g, "-")
+    .toLowerCase();
+};
+
+String.prototype.truncate = function (length: number, suffix = "..."): string {
+  if (this.length <= length) return this.toString();
+  return this.substring(0, length) + suffix;
+};
+
+String.prototype.capitalize = function (): string {
+  if (this.length === 0) return "";
+  return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
 };

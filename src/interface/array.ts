@@ -10,11 +10,11 @@ interface Array<T> {
   select<R>(predicate: (element: T, index: number) => R): R[];
   any(predicate?: (element: T, index: number) => boolean): boolean;
   count(predicate?: (element: T, index: number) => boolean): number;
-  union(other: T[]): T[];
+  union(other: T[], selector?: (element: T) => any): T[];
 
-  max(predicate?: (element: T, index: number) => boolean): T;
-  min(predicate?: (element: T, index: number) => boolean): T;
-  sum(predicate?: (element: T, index: number) => boolean): number;
+  max<R = T>(selector?: (element: T, index: number) => R): R;
+  min<R = T>(selector?: (element: T, index: number) => R): R;
+  sum(selector?: (element: T, index: number) => number): number;
 
   first(predicate?: (element: T, index: number) => boolean): T;
   firstOrDefault<D = T>(
@@ -27,10 +27,16 @@ interface Array<T> {
     defaultValue?: D
   ): T | D;
 
-  diff(other: T[]): T[];
-  inter(other: T[]): T[];
+  diff(other: T[], selector?: (element: T) => any): T[];
+  inter(other: T[], selector?: (element: T) => any): T[];
 
-  // deepClone<T>(camelcase?: boolean): T[];
+  groupBy<K extends string | number>(
+    keySelector: (element: T, index: number) => K
+  ): Record<K, T[]>;
+  distinct(selector?: (element: T) => any): T[];
+  shuffle(): T[];
+  chunk(size: number): T[][];
+
   _deepCopy<R = T[]>(): R;
   _toJson(): string;
 }

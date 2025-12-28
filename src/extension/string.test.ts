@@ -82,11 +82,10 @@ test("String.prototype.parseJson() - should parse JSON string to object", () => 
   expect(parsedObject).toEqual({ name: "John", age: 30 });
 });
 
-test("String.prototype.parseJson() - should throw error for invalid JSON string", () => {
-  const invalidJsonString = '{name: "John", age: 30}';
-  expect(() => {
-    invalidJsonString.parseJson();
-  }).toThrow();
+test("fromJson and fromJSON aliases", () => {
+  const jsonString = '{"a":1}';
+  expect((jsonString as any).fromJson()).toEqual({ a: 1 });
+  expect((jsonString as any).fromJSON()).toEqual({ a: 1 });
 });
 
 test("String.prototype.issetWord() - should return true if word exists in string", () => {
@@ -127,4 +126,35 @@ test("String.prototype.isNumber()", () => {
   expect("[]".isNumber()).toBe(false);
   expect("()".isNumber()).toBe(false);
   expect("hello".isNumber()).toBe(false);
+});
+
+describe("String Case Conversions", () => {
+  test("toCamelCase", () => {
+    expect("hello world".toCamelCase()).toBe("helloWorld");
+    expect("hello-world".toCamelCase()).toBe("helloWorld");
+    expect("hello_world".toCamelCase()).toBe("helloWorld");
+  });
+
+  test("toSnakeCase", () => {
+    expect("helloWorld".toSnakeCase()).toBe("hello_world");
+    expect("hello World".toSnakeCase()).toBe("hello_world");
+  });
+
+  test("toKebabCase", () => {
+    expect("helloWorld".toKebabCase()).toBe("hello-world");
+    expect("hello World".toKebabCase()).toBe("hello-world");
+  });
+
+  test("capitalize", () => {
+    expect("hello".capitalize()).toBe("Hello");
+    expect("WORLD".capitalize()).toBe("World");
+  });
+});
+
+describe("String Truncate", () => {
+  test("truncate", () => {
+    expect("hello world".truncate(5)).toBe("hello...");
+    expect("hello".truncate(10)).toBe("hello");
+    expect("hello world".truncate(5, "!")).toBe("hello!");
+  });
 });

@@ -126,10 +126,10 @@ describe("Array.prototype.max", () => {
     expect(result).toBe(5);
   });
 
-  it("should return the maximum element that satisfies the predicate function", () => {
-    const arr = [1, 3, 5, 4, 2];
-    const result = arr.max((x) => x % 2 === 0);
-    expect(result).toBe(4);
+  it("should return the maximum value produce by the selector", () => {
+    const arr = [{ val: 1 }, { val: 5 }, { val: 3 }];
+    const result = arr.max((x) => x.val);
+    expect(result).toBe(5);
   });
 });
 
@@ -140,10 +140,10 @@ describe("Array.prototype.min", () => {
     expect(result).toBe(1);
   });
 
-  it("should return the minimum element that satisfies the predicate function", () => {
-    const arr = [1, 3, 5, 4, 2];
-    const result = arr.min((x) => x % 2 === 0);
-    expect(result).toBe(2);
+  it("should return the minimum value produce by the selector", () => {
+    const arr = [{ val: 1 }, { val: 5 }, { val: 3 }];
+    const result = arr.min((x) => x.val);
+    expect(result).toBe(1);
   });
 });
 
@@ -154,9 +154,9 @@ describe("Array.prototype.sum", () => {
     expect(result).toBe(15);
   });
 
-  it("should return the sum of all elements that satisfy the predicate function", () => {
-    const arr = [1, 2, 3, 4, 5];
-    const result = arr.sum((x) => x % 2 === 0);
+  it("should return the sum of values produced by the selector", () => {
+    const arr = [{ val: 1 }, { val: 2 }, { val: 3 }];
+    const result = arr.sum((x) => x.val);
     expect(result).toBe(6);
   });
 });
@@ -256,6 +256,13 @@ describe("Array.prototype.diff", () => {
     const result = arr.diff(other);
     expect(result).toEqual([1, 2]);
   });
+
+  it("should work with a selector for object arrays", () => {
+    const arr = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    const other = [{ id: 1 }, { id: 4 }];
+    const result = arr.diff(other, (x) => x.id);
+    expect(result).toEqual([{ id: 2 }, { id: 3 }]);
+  });
 });
 
 describe("Array.prototype.inter", () => {
@@ -272,6 +279,13 @@ describe("Array.prototype.inter", () => {
     expect(result).toEqual([3, 4, 5]);
   });
 
+  it("should work with a selector for object arrays", () => {
+    const arr = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    const other = [{ id: 1 }, { id: 4 }];
+    const result = arr.inter(other, (x) => x.id);
+    expect(result).toEqual([{ id: 1 }]);
+  });
+
   it("should return an empty array when no common elements", () => {
     const arr = [1, 2, 3];
     const other = [4, 5, 6];
@@ -285,6 +299,15 @@ describe("Array.prototype.union", () => {
     const arr = [1, 2, 3];
     const result = arr.union([3, 4, 5]);
     expect(result).toEqual([1, 2, 3, 4, 5]);
+  });
+
+  it("should work with a selector for object arrays", () => {
+    const arr = [{ id: 1, v: "a" }];
+    const other = [{ id: 1, v: "b" }, { id: 2, v: "c" }];
+    const result = arr.union(other, (x) => x.id);
+    expect(result.length).toBe(2);
+    expect(result[0].id).toBe(1);
+    expect(result[1].id).toBe(2);
   });
 
   it("should return the original array when other is empty", () => {
