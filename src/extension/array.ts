@@ -9,15 +9,15 @@ Array.prototype.singleOrDefault = function <T, D = T>(
   defaultValue: any = null
 ): T | D {
   const isset = this.where(predicate);
-  if (isset.length >= 2)
-    throw new Error("single:sequence contains more than one element.");
+  if (isset.length >= 2) throw new Error("single:sequence contains more than one element.");
 
   return isset.length ? isset[0] : defaultValue;
 };
 
 Array.prototype.single = function (predicate) {
   const isset = this.singleOrDefault(predicate);
-  if (isset === null || isset === undefined) throw new Error("single:No element satisfies the condition.");
+  if (isset === null || isset === undefined)
+    throw new Error("single:No element satisfies the condition.");
   return isset;
 };
 
@@ -88,9 +88,7 @@ Array.prototype.lastOrDefault = function <T, D = T>(
 ): T | D {
   if (predicate == null) predicate = () => true;
   const isset = this.where(predicate);
-  return isset == null || isset.length === 0
-    ? defaultValue
-    : isset[isset.length - 1];
+  return isset == null || isset.length === 0 ? defaultValue : isset[isset.length - 1];
 };
 Array.prototype.last = function (predicate?: any) {
   if (predicate == null) predicate = () => true;

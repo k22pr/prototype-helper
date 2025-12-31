@@ -65,8 +65,9 @@ String.prototype.isNumber = function () {
 };
 
 String.prototype.toCamelCase = function (): string {
-  return this.replace(/[-_ ]+(.)/g, (_, char) => char.toUpperCase())
-    .replace(/^(.)/, (_, char) => char.toLowerCase());
+  return this.replace(/[-_ ]+(.)/g, (_, char) => char.toUpperCase()).replace(/^(.)/, (_, char) =>
+    char.toLowerCase()
+  );
 };
 
 String.prototype.toSnakeCase = function (): string {

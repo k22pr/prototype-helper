@@ -22,17 +22,12 @@ interface Array<T> {
     defaultValue?: D
   ): T | D;
   last(predicate?: (element: T, index: number) => boolean): T;
-  lastOrDefault<D = T>(
-    predicate?: (element: T, index: number) => boolean,
-    defaultValue?: D
-  ): T | D;
+  lastOrDefault<D = T>(predicate?: (element: T, index: number) => boolean, defaultValue?: D): T | D;
 
   diff(other: T[], selector?: (element: T) => any): T[];
   inter(other: T[], selector?: (element: T) => any): T[];
 
-  groupBy<K extends string | number>(
-    keySelector: (element: T, index: number) => K
-  ): Record<K, T[]>;
+  groupBy<K extends string | number>(keySelector: (element: T, index: number) => K): Record<K, T[]>;
   distinct(selector?: (element: T) => any): T[];
   shuffle(): T[];
   chunk(size: number): T[][];

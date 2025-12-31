@@ -303,7 +303,10 @@ describe("Array.prototype.union", () => {
 
   it("should work with a selector for object arrays", () => {
     const arr = [{ id: 1, v: "a" }];
-    const other = [{ id: 1, v: "b" }, { id: 2, v: "c" }];
+    const other = [
+      { id: 1, v: "b" },
+      { id: 2, v: "c" },
+    ];
     const result = arr.union(other, (x) => x.id);
     expect(result.length).toBe(2);
     expect(result[0].id).toBe(1);

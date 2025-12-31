@@ -1,11 +1,11 @@
 declare global {
-    interface PromiseConstructor {
-        delay(ms: number): Promise<void>;
-    }
+  interface PromiseConstructor {
+    delay(ms: number): Promise<void>;
+  }
 
-    interface Promise<T> {
-        timeout(ms: number, message?: string): Promise<T>;
-    }
+  interface Promise<T> {
+    timeout(ms: number, message?: string): Promise<T>;
+  }
 }
 
-export { };
+export {};
