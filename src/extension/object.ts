@@ -22,48 +22,102 @@ if (!Object.prototype._toJson) {
   });
 }
 
-Object.prototype._isEmpty = function (): boolean {
-  return Object.keys(this).length === 0;
-};
-
-Object.prototype._pick = function (keys: string[] | any[]): any {
-  const result: any = {};
-  for (const key of keys) {
-    if (key in this) {
-      result[key] = (this as any)[key];
-    }
-  }
-  return result;
-};
-
-Object.prototype._omit = function (keys: string[] | any[]): any {
-  const result: any = { ...this };
-  for (const key of keys) {
-    delete result[key];
-  }
-  return result;
-};
-
-Object.prototype._merge = function (other: object): any {
-  return Object.assign(this, other);
-};
-
-Object.prototype._keys = function (): string[] {
-  return Object.keys(this);
-};
-
-Object.prototype._values = function (): any[] {
-  return Object.values(this);
-};
-
-Object.prototype._entries = function (): [string, any][] {
-  return Object.entries(this);
-};
-
-Object.prototype._forEach = function (
-  callback: (key: string, value: any, index: number) => void
-): void {
-  Object.entries(this).forEach(([key, value], index) => {
-    callback(key, value, index);
+if (!Object.prototype._isEmpty) {
+  Object.defineProperty(Object.prototype, "_isEmpty", {
+    value: function (): boolean {
+      return Object.keys(this).length === 0;
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
   });
-};
+}
+
+if (!Object.prototype._pick) {
+  Object.defineProperty(Object.prototype, "_pick", {
+    value: function (keys: string[] | any[]): any {
+      const result: any = {};
+      for (const key of keys) {
+        if (key in this) {
+          result[key] = (this as any)[key];
+        }
+      }
+      return result;
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
+  });
+}
+
+if (!Object.prototype._omit) {
+  Object.defineProperty(Object.prototype, "_omit", {
+    value: function (keys: string[] | any[]): any {
+      const result: any = { ...this };
+      for (const key of keys) {
+        delete result[key];
+      }
+      return result;
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
+  });
+}
+
+if (!Object.prototype._merge) {
+  Object.defineProperty(Object.prototype, "_merge", {
+    value: function (other: object): any {
+      return Object.assign(this, other);
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
+  });
+}
+
+if (!Object.prototype._keys) {
+  Object.defineProperty(Object.prototype, "_keys", {
+    value: function (): string[] {
+      return Object.keys(this);
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
+  });
+}
+
+if (!Object.prototype._values) {
+  Object.defineProperty(Object.prototype, "_values", {
+    value: function (): any[] {
+      return Object.values(this);
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
+  });
+}
+
+if (!Object.prototype._entries) {
+  Object.defineProperty(Object.prototype, "_entries", {
+    value: function (): [string, any][] {
+      return Object.entries(this);
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
+  });
+}
+
+if (!Object.prototype._forEach) {
+  Object.defineProperty(Object.prototype, "_forEach", {
+    value: function (callback: (key: string, value: any, index: number) => void): void {
+      Object.entries(this).forEach(([key, value], index) => {
+        callback(key, value, index);
+      });
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
+  });
+}
