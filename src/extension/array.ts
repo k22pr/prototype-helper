@@ -118,15 +118,25 @@ Array.prototype.inter = function (other: any[], selector?: (item: any) => any) {
 };
 
 if (!Array.prototype._deepCopy) {
-  Array.prototype._deepCopy = function (): any {
-    return deepClone(this);
-  };
+  Object.defineProperty(Array.prototype, "_deepCopy", {
+    value: function (): any {
+      return deepClone(this);
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
+  });
 }
 
 if (!Array.prototype._toJson) {
-  Array.prototype._toJson = function () {
-    return JSON.stringify(this);
-  };
+  Object.defineProperty(Array.prototype, "_toJson", {
+    value: function () {
+      return JSON.stringify(this);
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
+  });
 }
 
 Array.prototype.groupBy = function (keySelector: any) {

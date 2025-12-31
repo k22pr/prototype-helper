@@ -1,15 +1,25 @@
 import deepClone from "deep-clone";
 
 if (!Object.prototype._deepCopy) {
-  Object.prototype._deepCopy = function <T>(): T {
-    return deepClone(this) as T;
-  };
+  Object.defineProperty(Object.prototype, "_deepCopy", {
+    value: function <T>(): T {
+      return deepClone(this) as T;
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
+  });
 }
 
 if (!Object.prototype._toJson) {
-  Object.prototype._toJson = function (): string {
-    return JSON.stringify(this);
-  };
+  Object.defineProperty(Object.prototype, "_toJson", {
+    value: function (): string {
+      return JSON.stringify(this);
+    },
+    enumerable: false,
+    writable: true,
+    configurable: true,
+  });
 }
 
 Object.prototype._isEmpty = function (): boolean {
