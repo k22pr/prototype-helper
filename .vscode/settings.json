@@ -1,4 +1,8 @@
 {
+  // 오류 밑줄 색상 (더 붉은색)
+  "workbench.colorCustomizations": {
+    "editorError.foreground": "#ff3333"
+  },
   "editor.quickSuggestions": {
     "other": true,
     "comments": true,
