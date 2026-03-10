@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "rules": {
+    "unicorn/no-array-for-each": "off",
+    "no-useless-ternary": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "oxc/no-approximative-numeric-constant": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "prefer-const": "warn",
+    "no-else-return": "off",
+    "no-param-reassign": "off"
+  },
+  "plugins": ["typescript", "unicorn"],
+  "ignorePatterns": ["node_modules", "dist"],
+  "overrides": [
+    {
+      "files": ["src/interface/**/*.ts"],
+      "rules": {
+        "no-unused-vars": "off"
+      }
+    }
+  ]
+}
