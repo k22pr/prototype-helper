@@ -98,9 +98,8 @@ if (!Array.prototype.any) {
 if (!Array.prototype.count) {
   Object.defineProperty(Array.prototype, "count", {
     value: function (predicate?: any) {
-      let list = this;
-      if (predicate) list = this.where(predicate);
-      return list.length;
+      if (predicate) return this.where(predicate).length;
+      return this.length;
     },
     enumerable: false,
     writable: true,

@@ -39,7 +39,7 @@ String.prototype.toComma = function (): string {
 
 String.prototype.toNumber = function (): number {
   // return Number(this.replace(",", "").replace(" ", "").replace("+", ""));
-  return Number(this.replace(/[,\+\s]/gi, ""));
+  return Number(this.replace(/[,+\s]/gi, ""));
 };
 
 String.prototype.addSymbol = function (space = "") {
